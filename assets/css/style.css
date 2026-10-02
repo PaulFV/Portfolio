@@ -2350,6 +2350,119 @@ button { font: inherit; color: inherit; }
   filter: drop-shadow(2px 3px 0 var(--c-accent-3)) drop-shadow(0 0 0.5rem var(--c-accent));
 }
 
+/* Individuelle Farben für Kontakt-Links */
+.contact-link {
+  transition: all 280ms var(--t);
+}
+
+.contact-link--sms-soft {
+  color: #0066cc;
+}
+
+.contact-link--sms-soft:hover {
+  color: #0052a3;
+  text-shadow: 0 0 0.6rem rgba(0, 102, 204, 0.5);
+}
+
+.contact-link--sms-soft svg {
+  filter: drop-shadow(1px 2px 0 rgba(0, 102, 204, 0.3));
+}
+
+.contact-link--sms-soft:hover svg {
+  filter: drop-shadow(2px 3px 0 #0066cc) drop-shadow(0 0 0.5rem rgba(0, 102, 204, 0.6));
+}
+
+.contact-link--github {
+  color: #1f2937;
+}
+
+.contact-link--github:hover {
+  color: #111827;
+  text-shadow: 0 0 0.6rem rgba(31, 41, 55, 0.5);
+}
+
+.contact-link--github svg {
+  filter: drop-shadow(1px 2px 0 rgba(31, 41, 55, 0.3));
+}
+
+.contact-link--github:hover svg {
+  filter: drop-shadow(2px 3px 0 #1f2937) drop-shadow(0 0 0.5rem rgba(31, 41, 55, 0.6));
+}
+
+.contact-link--x {
+  color: #000000;
+}
+
+.contact-link--x:hover {
+  color: #1a1a1a;
+  text-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.5);
+}
+
+.contact-link--x svg {
+  filter: drop-shadow(1px 2px 0 rgba(0, 0, 0, 0.3));
+}
+
+.contact-link--x:hover svg {
+  filter: drop-shadow(2px 3px 0 #000000) drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.6));
+}
+
+/* Dark Mode Anpassungen */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .contact-link--sms-soft {
+    color: #3b82f6;
+  }
+
+  :root:not([data-theme="light"]) .contact-link--sms-soft:hover {
+    color: #60a5fa;
+    text-shadow: 0 0 0.8rem rgba(59, 130, 246, 0.6);
+  }
+
+  :root:not([data-theme="light"]) .contact-link--github {
+    color: #e5e7eb;
+  }
+
+  :root:not([data-theme="light"]) .contact-link--github:hover {
+    color: #ffffff;
+    text-shadow: 0 0 0.8rem rgba(229, 231, 235, 0.6);
+  }
+
+  :root:not([data-theme="light"]) .contact-link--x {
+    color: #ffffff;
+  }
+
+  :root:not([data-theme="light"]) .contact-link--x:hover {
+    color: #f3f4f6;
+    text-shadow: 0 0 0.8rem rgba(255, 255, 255, 0.6);
+  }
+}
+
+:root[data-theme="dark"] .contact-link--sms-soft {
+  color: #3b82f6;
+}
+
+:root[data-theme="dark"] .contact-link--sms-soft:hover {
+  color: #60a5fa;
+  text-shadow: 0 0 0.8rem rgba(59, 130, 246, 0.6);
+}
+
+:root[data-theme="dark"] .contact-link--github {
+  color: #e5e7eb;
+}
+
+:root[data-theme="dark"] .contact-link--github:hover {
+  color: #ffffff;
+  text-shadow: 0 0 0.8rem rgba(229, 231, 235, 0.6);
+}
+
+:root[data-theme="dark"] .contact-link--x {
+  color: #ffffff;
+}
+
+:root[data-theme="dark"] .contact-link--x:hover {
+  color: #f3f4f6;
+  text-shadow: 0 0 0.8rem rgba(255, 255, 255, 0.6);
+}
+
 
 /* --- 11. Fußzeile ------------------------------------------- */
 
