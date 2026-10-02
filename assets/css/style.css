@@ -2945,4 +2945,6 @@ a:hover {
   .life { gap: var(--sp-3); }
 
   .card__links { padding-top: var(--sp-4); }
+
+  .projects__intro { display: none; }
 }
