@@ -349,7 +349,8 @@ button { font: inherit; color: inherit; }
    auch ohne JavaScript vollständig funktioniert. Auf schmalen Displays
    darf sie seitlich scrollen. */
 .nav {
-  margin-left: auto;
+  /* gleicht das linke Padding der Liste aus, damit die Links bündig mit dem Inhalt beginnen */
+  margin-left: -0.75rem;
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -390,6 +391,7 @@ button { font: inherit; color: inherit; }
   align-items: center;
   gap: 0.45rem;
   flex-shrink: 0;
+  margin-left: auto;
 }
 
 .menu-toggle {
