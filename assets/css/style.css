@@ -878,7 +878,14 @@ button { font: inherit; color: inherit; }
   100% { box-shadow: 0 0 0 0 transparent; }
 }
 
-.hero__title { max-width: 16ch; }
+.hero {
+  --portrait-size: clamp(23rem, 43vw, 37rem);
+  --portrait-right: clamp(0rem, 4vw, 4.5rem);
+  /* Platz, den Überschrift und Einleitung rechts für das Profilbild freilassen */
+  --portrait-space: calc(var(--portrait-size) + var(--portrait-right) + 1.5rem);
+}
+
+.hero__title { max-width: min(16ch, 100% - var(--portrait-space)); }
 
 .hero__title > span:first-child {
   background: linear-gradient(105deg, var(--c-text) 14%, var(--c-accent) 63%, var(--c-accent-2) 96%);
@@ -901,7 +908,7 @@ button { font: inherit; color: inherit; }
 }
 
 .hero__lead {
-  max-width: 46ch;
+  max-width: min(46ch, 100% - var(--portrait-space));
   margin-top: var(--sp-5);
   font-size: var(--step-1);
   line-height: 1.55;
@@ -925,9 +932,9 @@ button { font: inherit; color: inherit; }
 .hero__portrait {
   position: absolute !important;
   z-index: 1 !important;
-  right: clamp(0rem, 4vw, 4.5rem);
+  right: var(--portrait-right);
   top: 32%;
-  width: clamp(23rem, 43vw, 37rem);
+  width: var(--portrait-size);
   height: clamp(24rem, 43vw, 38rem);
   margin: 0;
   display: grid;
@@ -2658,6 +2665,8 @@ button { font: inherit; color: inherit; }
   .life {
     grid-template-columns: minmax(0, 1fr);
   }
+
+  .hero { --portrait-space: 0px; }
 
   .hero__portrait {
     position: relative !important;
