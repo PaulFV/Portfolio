@@ -2610,7 +2610,6 @@ button { font: inherit; color: inherit; }
   .hero__portrait {
     width: min(18rem, 76vw);
     height: min(18rem, 76vw);
-    margin-top: var(--sp-7);
   }
 
   .hero__lead { max-width: 100%; }
@@ -2660,7 +2659,7 @@ button { font: inherit; color: inherit; }
     right: auto;
     width: min(20rem, 76vw);
     height: min(20rem, 76vw);
-    margin: var(--sp-7) auto 0;
+    margin: var(--sp-6) auto var(--sp-2);
     transform: none;
     animation: portrait-float-mobile 6s ease-in-out infinite;
   }
