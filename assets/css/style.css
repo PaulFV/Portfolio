@@ -928,8 +928,8 @@ button { font: inherit; color: inherit; }
   z-index: 1 !important;
   right: clamp(0rem, 4vw, 4.5rem);
   top: 50%;
-  width: clamp(15rem, 27vw, 22rem);
-  height: clamp(15rem, 27vw, 22rem);
+  width: clamp(17rem, 31vw, 25rem);
+  height: clamp(18rem, 31vw, 26rem);
   margin: 0;
   display: grid;
   place-items: center;
