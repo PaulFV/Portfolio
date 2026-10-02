@@ -847,16 +847,6 @@ button { font: inherit; color: inherit; }
   color: transparent;
 }
 
-.hero__title::before {
-  content: var(--hero-kicker, "01 / INDUSTRIEAUTOMATION");
-  display: block;
-  margin-bottom: var(--sp-4);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  color: var(--c-accent);
-}
 
 .hero__role {
   display: block;

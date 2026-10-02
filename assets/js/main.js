@@ -359,12 +359,6 @@
 
     document.documentElement.lang = language;
     document.documentElement.style.setProperty(
-      "--hero-kicker",
-      language === "en"
-        ? '"01 / INDUSTRIAL AUTOMATION"'
-        : language === "ro" ? '"01 / AUTOMATIZĂRI INDUSTRIALE"' : '"01 / INDUSTRIEAUTOMATION"'
-    );
-    document.documentElement.style.setProperty(
       "--facts-kicker",
       language === "en"
         ? '"LIVE PROFILE DATA"'
