@@ -700,6 +700,40 @@ button { font: inherit; color: inherit; }
 :root[data-theme="light"] .theme-toggle .icon-moon { display: none; }
 
 
+/* --- 5. Tagline ------------------------------------------------ */
+
+.tagline {
+  padding-block: var(--sp-7);
+  border-bottom: 1px solid var(--c-border);
+  background: linear-gradient(135deg, transparent 0 50%, color-mix(in srgb, var(--c-accent-3) 4%, transparent) 50% 51%, transparent 51%);
+}
+
+.tagline__text {
+  margin: 0;
+  font-size: var(--step-4);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--c-text);
+  text-shadow: 0 0 0.4rem var(--c-accent-soft);
+}
+
+.tagline__text span {
+  background: linear-gradient(135deg, var(--c-accent), var(--c-accent-2), var(--c-accent-3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (max-width: 40em) {
+  .tagline {
+    padding-block: var(--sp-6);
+  }
+
+  .tagline__text {
+    font-size: var(--step-3);
+  }
+}
+
 /* --- 5. Hero ------------------------------------------------ */
 
 .hero {
