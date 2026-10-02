@@ -902,13 +902,6 @@ button { font: inherit; color: inherit; }
   color: var(--c-text-muted);
 }
 
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-3);
-  margin-top: var(--sp-6);
-}
-
 /* Kennzahlen unter dem Hero */
 .facts {
   display: grid;
@@ -2621,11 +2614,6 @@ button { font: inherit; color: inherit; }
   }
 
   .hero__lead { max-width: 100%; }
-
-  .hero__actions .btn {
-    flex: 1 1 10rem;
-    justify-content: center;
-  }
 
   .facts {
     grid-template-columns: repeat(2, minmax(0, 1fr));
