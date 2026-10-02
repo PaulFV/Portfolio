@@ -287,11 +287,16 @@ button { font: inherit; color: inherit; }
   font-weight: 600;
   text-decoration: none;
   transform: translateY(-200%);
-  transition: transform var(--t);
+  /* unsichtbar, damit er beim Überziehen auf dem Handy nicht über dem Header auftaucht */
+  opacity: 0;
+  pointer-events: none;
+  transition: transform var(--t), opacity var(--t);
 }
 
 .skip-link:focus-visible {
   transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
   color: var(--c-on-accent);
 }
 
