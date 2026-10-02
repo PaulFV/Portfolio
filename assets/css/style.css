@@ -1702,13 +1702,7 @@ button { font: inherit; color: inherit; }
 .profile-language--ro {
   background-color: #3f65c1;
   background-image: linear-gradient(90deg, #173c9c 0 33%, #f5d24c 33% 66%, #c33a42 66% 100%);
-}
-
-.profile-language--hu {
-  background-color: #ce2939;
-  background-image: linear-gradient(180deg, #ce2939 0 33%, #ffffff 33% 66%, #477050 66% 100%);
-}
-.profile-language__separator {
+}.profile-language__separator {
   color: var(--c-text-muted);
   font-size: 0.72em;
   font-weight: 500;

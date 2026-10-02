@@ -70,7 +70,7 @@
     "meta.workModel": "Working model",
     "meta.workModelValue": "On-site, hybrid or remote",
     "meta.languages": "Languages",
-    "meta.languagesValue": "German, English, Romanian, Hungarian",
+    "meta.languagesValue": "German, English, Romanian",
     "meta.travel": "Travel-ready",
     "meta.travelValue": "Yes, worldwide",
     "meta.locations": "Locations",
@@ -182,7 +182,7 @@
     "meta.workModel": "Mod de lucru",
     "meta.workModelValue": "La sediu, hibrid sau la distanță",
     "meta.languages": "Limbi",
-    "meta.languagesValue": "Germană, engleză, română, maghiară",
+    "meta.languagesValue": "Germană, engleză, română",
     "meta.travel": "Disponibil pentru călătorii",
     "meta.travelValue": "Da, în întreaga lume",
     "meta.locations": "Locații",
@@ -293,7 +293,7 @@
     "meta.workModel": "Munkavégzés",
     "meta.workModelValue": "Helyszínen, hibrid vagy távmunkában",
     "meta.languages": "Nyelvek",
-    "meta.languagesValue": "Német, angol, román, magyar",
+    "meta.languagesValue": "Német, angol, román",
     "meta.travel": "Utazási hajlandóság",
     "meta.travelValue": "Igen, világszerte",
     "meta.locations": "Munkavégzés helyei",
@@ -396,7 +396,7 @@
     "meta.workModel": "Çalışma modeli",
     "meta.workModelValue": "Yerinde, hibrit veya uzaktan",
     "meta.languages": "Diller",
-    "meta.languagesValue": "Almanca, İngilizce, Rumence, Macarca",
+    "meta.languagesValue": "Almanca, İngilizce, Rumence",
     "meta.travel": "Seyahate uygun",
     "meta.travelValue": "Evet, dünya çapında",
     "meta.locations": "Çalışma yerleri",
@@ -499,7 +499,7 @@
     "meta.workModel": "Modalidad de trabajo",
     "meta.workModelValue": "Presencial, híbrido o remoto",
     "meta.languages": "Idiomas",
-    "meta.languagesValue": "Alemán, inglés, rumano, húngaro",
+    "meta.languagesValue": "Alemán, inglés, rumano",
     "meta.travel": "Disponibilidad para viajar",
     "meta.travelValue": "Sí, en todo el mundo",
     "meta.locations": "Lugares de trabajo",
@@ -559,7 +559,7 @@
       languageMenuClose: "Sprachmenü schließen",
       menuOpen: "Menü öffnen",
       menuClose: "Menü schließen",
-      profileLanguages: "Deutsch, Englisch, Rumänisch, Ungarisch",
+      profileLanguages: "Deutsch, Englisch, Rumänisch",
       theme: "Farbschema umschalten"
     },
     en: {
@@ -571,7 +571,7 @@
       languageMenuClose: "Close language menu",
       menuOpen: "Open menu",
       menuClose: "Close menu",
-      profileLanguages: "German, English, Romanian, Hungarian",
+      profileLanguages: "German, English, Romanian",
       theme: "Toggle color scheme"
     },
     ro: {
@@ -583,7 +583,7 @@
       languageMenuClose: "Închide meniul de limbi",
       menuOpen: "Deschide meniul",
       menuClose: "Închide meniul",
-      profileLanguages: "Germană, engleză, română, maghiară",
+      profileLanguages: "Germană, engleză, română",
       theme: "Schimbă schema de culori"
     },
     hu: {
@@ -595,7 +595,7 @@
       languageMenuClose: "Nyelvmenü bezárása",
       menuOpen: "Menü megnyitása",
       menuClose: "Menü bezárása",
-      profileLanguages: "Német, angol, román, magyar",
+      profileLanguages: "Német, angol, román",
       theme: "Színséma váltása"
     },
     tr: {
@@ -607,7 +607,7 @@
       languageMenuClose: "Dil menüsünü kapat",
       menuOpen: "Menüyü aç",
       menuClose: "Menüyü kapat",
-      profileLanguages: "Almanca, İngilizce, Rumence, Macarca",
+      profileLanguages: "Almanca, İngilizce, Rumence",
       theme: "Renk şemasını değiştir"
     },
     es: {
@@ -619,7 +619,7 @@
       languageMenuClose: "Cerrar menú de idiomas",
       menuOpen: "Abrir menú",
       menuClose: "Cerrar menú",
-      profileLanguages: "Alemán, inglés, rumano, húngaro",
+      profileLanguages: "Alemán, inglés, rumano",
       theme: "Cambiar esquema de colores"
     }
   };
