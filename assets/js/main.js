@@ -10,8 +10,8 @@
   "use strict";
 
   /* --- Sprache umschalten ----------------------------------
-     Deutsch bleibt die Standardsprache. Die englischen Texte sitzen
-     zentral hier, damit das HTML nicht doppelt gepflegt werden muss. */
+     Deutsch bleibt die Standardsprache. Die Übersetzungen sitzen
+     zentral hier, damit das HTML nicht mehrfach gepflegt werden muss. */
 
   var english = {
     "nav.profile": "Profile",
@@ -19,8 +19,6 @@
     "nav.projects": "Projects",
     "nav.private": "Personal",
     "nav.contact": "Contact",
-    "menu.open": "Open menu",
-    "menu.close": "Close menu",
     "hero.status": "Open to new opportunities",
     "hero.title": "Software that moves machines.",
     "hero.role": "Software Developer · Industrial Automation",
@@ -72,7 +70,7 @@
     "meta.workModel": "Working model",
     "meta.workModelValue": "On-site, hybrid or remote",
     "meta.languages": "Languages",
-    "meta.languagesValue": "German, English, Romanian",
+    "meta.languagesValue": "German, English, Romanian, Hungarian",
     "meta.travel": "Travel-ready",
     "meta.travelValue": "Yes, worldwide",
     "meta.locations": "Locations",
@@ -133,8 +131,6 @@
     "nav.projects": "Proiecte",
     "nav.private": "Personal",
     "nav.contact": "Contact",
-    "menu.open": "Deschide meniul",
-    "menu.close": "Închide meniul",
     "hero.status": "Deschis pentru noi provocări",
     "hero.title": "Software care pune mașinile în mișcare.",
     "hero.role": "Dezvoltator software · Automatizări industriale",
@@ -186,7 +182,7 @@
     "meta.workModel": "Mod de lucru",
     "meta.workModelValue": "La sediu, hibrid sau la distanță",
     "meta.languages": "Limbi",
-    "meta.languagesValue": "Germană, engleză, română",
+    "meta.languagesValue": "Germană, engleză, română, maghiară",
     "meta.travel": "Disponibil pentru călătorii",
     "meta.travelValue": "Da, în întreaga lume",
     "meta.locations": "Locații",
@@ -241,6 +237,397 @@
     "footer.top": "Înapoi sus ↑"
   };
 
+  var hungarian = {
+    "nav.profile": "Profil",
+    "nav.skills": "Készségek",
+    "nav.projects": "Projektek",
+    "nav.private": "Magánélet",
+    "nav.contact": "Kapcsolat",
+    "hero.status": "Nyitott vagyok új feladatokra",
+    "hero.title": "Szoftver, amely gépeket mozgat.",
+    "hero.lead": "Gyártó- és tesztsorok vezérlőszoftverét fejlesztjük és optimalizáljuk — a folyamatelemzéstől és a virtuális validálástól a stabil, folyamatos üzemig.",
+    "facts.experience": "Év szakmai tapasztalat",
+    "facts.commissioned": "Üzembe helyezett berendezés",
+    "facts.countries": "Ország helyszíni munkával",
+    "facts.languages": "Munkanyelvek",
+    "stack.kicker": "ALAPTECHNOLÓGIÁK",
+    "stack.title": "Alkalmazott rendszertechnológiák",
+    "stack.ariaLabel": "Technológiák",
+    "stack.opconType": "Irányítási rendszer / Classic",
+    "stack.nexeedType": "Gyártási rendszer",
+    "stack.ctrlxType": "Automatizálási platform",
+    "stack.twinCatType": "PLC / Motion",
+    "stack.codesysType": "IEC 61131-3",
+    "stack.indraLogicType": "PLC",
+    "stack.boschName": "Bosch vezérlések",
+    "stack.boschType": "PLC",
+    "stack.opcuaType": "Kommunikáció",
+    "visual.title": "Az ötlettől a stabil berendezésig.",
+    "visual.kicker": "RENDSZERVIZUALIZÁCIÓ",
+    "visual.lead": "Az elemzés, a virtuális validálás és az üzemeltetés egyetlen összefüggő automatizálási folyamattá válik — láthatóan, mérhetően, készen a valódi berendezésre.",
+    "visual.ready": "RENDSZER KÉSZ",
+    "visual.mapLabel": "Az automatizálási folyamat vizualizációja",
+    "visual.line": "04-ES SOR / SZABÁLYOZÁSI KÖR",
+    "visual.live": "ÉLŐ RENDSZERTÉRKÉP",
+    "visual.analysis.title": "Tervezés és szoftver",
+    "visual.analysis.note": "Folyamatadatok / logika",
+    "visual.virtual.title": "Virtuális validálás",
+    "visual.virtual.note": "Szimuláció / teszt",
+    "visual.operation.title": "Stabil üzem",
+    "visual.operation.note": "Gyártás / szerviz",
+    "visual.telemetry.cycle": "CIKLUSIDŐ",
+    "visual.telemetry.status": "RENDSZERÁLLAPOT",
+    "visual.telemetry.ready": "KÉSZ",
+    "visual.telemetry.path": "ADATÚT",
+    "sections.profile": "Profil",
+    "profile.intro": "Ennek a munkának a varázsa számomra ugyanaz maradt, mint a kezdetekkor: beírsz valamit a számítógépbe — és a csarnokban megmozdulnak az alkatrészek. <strong>Életet adni a gépeknek</strong> — így hívom ezt.",
+    "profile.background": "Az automatizálási szoftver kevés hibát enged meg: egy hiba nem piros sávot eredményez egy tesztjelentésben, hanem álló gyártósort. Munkám a fejlesztéstől az ügyfélnél történő helyszíni üzembe helyezésig terjed — Európától az USA-n és Mexikón át Kínáig és Koreáig.",
+    "profile.path.electrician": "Villanyszerelő (épületvillamosság)",
+    "profile.path.electricianNote": "Szakmai képzés, utána három év az Imtechnél",
+    "profile.path.technician": "Villamosmérnök-technikus",
+    "profile.path.technicianNote": "Werner-Siemens-Schule, Stuttgart",
+    "profile.path.developer": "Szoftverfejlesztő",
+    "profile.path.developerNote": "SMS-Soft GmbH — a végzés óta napjainkig",
+    "profile.outsideWork": "Munkán kívül: fitnesz, futás — és a saját házunk, ahol mindig van mit átépíteni.",
+    "meta.location": "Helyszín",
+    "meta.workModel": "Munkavégzés",
+    "meta.workModelValue": "Helyszínen, hibrid vagy távmunkában",
+    "meta.languages": "Nyelvek",
+    "meta.languagesValue": "Német, angol, román, magyar",
+    "meta.travel": "Utazási hajlandóság",
+    "meta.travelValue": "Igen, világszerte",
+    "meta.locations": "Munkavégzés helyei",
+    "meta.locationsValue": "Franciaország, Csehország, Magyarország, Románia, Törökország, Kína, Korea, USA, Mexikó",
+    "sections.skills": "Technológiák és módszerek",
+    "skills.control": "Vezérlés és automatizálás",
+    "skills.programming": "Programozás",
+    "skills.methods": "Módszerek",
+    "skills.tools": "Kommunikáció és eszközök",
+    "skill.core": "Kulcskompetencia",
+    "skill.solid": "Magabiztos",
+    "skill.bosch": "Bosch vezérlések",
+    "skill.virtualCommissioning": "Virtuális üzembe helyezés",
+    "skill.simulation": "Szimuláció és validálás",
+    "skill.cycleTime": "Ciklusidő-optimalizálás",
+    "skill.troubleshooting": "Hibakeresés üzem közben",
+    "skill.retrofit": "Meglévő berendezések korszerűsítése",
+    "skill.hmi": "HMI-fejlesztés",
+    "skill.versionControl": "Git / verziókezelés",
+    "sections.projects": "Saját projektek",
+    "projects.intro": "Minden, ami itt látható, a szabadidőmben készült, és az enyém. A munkahelyi projektek titkosak, ezért szándékosan nem szerepelnek itt. Mind a hat alkalmazás offline is működik, az adatokat helyben tárolja, és nincs szüksége build-rendszerre — ez az ipari automatizálásból hozott elv: aminek működnie kell, az nem függhet egy kapcsolattól.",
+    "project.try": "Kipróbálom",
+    "project.event.summary": "Rendezvénynaptár 24 ország 300 időpontjával, élő visszaszámlálással és kereséssel. Offline is működik.",
+    "project.egg.summary": "Tojásfőző időzítő, amely zárolt képernyőnél is a helyes hátralévő időt mutatja. Öt keménységi fokozat, riasztóhangok, telepíthető.",
+    "project.sleep.summary": "Alvási ciklusokra épülő ébresztő előzményekkel, statisztikával és alvásnaplóval. Minden adat helyben, a böngészőben marad.",
+    "project.fit.summary": "Edzéstervező 37 animált gyakorlattal, időzítőkkel és fejlődéselemzéssel. Fiók és követés nélkül, asztali alkalmazásként is.",
+    "project.tv.summary": "Lejátszó saját IPTV-lejátszási listákhoz iPhone-on, Androidon és asztali gépen. Fiók és szerver nélkül; a listák az eszközön maradnak.",
+    "project.explore.summary": "Személyes tár és tervező kedvenc helyekhez, értékelésekkel, jegyzetekkel és utazási listákkal. Minden adat a böngészőben marad.",
+    "sections.private": "Magánélet",
+    "private.lead": "Amit akkor csinálok, amikor senki sem fizet érte.",
+    "private.sport.title": "Sport",
+    "private.sport.text": "Foci, erősítő edzés és futás. A sport nemcsak fitten tart, hanem a fejemet is kitisztítja — egy külföldi üzembe helyezéssel töltött hét után ez a leggyorsabb út vissza a saját ritmusomhoz.",
+    "private.home.title": "Ház, műhely és kert",
+    "private.home.text": "A saját házunk körül szinte mindig van valami befejezetlen, bent és kint egyaránt. Javítani, átépíteni, jobbá tenni — amit a munkában retrofitnek hívnak, az otthon egyszerűen a hétvége.",
+    "private.software.title": "Szoftver szabadidőben",
+    "private.software.text": "A <a href=\"#projekte\">projektek</a> között bemutatott hat alkalmazás esténként és hétvégén készült. Senki sem rendelte meg, senki sem fizetett értük — azért léteznek, mert érdekeltek a mögöttük álló problémák.",
+    "sections.contact": "Kapcsolat",
+    "contact.lead": "Van egy feladata, ahol a szoftver valódi gyártással találkozik? Írjon nekem bátran — általában néhány napon belül válaszolok.",
+    "contact.mailWork": "Munkahelyi",
+    "contact.mailPrivate": "Magán",
+    "contact.employer": "SMS-Soft",
+    "contact.github": "GitHub",
+    "contact.x": "X",
+    "footer.top": "Vissza a tetejére ↑"
+  };
+
+  var turkish = {
+    "nav.profile": "Profil",
+    "nav.skills": "Yetkinlikler",
+    "nav.projects": "Projeler",
+    "nav.private": "Kişisel",
+    "nav.contact": "İletişim",
+    "hero.status": "Yeni görevlere açığım",
+    "hero.title": "Makineleri hareket ettiren yazılım.",
+    "hero.lead": "Üretim ve test hatları için kontrol yazılımı geliştiriyor ve optimize ediyoruz — süreç analizinden ve sanal doğrulamadan kesintisiz çalışan kararlı tesise kadar.",
+    "facts.experience": "Yıllık mesleki deneyim",
+    "facts.commissioned": "Devreye alınan tesis",
+    "facts.countries": "Sahada çalışılan ülke",
+    "facts.languages": "Çalışma dilleri",
+    "stack.kicker": "TEMEL TEKNOLOJİLER",
+    "stack.title": "Kullanılan sistem teknolojileri",
+    "stack.ariaLabel": "Teknolojiler",
+    "stack.opconType": "Kontrol sistemi / Classic",
+    "stack.nexeedType": "Üretim sistemi",
+    "stack.ctrlxType": "Otomasyon platformu",
+    "stack.twinCatType": "PLC / Motion",
+    "stack.codesysType": "IEC 61131-3",
+    "stack.indraLogicType": "PLC",
+    "stack.boschName": "Bosch kontrolörleri",
+    "stack.boschType": "PLC",
+    "stack.opcuaType": "İletişim",
+    "visual.title": "Fikirden kararlı tesise.",
+    "visual.kicker": "SİSTEM GÖRSELLEŞTİRME",
+    "visual.lead": "Analiz, sanal doğrulama ve işletme tek ve kesintisiz bir otomasyon sürecine dönüşür — görünür, ölçülebilir ve gerçek tesise hazır.",
+    "visual.ready": "SİSTEM HAZIR",
+    "visual.mapLabel": "Otomasyon sürecinin görselleştirilmesi",
+    "visual.line": "HAT 04 / KONTROL DÖNGÜSÜ",
+    "visual.live": "CANLI SİSTEM HARİTASI",
+    "visual.analysis.title": "Planlama ve yazılım",
+    "visual.analysis.note": "Süreç verileri / mantık",
+    "visual.virtual.title": "Sanal doğrulama",
+    "visual.virtual.note": "Simülasyon / test",
+    "visual.operation.title": "Kararlı işletme",
+    "visual.operation.note": "Üretim / servis",
+    "visual.telemetry.cycle": "ÇEVRİM SÜRESİ",
+    "visual.telemetry.status": "SİSTEM DURUMU",
+    "visual.telemetry.ready": "HAZIR",
+    "visual.telemetry.path": "VERİ YOLU",
+    "sections.profile": "Profil",
+    "profile.intro": "Bu işin cazibesi benim için başından beri aynı kaldı: bilgisayara bir şey yazıyorsunuz — ve sahada parçalar hareket etmeye başlıyor. Ben buna <strong>makinelere hayat vermek</strong> diyorum.",
+    "profile.background": "Otomasyon yazılımı hataya pek yer bırakmaz: bir hata test raporunda kırmızı bir çubuk değil, duran bir hat demektir. Çalışma alanım geliştirmeden müşteride yerinde devreye almaya kadar uzanıyor — Avrupa’dan ABD ve Meksika’ya, Çin ve Kore’ye kadar.",
+    "profile.path.electrician": "Bina elektrik tesisatı elektrikçisi",
+    "profile.path.electricianNote": "Meslek eğitimi, ardından Imtech’te üç yıl",
+    "profile.path.technician": "Elektrik teknikeri",
+    "profile.path.technicianNote": "Werner-Siemens-Schule, Stuttgart",
+    "profile.path.developer": "Yazılım geliştirici",
+    "profile.path.developerNote": "SMS-Soft GmbH — mezuniyetten bugüne",
+    "profile.outsideWork": "İş dışında: fitness, koşu — ve her zaman bir yerinde tadilat süren kendi evimiz.",
+    "meta.location": "Konum",
+    "meta.workModel": "Çalışma modeli",
+    "meta.workModelValue": "Yerinde, hibrit veya uzaktan",
+    "meta.languages": "Diller",
+    "meta.languagesValue": "Almanca, İngilizce, Rumence, Macarca",
+    "meta.travel": "Seyahate uygun",
+    "meta.travelValue": "Evet, dünya çapında",
+    "meta.locations": "Çalışma yerleri",
+    "meta.locationsValue": "Fransa, Çekya, Macaristan, Romanya, Türkiye, Çin, Kore, ABD, Meksika",
+    "sections.skills": "Teknolojiler ve yöntemler",
+    "skills.control": "Kontrol ve otomasyon",
+    "skills.programming": "Programlama",
+    "skills.methods": "Yöntemler",
+    "skills.tools": "İletişim ve araçlar",
+    "skill.core": "Temel yetkinlik",
+    "skill.solid": "İyi düzeyde",
+    "skill.bosch": "Bosch kontrolörleri",
+    "skill.virtualCommissioning": "Sanal devreye alma",
+    "skill.simulation": "Simülasyon ve doğrulama",
+    "skill.cycleTime": "Çevrim süresi optimizasyonu",
+    "skill.troubleshooting": "Çalışma sırasında arıza tespiti",
+    "skill.retrofit": "Mevcut tesislerin modernizasyonu",
+    "skill.hmi": "HMI geliştirme",
+    "skill.versionControl": "Git / sürüm kontrolü",
+    "sections.projects": "Kişisel projeler",
+    "projects.intro": "Burada gördüğünüz her şey boş zamanımda ortaya çıktı ve bana ait. İş projeleri gizlidir, bu yüzden bilinçli olarak burada gösterilmiyor. Altı uygulamanın tamamı çevrimdışı çalışır, verilerini yerel olarak saklar ve bir build sistemine ihtiyaç duymaz — tesis otomasyonundan gelen bir çalışma ilkesi: çalışması gereken şey bir bağlantıya bağlı olmamalıdır.",
+    "project.try": "Dene",
+    "project.event.summary": "24 ülkeden 300 tarih içeren etkinlik takvimi; canlı geri sayım ve arama. Çevrimdışı çalışır.",
+    "project.egg.summary": "Ekran kilitlendiğinde bile kalan süreyi doğru tutan yumurta zamanlayıcısı. Beş pişme derecesi, alarm sesleri, yüklenebilir.",
+    "project.sleep.summary": "Geçmiş, istatistik ve uyku günlüğü içeren, uyku döngülerine göre çalışan alarm. Tüm veriler tarayıcıda yerel olarak kalır.",
+    "project.fit.summary": "37 animasyonlu egzersiz, zamanlayıcılar ve ilerleme analizi içeren antrenman planlayıcısı. Hesap ve takip yok, masaüstü uygulaması olarak da var.",
+    "project.tv.summary": "iPhone, Android ve masaüstünde kendi IPTV oynatma listeleriniz için oynatıcı. Hesap ve sunucu yok; listeler cihazda kalır.",
+    "project.explore.summary": "Favori yerler için kişisel arşiv ve planlayıcı; puanlar, notlar ve seyahat listeleriyle. Tüm veriler tarayıcıda kalır.",
+    "sections.private": "Kişisel",
+    "private.lead": "Kimse para ödemediğinde yaptıklarım.",
+    "private.sport.title": "Spor",
+    "private.sport.text": "Futbol, kuvvet antrenmanı ve koşu. Spor beni sadece formda tutmuyor, kafamı da boşaltıyor — yurt dışında bir haftalık devreye alma işinden sonra kendi ritmime dönmenin en kısa yolu bu.",
+    "private.home.title": "Ev, atölye ve bahçe",
+    "private.home.text": "Kendi evimizde içeride ya da dışarıda hemen her zaman bitmemiş bir iş vardır. Onarmak, yeniden yapmak, iyileştirmek — işte retrofit denen şey, evde sadece hafta sonudur.",
+    "private.software.title": "Boş zamanda yazılım",
+    "private.software.text": "<a href=\"#projekte\">Projeler bölümündeki</a> altı uygulama akşamları ve hafta sonları ortaya çıktı. Kimse sipariş etmedi, kimse ücret ödemedi — arkalarındaki problemler ilgimi çektiği için varlar.",
+    "sections.contact": "İletişim",
+    "contact.lead": "Yazılımın gerçek üretimle buluştuğu bir göreviniz mi var? O zaman bana yazmaktan çekinmeyin — genellikle birkaç gün içinde yanıt veririm.",
+    "contact.mailWork": "İş",
+    "contact.mailPrivate": "Kişisel",
+    "contact.employer": "SMS-Soft",
+    "contact.github": "GitHub",
+    "contact.x": "X",
+    "footer.top": "Başa dön ↑"
+  };
+
+  var spanish = {
+    "nav.profile": "Perfil",
+    "nav.skills": "Competencias",
+    "nav.projects": "Proyectos",
+    "nav.private": "Personal",
+    "nav.contact": "Contacto",
+    "hero.status": "Abierto a nuevos retos",
+    "hero.title": "Software que mueve máquinas.",
+    "hero.lead": "Desarrollamos y optimizamos software de control para líneas de producción y de prueba — desde el análisis de procesos y la validación virtual hasta una instalación estable en funcionamiento continuo.",
+    "facts.experience": "Años de experiencia",
+    "facts.commissioned": "Instalaciones puestas en marcha",
+    "facts.countries": "Países con trabajos in situ",
+    "facts.languages": "Idiomas de trabajo",
+    "stack.kicker": "TECNOLOGÍAS BASE",
+    "stack.title": "Tecnologías de sistema en uso",
+    "stack.ariaLabel": "Tecnologías",
+    "stack.opconType": "Sistema de control / Classic",
+    "stack.nexeedType": "Sistema de producción",
+    "stack.ctrlxType": "Plataforma de automatización",
+    "stack.twinCatType": "PLC / Motion",
+    "stack.codesysType": "IEC 61131-3",
+    "stack.indraLogicType": "PLC",
+    "stack.boschName": "Controladores Bosch",
+    "stack.boschType": "PLC",
+    "stack.opcuaType": "Comunicación",
+    "visual.title": "De la idea a una instalación estable.",
+    "visual.kicker": "VISUALIZACIÓN DEL SISTEMA",
+    "visual.lead": "El análisis, la validación virtual y la operación se convierten en un proceso de automatización continuo — visible, medible y listo para la instalación real.",
+    "visual.ready": "SISTEMA LISTO",
+    "visual.mapLabel": "Visualización del proceso de automatización",
+    "visual.line": "LÍNEA 04 / LAZO DE CONTROL",
+    "visual.live": "MAPA DEL SISTEMA EN VIVO",
+    "visual.analysis.title": "Planificación y software",
+    "visual.analysis.note": "Datos de proceso / lógica",
+    "visual.virtual.title": "Validación virtual",
+    "visual.virtual.note": "Simulación / prueba",
+    "visual.operation.title": "Operación estable",
+    "visual.operation.note": "Producción / servicio",
+    "visual.telemetry.cycle": "TIEMPO DE CICLO",
+    "visual.telemetry.status": "ESTADO DEL SISTEMA",
+    "visual.telemetry.ready": "LISTO",
+    "visual.telemetry.path": "RUTA DE DATOS",
+    "sections.profile": "Perfil",
+    "profile.intro": "El atractivo de este trabajo sigue siendo para mí el mismo que al principio: escribes algo en un ordenador — y en la nave empiezan a moverse los componentes. <strong>Dar vida a las máquinas</strong>, así lo llamo yo.",
+    "profile.background": "El software de automatización deja poco margen de error: un fallo no produce una barra roja en un informe de pruebas, sino una línea parada. Mi trabajo abarca desde el desarrollo hasta la puesta en marcha en las instalaciones del cliente — de Europa a EE. UU. y México, hasta China y Corea.",
+    "profile.path.electrician": "Electricista de instalaciones en edificios",
+    "profile.path.electricianNote": "Formación profesional, después tres años en Imtech",
+    "profile.path.technician": "Técnico en electrotecnia",
+    "profile.path.technicianNote": "Werner-Siemens-Schule, Stuttgart",
+    "profile.path.developer": "Desarrollador de software",
+    "profile.path.developerNote": "SMS-Soft GmbH — desde la graduación hasta hoy",
+    "profile.outsideWork": "Fuera del trabajo: fitness, correr — y nuestra propia casa, donde siempre hay algo que reformar.",
+    "meta.location": "Ubicación",
+    "meta.workModel": "Modalidad de trabajo",
+    "meta.workModelValue": "Presencial, híbrido o remoto",
+    "meta.languages": "Idiomas",
+    "meta.languagesValue": "Alemán, inglés, rumano, húngaro",
+    "meta.travel": "Disponibilidad para viajar",
+    "meta.travelValue": "Sí, en todo el mundo",
+    "meta.locations": "Lugares de trabajo",
+    "meta.locationsValue": "Francia, Chequia, Hungría, Rumanía, Turquía, China, Corea, EE. UU., México",
+    "sections.skills": "Tecnologías y métodos",
+    "skills.control": "Control y automatización",
+    "skills.programming": "Programación",
+    "skills.methods": "Métodos",
+    "skills.tools": "Comunicación y herramientas",
+    "skill.core": "Competencia clave",
+    "skill.solid": "Dominio sólido",
+    "skill.bosch": "Controladores Bosch",
+    "skill.virtualCommissioning": "Puesta en marcha virtual",
+    "skill.simulation": "Simulación y validación",
+    "skill.cycleTime": "Optimización del tiempo de ciclo",
+    "skill.troubleshooting": "Diagnóstico de fallos en funcionamiento",
+    "skill.retrofit": "Modernización de instalaciones existentes",
+    "skill.hmi": "Desarrollo de HMI",
+    "skill.versionControl": "Git / control de versiones",
+    "sections.projects": "Proyectos personales",
+    "projects.intro": "Todo lo que aparece aquí lo he creado en mi tiempo libre y me pertenece. Los proyectos profesionales son confidenciales y no se muestran aquí deliberadamente. Las seis aplicaciones funcionan sin conexión, guardan sus datos localmente y no necesitan ningún sistema de build — un principio de la automatización industrial: lo que tiene que funcionar no puede depender de una conexión.",
+    "project.try": "Probar",
+    "project.event.summary": "Calendario de eventos con 300 fechas de 24 países, cuenta atrás en vivo y búsqueda. Funciona sin conexión.",
+    "project.egg.summary": "Temporizador para huevos que mantiene el tiempo restante correcto incluso con la pantalla bloqueada. Cinco puntos de cocción, alarmas, instalable.",
+    "project.sleep.summary": "Despertador según los ciclos de sueño, con historial, estadísticas y diario de sueño. Todos los datos se quedan en el navegador.",
+    "project.fit.summary": "Planificador de entrenamiento con 37 ejercicios animados, temporizadores y análisis del progreso. Sin cuenta ni seguimiento, también como aplicación de escritorio.",
+    "project.tv.summary": "Reproductor para tus propias listas IPTV en iPhone, Android y escritorio. Sin cuenta ni servidor; las listas se quedan en el dispositivo.",
+    "project.explore.summary": "Espacio personal y planificador para tus lugares favoritos, con valoraciones, notas y listas de viaje. Todos los datos se quedan en el navegador.",
+    "sections.private": "Personal",
+    "private.lead": "Lo que hago cuando nadie me paga por ello.",
+    "private.sport.title": "Deporte",
+    "private.sport.text": "Fútbol, entrenamiento de fuerza y correr. El deporte no solo me mantiene en forma, también me despeja la cabeza — después de una semana de puesta en marcha en el extranjero, es el camino más rápido para recuperar mi propio ritmo.",
+    "private.home.title": "Casa, taller y jardín",
+    "private.home.text": "En nuestra propia casa casi siempre hay algo pendiente, dentro y fuera. Reparar, reformar, mejorar — lo que en el trabajo se llama retrofit, en casa es simplemente el fin de semana.",
+    "private.software.title": "Software en mi tiempo libre",
+    "private.software.text": "Las seis aplicaciones de la <a href=\"#projekte\">sección de proyectos</a> nacieron por las tardes y los fines de semana. Nadie las encargó, nadie pagó por ellas — existen porque me interesaban los problemas que hay detrás.",
+    "sections.contact": "Contacto",
+    "contact.lead": "¿Tiene un reto en el que el software se encuentra con la producción real? Escríbame sin compromiso — normalmente respondo en pocos días.",
+    "contact.mailWork": "Trabajo",
+    "contact.mailPrivate": "Personal",
+    "contact.employer": "SMS-Soft",
+    "contact.github": "GitHub",
+    "contact.x": "X",
+    "footer.top": "Volver arriba ↑"
+  };
+
+  var dictionaries = { en: english, ro: romanian, hu: hungarian, tr: turkish, es: spanish };
+
+  /* Texte außerhalb der data-i18n-Elemente, je Sprache gebündelt */
+  var ui = {
+    de: {
+      kicker: '"LIVE PROFIL-DATEN"',
+      title: "Paul Fodor — Softwareentwickler Industrieautomation",
+      description: "Softwareentwickler für Industrieautomation im Raum Stuttgart: Steuerungssoftware und Inbetriebnahme von Produktions- und Prüflinien weltweit. 21 Jahre Berufserfahrung, TwinCAT und CodeSys.",
+      languageMenu: "Sprache auswählen",
+      languageMenuOpen: "Sprachmenü öffnen",
+      languageMenuClose: "Sprachmenü schließen",
+      menuOpen: "Menü öffnen",
+      menuClose: "Menü schließen",
+      profileLanguages: "Deutsch, Englisch, Rumänisch, Ungarisch",
+      theme: "Farbschema umschalten"
+    },
+    en: {
+      kicker: '"LIVE PROFILE DATA"',
+      title: "Paul Fodor — Software Developer in Industrial Automation",
+      description: "Software developer for industrial automation in the Stuttgart region: control software and commissioning of production and test lines worldwide. 21 years of experience, TwinCAT and CODESYS.",
+      languageMenu: "Select language",
+      languageMenuOpen: "Open language menu",
+      languageMenuClose: "Close language menu",
+      menuOpen: "Open menu",
+      menuClose: "Close menu",
+      profileLanguages: "German, English, Romanian, Hungarian",
+      theme: "Toggle color scheme"
+    },
+    ro: {
+      kicker: '"DATE PROFIL LIVE"',
+      title: "Paul Fodor — Dezvoltator software în automatizări industriale",
+      description: "Dezvoltator software pentru automatizări industriale în regiunea Stuttgart: software de control și punerea în funcțiune a liniilor de producție și testare în întreaga lume. 21 de ani de experiență, TwinCAT și CodeSys.",
+      languageMenu: "Selectează limba",
+      languageMenuOpen: "Deschide meniul de limbi",
+      languageMenuClose: "Închide meniul de limbi",
+      menuOpen: "Deschide meniul",
+      menuClose: "Închide meniul",
+      profileLanguages: "Germană, engleză, română, maghiară",
+      theme: "Schimbă schema de culori"
+    },
+    hu: {
+      kicker: '"ÉLŐ PROFILADATOK"',
+      title: "Paul Fodor — Szoftverfejlesztő, ipari automatizálás",
+      description: "Ipari automatizálási szoftverfejlesztő Stuttgart környékén: vezérlőszoftver, valamint gyártó- és tesztsorok üzembe helyezése világszerte. 21 év szakmai tapasztalat, TwinCAT és CODESYS.",
+      languageMenu: "Nyelv kiválasztása",
+      languageMenuOpen: "Nyelvmenü megnyitása",
+      languageMenuClose: "Nyelvmenü bezárása",
+      menuOpen: "Menü megnyitása",
+      menuClose: "Menü bezárása",
+      profileLanguages: "Német, angol, román, magyar",
+      theme: "Színséma váltása"
+    },
+    tr: {
+      kicker: '"CANLI PROFİL VERİLERİ"',
+      title: "Paul Fodor — Endüstriyel Otomasyon Yazılım Geliştiricisi",
+      description: "Stuttgart bölgesinde endüstriyel otomasyon yazılım geliştiricisi: dünya çapında üretim ve test hatları için kontrol yazılımı ve devreye alma. 21 yıllık mesleki deneyim, TwinCAT ve CODESYS.",
+      languageMenu: "Dil seçin",
+      languageMenuOpen: "Dil menüsünü aç",
+      languageMenuClose: "Dil menüsünü kapat",
+      menuOpen: "Menüyü aç",
+      menuClose: "Menüyü kapat",
+      profileLanguages: "Almanca, İngilizce, Rumence, Macarca",
+      theme: "Renk şemasını değiştir"
+    },
+    es: {
+      kicker: '"DATOS DE PERFIL EN VIVO"',
+      title: "Paul Fodor — Desarrollador de software en automatización industrial",
+      description: "Desarrollador de software para automatización industrial en la región de Stuttgart: software de control y puesta en marcha de líneas de producción y de prueba en todo el mundo. 21 años de experiencia, TwinCAT y CODESYS.",
+      languageMenu: "Seleccionar idioma",
+      languageMenuOpen: "Abrir menú de idiomas",
+      languageMenuClose: "Cerrar menú de idiomas",
+      menuOpen: "Abrir menú",
+      menuClose: "Cerrar menú",
+      profileLanguages: "Alemán, inglés, rumano, húngaro",
+      theme: "Cambiar esquema de colores"
+    }
+  };
+
+  function uiText() {
+    return ui[document.documentElement.lang] || ui.de;
+  }
+
   var languageMenu = document.querySelector("[data-language-menu]");
   var languageMenuToggle = document.querySelector("[data-language-menu-toggle]");
   var languageMenuPanel = document.querySelector("[data-language-menu-panel]");
@@ -271,7 +658,7 @@
   function storedLanguage() {
     try {
       var value = localStorage.getItem("language");
-      return value === "en" || value === "ro" ? value : "de";
+      return Object.prototype.hasOwnProperty.call(ui, value) ? value : "de";
     } catch (e) {
       return "de";
     }
@@ -301,7 +688,8 @@
   });
 
   function applyLanguage(language) {
-    var dictionary = language === "en" ? english : language === "ro" ? romanian : null;
+    var dictionary = dictionaries[language] || null;
+    var text = ui[language] || ui.de;
 
     originalLanguage.forEach(function (item) {
       var element = item.element;
@@ -334,30 +722,13 @@
     });
 
     document.documentElement.lang = language;
-    document.documentElement.style.setProperty(
-      "--facts-kicker",
-      language === "en"
-        ? '"LIVE PROFILE DATA"'
-        : language === "ro" ? '"DATE PROFIL LIVE"' : '"LIVE PROFIL-DATEN"'
-    );
-    document.title = language === "en"
-      ? "Paul Fodor — Software Developer in Industrial Automation"
-      : language === "ro"
-        ? "Paul Fodor — Dezvoltator software în automatizări industriale"
-        : "Paul Fodor — Softwareentwickler Industrieautomation";
+    document.documentElement.style.setProperty("--facts-kicker", text.kicker);
+    document.title = text.title;
 
     var description = document.querySelector('meta[name="description"]');
-    if (description) description.content = language === "en"
-      ? "Software developer for industrial automation in the Stuttgart region: control software and commissioning of production and test lines worldwide. 21 years of experience, TwinCAT and CODESYS."
-      : language === "ro"
-        ? "Dezvoltator software pentru automatizări industriale în regiunea Stuttgart: software de control și punerea în funcțiune a liniilor de producție și testare în întreaga lume. 21 de ani de experiență, TwinCAT și CodeSys."
-        : "Softwareentwickler für Industrieautomation im Raum Stuttgart: Steuerungssoftware und Inbetriebnahme von Produktions- und Prüflinien weltweit. 21 Jahre Berufserfahrung, TwinCAT und CodeSys.";
+    if (description) description.content = text.description;
 
-    if (languageMenu) {
-      languageMenu.setAttribute("aria-label",
-        language === "en" ? "Select language" : language === "ro" ? "Selectează limba" : "Sprache auswählen"
-      );
-    }
+    if (languageMenu) languageMenu.setAttribute("aria-label", text.languageMenu);
 
     if (languageCurrentFlag) {
       languageCurrentFlag.className = "language-option__flag language-option__flag--" + language;
@@ -368,11 +739,7 @@
     }
 
     var profileLanguages = document.querySelector("[data-profile-languages]");
-    if (profileLanguages) profileLanguages.setAttribute("aria-label",
-      language === "en"
-        ? "German, English, Romanian"
-        : language === "ro" ? "Germană, engleză, română" : "Deutsch, Englisch, Rumänisch"
-    );
+    if (profileLanguages) profileLanguages.setAttribute("aria-label", text.profileLanguages);
 
     languageOptions.forEach(function (option) {
       var isActive = option.getAttribute("data-language-option") === language;
@@ -381,14 +748,11 @@
 
     if (menuButton) {
       var menuIsOpen = menuButton.getAttribute("aria-expanded") === "true";
-      var menuDictionary = dictionary || { "menu.open": "Menü öffnen", "menu.close": "Menü schließen" };
-      menuButton.setAttribute("aria-label", menuIsOpen ? menuDictionary["menu.close"] : menuDictionary["menu.open"]);
+      menuButton.setAttribute("aria-label", menuIsOpen ? text.menuClose : text.menuOpen);
     }
 
     var themeButton = document.querySelector("[data-theme-toggle]");
-    if (themeButton) themeButton.setAttribute("aria-label",
-      language === "en" ? "Toggle color scheme" : language === "ro" ? "Schimbă schema de culori" : "Farbschema umschalten"
-    );
+    if (themeButton) themeButton.setAttribute("aria-label", text.theme);
   }
 
   applyLanguage(storedLanguage());
@@ -400,13 +764,8 @@
     languageMenuToggle.setAttribute("aria-expanded", String(isOpen));
     languageMenuPanel.hidden = !isOpen;
 
-    var currentLanguage = document.documentElement.lang;
-    var labels = currentLanguage === "en"
-      ? { open: "Open language menu", close: "Close language menu" }
-      : currentLanguage === "ro"
-        ? { open: "Deschide meniul de limbi", close: "Închide meniul de limbi" }
-        : { open: "Sprachmenü öffnen", close: "Sprachmenü schließen" };
-    languageMenuToggle.setAttribute("aria-label", isOpen ? labels.close : labels.open);
+    var text = uiText();
+    languageMenuToggle.setAttribute("aria-label", isOpen ? text.languageMenuClose : text.languageMenuOpen);
   }
 
   setLanguageMenuState(false);
@@ -445,11 +804,8 @@
     var setMenuState = function (isOpen) {
       siteHeader.classList.toggle("is-menu-open", isOpen);
       menuButton.setAttribute("aria-expanded", String(isOpen));
-      var currentLanguage = document.documentElement.lang;
-      var menuDictionary = currentLanguage === "en"
-        ? english
-        : currentLanguage === "ro" ? romanian : { "menu.open": "Menü öffnen", "menu.close": "Menü schließen" };
-      menuButton.setAttribute("aria-label", isOpen ? menuDictionary["menu.close"] : menuDictionary["menu.open"]);
+      var text = uiText();
+      menuButton.setAttribute("aria-label", isOpen ? text.menuClose : text.menuOpen);
     };
 
     menuButton.addEventListener("click", function () {
