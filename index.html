@@ -25,6 +25,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#000000">
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/future.css">
 
 <script>
   /* Farbschema vor dem ersten Rendern setzen, damit die Seite beim
@@ -41,6 +42,20 @@
 </head>
 
 <body>
+<svg class="icon-definitions" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+  <linearGradient id="g-blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a7fbff"/><stop offset=".45" stop-color="#31cee8"/><stop offset="1" stop-color="#1857b5"/></linearGradient>
+  <linearGradient id="g-violet" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eedaff"/><stop offset=".45" stop-color="#a38aff"/><stop offset="1" stop-color="#53369c"/></linearGradient>
+  <linearGradient id="g-cyan" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c4ffff"/><stop offset=".5" stop-color="#39d4ea"/><stop offset="1" stop-color="#1377a8"/></linearGradient>
+</defs>
+<symbol id="i-code" viewBox="0 0 160 160"><ellipse cx="82" cy="136" rx="49" ry="9" fill="#020818" opacity=".3"/><path d="M31 33 125 21l10 10v82L41 128l-10-10Z" fill="#284c8c"/><path d="M25 27 120 15v85l-95 13Z" fill="url(#g-blue)" stroke="#bcffff"/><path d="M31 45 113 34v59l-82 12Z" fill="#101d39"/><path d="m57 60-13 14 13 10m33-29 13 10-13 15M79 53 68 89" fill="none" stroke="#8ce9ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="35" cy="36" r="2" fill="white"/><circle cx="43" cy="35" r="2" fill="white"/><circle cx="51" cy="34" r="2" fill="white"/><path d="m63 110 22-3v16l22 7-49 7-13-6 18-6Z" fill="url(#g-blue)"/></symbol>
+<symbol id="i-cube" viewBox="0 0 160 160"><ellipse cx="82" cy="136" rx="49" ry="9" fill="#020818" opacity=".3"/><path d="m28 62 52-30 52 30v50l-52 30-52-30Z" fill="#4c3392"/><path d="m28 51 52-30 52 30-52 30Z" fill="url(#g-violet)" stroke="#ebdaff"/><path d="m28 51 52 30v50l-52-30Z" fill="#8768d5"/><path d="m132 51-52 30v50l52-30Z" fill="#513a9a"/><path d="m80 21 0 60m-52-30 52 30 52-30M80 81v50" stroke="#dfccff" stroke-width="2" fill="none"/><path d="m53 37 52 29m-51 51V67l51-30" stroke="#bb9fff" stroke-width="1.5" fill="none"/><path d="M32 16v12m-6-6h12M131 117v12m-6-6h12" stroke="#cdb4ff" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-chart" viewBox="0 0 160 160"><ellipse cx="82" cy="136" rx="49" ry="9" fill="#020818" opacity=".3"/><path d="m19 109 62-35 62 35-62 36Z" fill="#154b6c"/><path d="m19 102 62-35 62 35-62 36Z" fill="url(#g-blue)"/><path d="m40 87 15-8 14 8v32l-14 8-15-8Z" fill="#2676ac"/><path d="m72 55 15-8 14 8v46l-14 8-15-8Z" fill="#338cb8"/><path d="m103 25 15-8 14 8v59l-14 8-15-8Z" fill="#48cde0"/><path d="m40 87 15-8 14 8-14 8Zm32-32 15-8 14 8-14 8Zm31-30 15-8 14 8-14 8Z" fill="#b0fbff"/><path d="m31 71 36-25 15 2 31-29" stroke="#b3fff3" stroke-width="4" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="i-chip" viewBox="0 0 160 160"><ellipse cx="82" cy="139" rx="48" ry="8" fill="#020818" opacity=".32"/><path d="m43 39 46-25 40 23v64l-46 27-40-23Z" fill="#11617e"/><path d="m43 32 46-25 40 23-46 27-40-23Z" fill="url(#g-cyan)" stroke="#b8ffff"/><path d="M43 32v64l40 23V57Z" fill="#168eb1"/><path d="m129 30v71l-46 28V57Z" fill="#125d7e"/><path d="m83 57 31-18 24 14-31 18Z" fill="#d1ffff" opacity=".92"/><path d="m83 69 31-18v29L83 98Z" fill="#0a3552"/><path d="M39 43H23m16 15H19m20 15H23m93-30h19m-19 15h23m-23 15h19" stroke="#8ce9ff" stroke-width="4" stroke-linecap="round"/><path d="M59 23 59 9m15 7V4m15 7V0m15 15V7" stroke="#8ce9ff" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-network" viewBox="0 0 160 160"><ellipse cx="80" cy="139" rx="45" ry="8" fill="#020818" opacity=".28"/><path d="m43 42 45 29 29-33M88 71l-9 42" fill="none" stroke="#7feeff" stroke-width="5" stroke-linecap="round"/><path d="m43 42 45 29 29-33M88 71l-9 42" fill="none" stroke="#926dff" stroke-width="2" stroke-linecap="round" opacity=".8"/><circle cx="43" cy="42" r="16" fill="url(#g-cyan)" stroke="#c5ffff" stroke-width="2"/><circle cx="117" cy="38" r="16" fill="url(#g-violet)" stroke="#eadcff" stroke-width="2"/><circle cx="79" cy="113" r="16" fill="url(#g-cyan)" stroke="#c5ffff" stroke-width="2"/><circle cx="38" cy="36" r="4" fill="#fff" opacity=".7"/><circle cx="112" cy="32" r="4" fill="#fff" opacity=".6"/><circle cx="74" cy="107" r="4" fill="#fff" opacity=".7"/></symbol>
+<symbol id="i-sport" viewBox="0 0 160 160"><ellipse cx="80" cy="137" rx="47" ry="8" fill="#020818" opacity=".3"/><path d="M36 67h20v27H36Zm68 0h20v27h-20ZM50 72h60v17H50Z" fill="#195a91" stroke="#9eeeff" stroke-width="2"/><path d="M30 59h18v43H30Zm82 0h18v43h-18Z" fill="url(#g-blue)" stroke="#b9ffff" stroke-width="2"/><path d="M48 76h64v10H48Z" fill="#b6fbff"/><path d="m47 61 12-10h42l12 10" fill="none" stroke="#a6f9ff" stroke-width="4" stroke-linecap="round"/><path d="M36 111h20m48 0h20" stroke="#8ce9ff" stroke-width="4" stroke-linecap="round"/></symbol>
+<symbol id="i-home" viewBox="0 0 160 160"><ellipse cx="81" cy="139" rx="48" ry="8" fill="#020818" opacity=".3"/><path d="m22 72 58-45 58 45v55H22Z" fill="#155b73"/><path d="m22 72 58-45 58 45-58 38Z" fill="url(#g-cyan)" stroke="#b8ffff" stroke-width="2"/><path d="M35 77v50h90V77L80 106Z" fill="#1a7895"/><path d="m35 77 45 29 45-29" fill="#11718f"/><path d="M68 127V99h25v28" fill="#0b3857" stroke="#9ef5ff" stroke-width="2"/><path d="M47 89h16v13H47Zm50 0h16v13H97Z" fill="#c9ffff" opacity=".9"/><path d="M124 42h13v25h-13Z" fill="#46cbd9"/><path d="M130 36c8-10 14-8 17-4-2 10-8 14-17 14" fill="#7eeecf"/></symbol>
+</svg>
+
 
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
@@ -246,113 +261,56 @@
 
       <div class="stack-marquee" aria-label="Technologie-Stack" data-i18n-attr="aria-label:stack.ariaLabel">
         <div class="stack-track" data-stack-track>
-      <ul class="stack-list" data-marquee-source>
-        <li class="stack-item">
-          <span class="stack-mark stack-mark--opcon" aria-hidden="true">
-            <svg class="stack-logo" viewBox="0 0 40 40" focusable="false">
-              <rect x="5" y="7" width="30" height="26" rx="5"></rect>
-              <path d="M11 20h18M20 12v16"></path>
-              <circle cx="11" cy="20" r="2.5"></circle>
-            </svg>
-          </span>
-          <span>
-            <strong class="stack-item__name">OpCon Control</strong>
-            <small class="stack-item__type" data-i18n="stack.opconType">Leitsystem / Classic</small>
-          </span>
-        </li>
-        <li class="stack-item">
-          <span class="stack-mark stack-mark--nexeed" aria-hidden="true">
-            <svg class="stack-logo" viewBox="0 0 40 40" focusable="false">
-              <path d="M8 32V8h6l12 15V8h6v24h-6L14 17v15z"></path>
-              <circle cx="8" cy="8" r="2"></circle>
-              <circle cx="32" cy="32" r="2"></circle>
-            </svg>
-          </span>
-          <span>
-            <strong class="stack-item__name">Nexeed</strong>
-            <small class="stack-item__type" data-i18n="stack.nexeedType">Produktionssystem</small>
-          </span>
-        </li>
-        <li class="stack-item">
-          <span class="stack-mark stack-mark--ctrlx" aria-hidden="true">
-            <svg class="stack-logo stack-logo--ctrlx" viewBox="0 0 64 32" focusable="false">
-              <text class="stack-logo__ctrl" x="2" y="23">ctrl</text>
-              <text class="stack-logo__x" x="40" y="25">X</text>
-            </svg>
-          </span>
-          <span>
-            <strong class="stack-item__name">ctrlX</strong>
-            <small class="stack-item__type" data-i18n="stack.ctrlxType">Automationsplattform</small>
-          </span>
-        </li>
-        <li class="stack-item">
-          <span class="stack-mark stack-mark--twincat" aria-hidden="true">
-            <svg class="stack-logo" viewBox="0 0 40 40" focusable="false">
-              <path d="M7 9h26v7h-9v15h-8V16H7z"></path>
-              <path d="M30 19h-5v12h8V19z" opacity=".55"></path>
-            </svg>
-          </span>
-          <span>
-            <strong class="stack-item__name">TwinCAT</strong>
-            <small class="stack-item__type" data-i18n="stack.twinCatType">PLC / Motion</small>
-          </span>
-        </li>
-        <li class="stack-item">
-          <span class="stack-mark stack-mark--codesys" aria-hidden="true">
-            <svg class="stack-logo stack-logo--codesys" viewBox="0 0 40 40" focusable="false">
-              <path class="stack-logo__cube-top" d="m20 3 15 8-15 8-15-8z"></path>
-              <path class="stack-logo__cube-left" d="M5 13 20 21v16L5 29z"></path>
-              <path class="stack-logo__cube-right" d="m35 13-15 8v16l15-8z"></path>
-              <path class="stack-logo__cube-front" d="m20 21 8-4v16l-8 4z"></path>
-            </svg>
-          </span>
-          <span>
-            <strong class="stack-item__name">CODESYS</strong>
-            <small class="stack-item__type" data-i18n="stack.codesysType">IEC 61131-3</small>
-          </span>
-        </li>
-        <li class="stack-item">
-          <span class="stack-mark stack-mark--plc" aria-hidden="true">
-            <svg class="stack-logo" viewBox="0 0 40 40" focusable="false">
-              <path d="M9 8h6v24H9zM19 8h6v18h7v6H19z"></path>
-              <path d="M8 34h24" opacity=".45"></path>
-            </svg>
-          </span>
-          <span>
-            <strong class="stack-item__name">IndraLogic</strong>
-            <small class="stack-item__type" data-i18n="stack.indraLogicType">PLC</small>
-          </span>
-        </li>
-        <li class="stack-item">
-          <span class="stack-mark stack-mark--bosch" aria-hidden="true">
-            <svg class="stack-logo stack-logo--bosch" viewBox="0 0 40 40" focusable="false">
-              <circle cx="20" cy="20" r="14"></circle>
-              <path d="M13 12v16M27 12v16M13 20h14"></path>
-            </svg>
-          </span>
-          <span>
-            <strong class="stack-item__name" data-i18n="stack.boschName">Bosch Steuerungen</strong>
-            <small class="stack-item__type" data-i18n="stack.boschType">PLC</small>
-          </span>
-        </li>
-        <li class="stack-item">
-          <span class="stack-mark stack-mark--opcua" aria-hidden="true">
-            <svg class="stack-logo stack-logo--opcua" viewBox="0 0 48 40" focusable="false">
-              <path d="M5 20h11m5 0h7m5 0h10" stroke-width="2"></path>
-              <circle cx="7" cy="20" r="3"></circle>
-              <circle cx="20" cy="20" r="3"></circle>
-              <circle cx="33" cy="20" r="3"></circle>
-              <text x="36" y="29">UA</text>
-            </svg>
-          </span>
-          <span>
-            <strong class="stack-item__name">OPC UA</strong>
-            <small class="stack-item__type" data-i18n="stack.opcuaType">Kommunikation</small>
-          </span>
-        </li>
-      </ul>
+          <ul class="stack-list" data-marquee-source>
+            <li class="stack-item">
+              <svg class="brand-logo" viewBox="1045 12 445 230" role="img" aria-label="ctrlX Automation" focusable="false">
+                <image href="assets/img/logos-b-transparent.png" width="2048" height="300"></image>
+              </svg>
+            </li>
+            <li class="stack-item">
+              <svg class="brand-logo" viewBox="1615 9 317 255" role="img" aria-label="CODESYS" focusable="false">
+                <image href="assets/img/logos-b-transparent.png" width="2048" height="300"></image>
+              </svg>
+            </li>
+            <li class="stack-item">
+              <svg class="brand-logo" viewBox="603 90 365 90" role="img" aria-label="Beckhoff" focusable="false">
+                <image href="assets/img/logos-a-transparent.png" width="2048" height="360"></image>
+              </svg>
+            </li>
+            <li class="stack-item">
+              <svg class="brand-logo" viewBox="24 93 427 110" role="img" aria-label="Bosch" focusable="false">
+                <image href="assets/img/logos-c-transparent.png" width="1548" height="333"></image>
+              </svg>
+            </li>
+            <li class="stack-item">
+              <svg class="brand-logo" viewBox="556 85 423 127" role="img" aria-label="Stäubli" focusable="false">
+                <image href="assets/img/logos-c-transparent.png" width="1548" height="333"></image>
+              </svg>
+            </li>
+            <li class="stack-item">
+              <svg class="brand-logo" viewBox="1082 104 433 91" role="img" aria-label="KUKA" focusable="false">
+                <image href="assets/img/logos-c-transparent.png" width="1548" height="333"></image>
+              </svg>
+            </li>
+            <li class="stack-item">
+              <svg class="brand-logo" viewBox="565 78 375 102" role="img" aria-label="OPC UA" focusable="false">
+                <image href="assets/img/logos-b-transparent.png" width="2048" height="300"></image>
+              </svg>
+            </li>
+          </ul>
         </div>
       </div>
+
+      <ul class="visually-hidden" aria-label="Weitere System-Technologien">
+        <li>OpCon Control — <span data-i18n="stack.opconType">Leitsystem / Classic</span></li>
+        <li>Nexeed — <span data-i18n="stack.nexeedType">Produktionssystem</span></li>
+        <li>ctrlX — <span data-i18n="stack.ctrlxType">Automationsplattform</span></li>
+        <li>TwinCAT — <span data-i18n="stack.twinCatType">PLC / Motion</span></li>
+        <li>CODESYS — <span data-i18n="stack.codesysType">IEC 61131-3</span></li>
+        <li>IndraLogic — <span data-i18n="stack.indraLogicType">PLC</span></li>
+        <li><span data-i18n="stack.boschName">Bosch Steuerungen</span> — <span data-i18n="stack.boschType">PLC</span></li>
+        <li>OPC UA — <span data-i18n="stack.opcuaType">Kommunikation</span></li>
+      </ul>
     </div>
   </section>
 
@@ -389,9 +347,7 @@
         <div class="system-map__track">
           <article class="system-node system-node--analysis">
             <span class="system-node__number">01</span>
-            <svg class="system-node__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="7" y="8" width="34" height="24" rx="3"/><path d="M12 38h24M18 32v6M30 32v6M14 15h20M14 21h11M14 26h7"/>
-            </svg>
+            <svg class="icon-3d system-node__art" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><use href="#i-code"/></svg>
             <strong data-i18n="visual.analysis.title">Planung &amp; Software</strong>
             <small data-i18n="visual.analysis.note">Prozessdaten / Logik</small>
           </article>
@@ -400,9 +356,7 @@
 
           <article class="system-node system-node--virtual">
             <span class="system-node__number">02</span>
-            <svg class="system-node__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M24 7 39 15.5v17L24 41 9 32.5v-17L24 7Z"/><path d="m9 15.5 15 8.7 15-8.7M24 24.2V41M17 12.1l15 8.6M32 12.1l-15 8.6"/>
-            </svg>
+            <svg class="icon-3d system-node__art" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><use href="#i-cube"/></svg>
             <strong data-i18n="visual.virtual.title">Virtuelle Absicherung</strong>
             <small data-i18n="visual.virtual.note">Simulation / Test</small>
           </article>
@@ -411,9 +365,7 @@
 
           <article class="system-node system-node--operation">
             <span class="system-node__number">03</span>
-            <svg class="system-node__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M8 35V14h32v21H8Z"/><path d="M13 29h5v-7h5v4h5v-9h5v12h5M13 39h22"/>
-            </svg>
+            <svg class="icon-3d system-node__art" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><use href="#i-chart"/></svg>
             <strong data-i18n="visual.operation.title">Stabiler Betrieb</strong>
             <small data-i18n="visual.operation.note">Produktion / Service</small>
           </article>
@@ -527,7 +479,10 @@
       <div class="skills">
 
         <article class="skill-group">
-          <h3 class="skill-group__title" data-i18n="skills.control">Steuerung &amp; Automatisierung</h3>
+          <div class="skill-group__heading">
+            <svg class="skill-group__icon" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><use href="#i-chip"/></svg>
+            <h3 class="skill-group__title" data-i18n="skills.control">Steuerung &amp; Automatisierung</h3>
+          </div>
           <ul class="skill-list">
             <li class="skill"><span class="skill__name">TwinCAT</span><span class="skill__level skill__level--core" data-i18n="skill.core">Kernkompetenz</span></li>
             <li class="skill"><span class="skill__name">CodeSys</span><span class="skill__level skill__level--core" data-i18n="skill.core">Kernkompetenz</span></li>
@@ -538,7 +493,10 @@
         </article>
 
         <article class="skill-group">
-          <h3 class="skill-group__title" data-i18n="skills.programming">Programmierung</h3>
+          <div class="skill-group__heading">
+            <svg class="skill-group__icon" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><use href="#i-code"/></svg>
+            <h3 class="skill-group__title" data-i18n="skills.programming">Programmierung</h3>
+          </div>
           <ul class="skill-list">
             <li class="skill"><span class="skill__name">IEC 61131-3 — ST</span><span class="skill__level skill__level--core" data-i18n="skill.core">Kernkompetenz</span></li>
             <li class="skill"><span class="skill__name">IEC 61131-3 — FUP / KOP</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
@@ -547,7 +505,10 @@
         </article>
 
         <article class="skill-group">
-          <h3 class="skill-group__title" data-i18n="skills.methods">Methoden</h3>
+          <div class="skill-group__heading">
+            <svg class="skill-group__icon" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><use href="#i-cube"/></svg>
+            <h3 class="skill-group__title" data-i18n="skills.methods">Methoden</h3>
+          </div>
           <ul class="skill-list">
             <li class="skill"><span class="skill__name" data-i18n="skill.virtualCommissioning">Virtuelle Inbetriebnahme</span><span class="skill__level skill__level--core" data-i18n="skill.core">Kernkompetenz</span></li>
             <li class="skill"><span class="skill__name" data-i18n="skill.simulation">Simulation &amp; Absicherung</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
@@ -558,7 +519,10 @@
         </article>
 
         <article class="skill-group">
-          <h3 class="skill-group__title" data-i18n="skills.tools">Kommunikation &amp; Werkzeuge</h3>
+          <div class="skill-group__heading">
+            <svg class="skill-group__icon" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><use href="#i-network"/></svg>
+            <h3 class="skill-group__title" data-i18n="skills.tools">Kommunikation &amp; Werkzeuge</h3>
+          </div>
           <ul class="skill-list">
             <li class="skill"><span class="skill__name">PROFINET</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
             <li class="skill"><span class="skill__name">EtherCAT</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
@@ -724,7 +688,10 @@
       <div class="life">
 
         <article class="life__item">
-          <h3 class="life__title" data-i18n="private.sport.title">Sport</h3>
+          <div class="life__heading">
+            <h3 class="life__title" data-i18n="private.sport.title">Sport</h3>
+            <svg class="life__icon" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><use href="#i-sport"/></svg>
+          </div>
           <p data-i18n="private.sport.text">
             Fußball, Krafttraining und Laufen. Der Sport hält nicht nur
             fit, sondern auch den Kopf frei — nach einer Woche
@@ -734,7 +701,10 @@
         </article>
 
         <article class="life__item">
-          <h3 class="life__title" data-i18n="private.home.title">Haus, Werkstatt und Garten</h3>
+          <div class="life__heading">
+            <h3 class="life__title" data-i18n="private.home.title">Haus, Werkstatt und Garten</h3>
+            <svg class="life__icon" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><use href="#i-home"/></svg>
+          </div>
           <p data-i18n="private.home.text">
             Am eigenen Haus ist eigentlich immer etwas offen, drinnen wie
             draußen. Reparieren, umbauen, verbessern — was im Beruf
@@ -743,7 +713,10 @@
         </article>
 
         <article class="life__item">
-          <h3 class="life__title" data-i18n="private.software.title">Software in der Freizeit</h3>
+          <div class="life__heading">
+            <h3 class="life__title" data-i18n="private.software.title">Software in der Freizeit</h3>
+            <svg class="life__icon" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><use href="#i-code"/></svg>
+          </div>
           <p data-i18n-html="private.software.text">
             Die sechs Anwendungen aus dem
             <a href="#projekte">Projektbereich</a> sind abends und an
