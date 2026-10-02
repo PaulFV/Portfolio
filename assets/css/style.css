@@ -276,9 +276,10 @@ button { font: inherit; color: inherit; }
 
 /* Sprunglink für Tastatur- und Screenreader-Nutzung */
 .skip-link {
-  position: absolute;
+  position: fixed;
   left: var(--sp-4);
-  top: var(--sp-4);
+  /* unterhalb des Headers, damit er den Namen nicht verdeckt */
+  top: 6rem;
   z-index: 100;
   padding: var(--sp-2) var(--sp-4);
   background: var(--c-accent);
