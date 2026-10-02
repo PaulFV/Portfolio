@@ -936,7 +936,7 @@ button { font: inherit; color: inherit; }
   transform: translateY(-50%);
   filter: drop-shadow(0 1.5rem 2rem color-mix(in srgb, var(--c-accent) 16%, transparent));
   pointer-events: none;
-  animation: portrait-float 6s ease-in-out infinite;
+  animation: portrait-float 5s ease-in-out infinite;
 }
 
 .hero__portrait::before {
@@ -955,6 +955,7 @@ button { font: inherit; color: inherit; }
     0 0 1rem color-mix(in srgb, var(--c-accent) 35%, transparent),
     0 0 3rem color-mix(in srgb, var(--c-accent-2) 22%, transparent);
   transform: translateZ(0);
+  animation: portrait-glow 2.5s ease-in-out infinite;
 }
 
 .hero__portrait::after {
@@ -966,7 +967,7 @@ button { font: inherit; color: inherit; }
   border-radius: 50%;
   opacity: 0.8;
   transform: translateZ(18px) rotate(18deg);
-  animation: portrait-orbit 12s linear infinite;
+  animation: portrait-orbit 6s linear infinite;
 }
 
 .hero__portrait img {
@@ -983,8 +984,15 @@ button { font: inherit; color: inherit; }
 }
 
 @keyframes portrait-float {
-  0%, 100% { transform: translateY(-50%) rotateZ(-0.6deg); }
-  50%      { transform: translateY(calc(-50% - 0.65rem)) rotateZ(0.6deg); }
+  0%, 100% { transform: translate(0, -50%) rotateZ(-1.8deg) scale(1); }
+  25%      { transform: translate(-0.5rem, calc(-50% - 0.9rem)) rotateZ(0deg) scale(1.015); }
+  50%      { transform: translate(0, calc(-50% - 1.6rem)) rotateZ(1.8deg) scale(1.03); }
+  75%      { transform: translate(0.5rem, calc(-50% - 0.7rem)) rotateZ(0deg) scale(1.015); }
+}
+
+@keyframes portrait-glow {
+  0%, 100% { opacity: 0.85; filter: brightness(1); }
+  50%      { opacity: 1;    filter: brightness(1.25); }
 }
 
 @keyframes portrait-orbit {
@@ -2674,13 +2682,13 @@ button { font: inherit; color: inherit; }
     height: min(20rem, 76vw);
     margin: var(--sp-7) auto 0;
     transform: none;
-    animation: portrait-float-mobile 6s ease-in-out infinite;
+    animation: portrait-float-mobile 5s ease-in-out infinite;
   }
 }
 
 @keyframes portrait-float-mobile {
-  0%, 100% { transform: translateY(0) rotateZ(-0.6deg); }
-  50%      { transform: translateY(-0.45rem) rotateZ(0.6deg); }
+  0%, 100% { transform: translateY(0) rotateZ(-1.5deg) scale(1); }
+  50%      { transform: translateY(-1rem) rotateZ(1.5deg) scale(1.03); }
 }
 
 /* --- Futuristische Glow-Animationen --- */
