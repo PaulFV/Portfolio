@@ -895,7 +895,8 @@ button { font: inherit; color: inherit; }
 }
 
 .hero__lead {
-  max-width: 46ch;
+  /* Platz für das rechts schwebende Profilbild freihalten */
+  max-width: min(46ch, 100% - clamp(19rem, 35vw, 29rem) - clamp(0rem, 4vw, 4.5rem) - 1.5rem);
   margin-top: var(--sp-5);
   font-size: var(--step-1);
   line-height: 1.55;
@@ -928,8 +929,8 @@ button { font: inherit; color: inherit; }
   z-index: 1 !important;
   right: clamp(0rem, 4vw, 4.5rem);
   top: 32%;
-  width: clamp(17rem, 31vw, 25rem);
-  height: clamp(18rem, 31vw, 26rem);
+  width: clamp(19rem, 35vw, 29rem);
+  height: clamp(19rem, 35vw, 29rem);
   margin: 0;
   display: grid;
   place-items: center;
@@ -972,9 +973,12 @@ button { font: inherit; color: inherit; }
 .hero__portrait img {
   position: relative;
   z-index: 2;
-  width: 79%;
-  height: 79%;
+  width: 86%;
+  height: 86%;
   aspect-ratio: 1 / 1;
+  box-sizing: border-box;
+  /* object-fit wirkt auf die Inhaltsbox: das Padding schafft Luft über dem Kopf */
+  padding-top: 9%;
   object-fit: cover;
   object-position: 50% 0%;
   border-radius: 50%;
@@ -2615,8 +2619,8 @@ button { font: inherit; color: inherit; }
   .hero::after { display: none; }
 
   .hero__portrait {
-    width: min(12rem, 58vw);
-    height: min(12rem, 58vw);
+    width: min(14rem, 64vw);
+    height: min(14rem, 64vw);
     margin-top: var(--sp-7);
   }
 
@@ -2670,12 +2674,14 @@ button { font: inherit; color: inherit; }
     position: relative !important;
     top: auto;
     right: auto;
-    width: min(14rem, 58vw);
-    height: min(14rem, 58vw);
+    width: min(16rem, 64vw);
+    height: min(16rem, 64vw);
     margin: var(--sp-7) auto 0;
     transform: none;
     animation: portrait-float-mobile 6s ease-in-out infinite;
   }
+
+  .hero__lead { max-width: min(46ch, 100%); }
 }
 
 @keyframes portrait-float-mobile {
