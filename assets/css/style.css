@@ -2857,3 +2857,19 @@ a:hover {
   .section { border-top: 1px solid #ccc; page-break-inside: avoid; }
   a::after { content: " (" attr(href) ")"; font-size: 0.8em; }
 }
+
+/* App-Logos in den Projektkarten */
+.card__title {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.card__logo {
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 22%;
+  border: 1px solid var(--c-border);
+  box-shadow: 0 0 1rem color-mix(in srgb, var(--c-accent) 18%, transparent);
+}
