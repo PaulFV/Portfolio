@@ -2889,3 +2889,60 @@ a:hover {
   border: 1px solid var(--c-border);
   box-shadow: 0 0 1rem color-mix(in srgb, var(--c-accent) 18%, transparent);
 }
+
+/* --- Handy: kompaktere Darstellung ---------------------------- */
+
+@media (max-width: 40em) {
+  .section,
+  .system-visual { padding-block: var(--sp-6); }
+
+  .section__head { margin-bottom: var(--sp-5); }
+
+  .hero {
+    min-height: 0;
+    padding-block: var(--sp-5) var(--sp-6);
+  }
+
+  .facts {
+    margin-top: var(--sp-6);
+    padding-top: var(--sp-4);
+    gap: var(--sp-4);
+  }
+
+  .system-visual__intro {
+    gap: var(--sp-4);
+    margin-bottom: var(--sp-4);
+  }
+
+  /* Prozess-Karten als flache Zeilen: Symbol links, Text rechts */
+  .system-node {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: var(--sp-3);
+    padding: var(--sp-3) var(--sp-4);
+  }
+
+  .system-node__icon {
+    grid-row: span 2;
+    width: 2.25rem;
+    height: 2.25rem;
+    margin: 0;
+  }
+
+  .system-node strong { max-width: none; }
+  .system-node small { margin-top: 0.15rem; }
+
+  .system-map__track { gap: var(--sp-2); }
+  .system-map__connector { height: 1.1rem; }
+
+  .about { gap: var(--sp-5); }
+  .path { margin-top: var(--sp-5); gap: var(--sp-4); }
+
+  .skills,
+  .projects,
+  .life { gap: var(--sp-3); }
+
+  .card__links { padding-top: var(--sp-4); }
+}
