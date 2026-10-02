@@ -989,14 +989,22 @@ button { font: inherit; color: inherit; }
   transform: translateZ(0);
 }
 
+/* Äußerer Ring: Farbverlauf, per Maske zu einem gestrichelten Ring geschnitten */
 .hero__portrait::after {
   content: "";
   position: absolute;
   inset: 0;
-  border: 1px dashed color-mix(in srgb, var(--c-accent-3) 64%, transparent);
-  border-left-color: transparent;
   border-radius: 50%;
-  opacity: 0.8;
+  background: conic-gradient(from 0deg, var(--c-accent), var(--c-accent-2), var(--c-accent-3), var(--c-accent));
+  -webkit-mask:
+    radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2.5px)),
+    repeating-conic-gradient(#000 0 7deg, transparent 7deg 10deg);
+  -webkit-mask-composite: source-in;
+  mask:
+    radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2.5px)),
+    repeating-conic-gradient(#000 0 7deg, transparent 7deg 10deg);
+  mask-composite: intersect;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--c-accent-2) 70%, transparent));
   transform: translateZ(18px) rotate(18deg);
   animation: portrait-orbit 12s linear infinite;
 }
