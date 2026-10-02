@@ -5,6 +5,10 @@ param(
   [int]$Port = 8123
 )
 
+if ($env:PORT) {
+  $Port = [int]$env:PORT
+}
+
 $ErrorActionPreference = "Stop"
 $Root = (Resolve-Path -LiteralPath $Root).Path
 
