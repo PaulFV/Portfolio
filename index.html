@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="de" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ==========================================================
+     ANLEITUNG
+     Alle Stellen, die du selbst ausfüllen musst, sind markiert mit:
+        <span class="todo">[[ AUSFÜLLEN: ... ]]</span>
+     Sie werden auf der Seite orange hervorgehoben. Wenn keine
+     Hervorhebung mehr zu sehen ist, ist die Seite fertig.
+     Details dazu stehen in README.md.
+     ========================================================== -->
+
+<title>Paul Fodor — Softwareentwickler Industrieautomation</title>
+<meta name="description" content="Softwareentwickler für Industrieautomation im Raum Stuttgart: Steuerungssoftware und Inbetriebnahme von Produktions- und Prüflinien weltweit. 21 Jahre Berufserfahrung, TwinCAT und CodeSys.">
+<meta name="author" content="Paul Fodor">
+
+<!-- Vorschau beim Teilen auf LinkedIn, WhatsApp, Slack -->
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Paul Fodor — Softwareentwickler Industrieautomation">
+<meta property="og:description" content="Software, die reale Maschinen bewegt: Steuerungstechnik, virtuelle Inbetriebnahme und stabile Produktionslinien.">
+<!-- TODO: absolute URL eintragen, sobald die Domain feststeht -->
+<meta property="og:url" content="https://beispiel.de/">
+<meta property="og:image" content="https://beispiel.de/assets/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<script>
+  /* Farbschema vor dem ersten Rendern setzen, damit die Seite beim
+     Laden nicht kurz aufblitzt. Muss inline und im <head> stehen. */
+  (function () {
+    try {
+      var t = localStorage.getItem("theme");
+      if (t === "dark" || t === "light") {
+        document.documentElement.setAttribute("data-theme", t);
+      }
+    } catch (e) { /* Speicher gesperrt — dann gilt die Systemeinstellung */ }
+  })();
+</script>
+</head>
+
+<body>
+
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="#top">Paul&nbsp;Fodor</a>
+
+    <nav class="nav" id="mobile-navigation" aria-label="Hauptnavigation">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="#profil" data-i18n="nav.profile">Profil</a></li>
+        <li><a class="nav__link" href="#skills" data-i18n="nav.skills">Skills</a></li>
+        <li><a class="nav__link" href="#projekte" data-i18n="nav.projects">Projekte</a></li>
+        <li><a class="nav__link" href="#privat" data-i18n="nav.private">Privat</a></li>
+        <li><a class="nav__link" href="#kontakt" data-i18n="nav.contact">Kontakt</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-tools">
+      <button class="menu-toggle" type="button"
+              data-menu-toggle
+              aria-controls="mobile-navigation"
+              aria-expanded="false"
+              aria-label="Menü öffnen">
+        <span class="menu-toggle__bar"></span>
+        <span class="menu-toggle__bar"></span>
+        <span class="menu-toggle__bar"></span>
+      </button>
+      <div class="language-menu" aria-label="Sprache auswählen" data-language-menu>
+        <button class="language-menu__toggle" type="button"
+                data-language-menu-toggle
+                aria-controls="language-menu-panel"
+                aria-expanded="false"
+                aria-haspopup="listbox"
+                aria-label="Sprache auswählen">
+          <span class="language-option__flag language-option__flag--de" data-language-current-flag aria-hidden="true"></span>
+          <span class="language-menu__current-code" data-language-current-code>DE</span>
+          <svg class="language-menu__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+        <div class="language-menu__panel" id="language-menu-panel" role="listbox" aria-label="Sprachen" data-language-menu-panel hidden>
+          <button class="language-menu__option" type="button"
+                  data-language-option="de"
+                  role="option"
+                  aria-label="Deutsch"
+                  aria-selected="true"
+                  title="Deutsch">
+            <span class="language-option__flag language-option__flag--de" aria-hidden="true"></span>
+            <span class="language-option__code">DE</span>
+            <span class="language-menu__name">Deutsch</span>
+          </button>
+          <button class="language-menu__option" type="button"
+                  data-language-option="en"
+                  role="option"
+                  aria-label="English"
+                  aria-selected="false"
+                  title="English">
+            <span class="language-option__flag language-option__flag--en" aria-hidden="true"></span>
+            <span class="language-option__code">EN</span>
+            <span class="language-menu__name">English</span>
+          </button>
+          <button class="language-menu__option" type="button"
+                  data-language-option="ro"
+                  role="option"
+                  aria-label="Română"
+                  aria-selected="false"
+                  title="Română">
+            <span class="language-option__flag language-option__flag--ro" aria-hidden="true"></span>
+            <span class="language-option__code">RO</span>
+            <span class="language-menu__name">Română</span>
+          </button>
+        </div>
+      </div>
+      <button class="theme-toggle" type="button"
+              data-theme-toggle
+              aria-label="Farbschema umschalten">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.2"/>
+        <path d="M12 2v2.2M12 19.8V22M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2 12h2.2M19.8 12H22M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/>
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1Z"/>
+      </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+<main id="main">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="top">
+    <div class="wrap">
+
+      <p class="status">
+        <span class="status__dot" aria-hidden="true"></span>
+        <span data-i18n="hero.status">Offen für neue Aufgaben</span>
+      </p>
+
+      <h1 class="hero__title">
+        <span data-i18n="hero.title">Software, die Maschinen bewegt.</span>
+        <span class="hero__role" data-i18n="hero.role">Softwareentwickler · Industrieautomation</span>
+      </h1>
+
+      <!-- =====================================================
+           DER WICHTIGSTE SATZ DER SEITE.
+           Er entscheidet in drei Sekunden, ob weitergelesen wird.
+           Unten stehen zwei Alternativen — nimm die, die am
+           ehesten nach dir klingt, und lösche die anderen.
+
+           Variante B:
+             "Ich entwickle Steuerungssoftware für Produktions- und
+              Prüflinien. Mein Code wird nicht durch einen grünen
+              Testbalken bestätigt, sondern dadurch, dass am Ende
+              der Schicht jedes Teil fehlerfrei vom Band läuft."
+
+           Variante C:
+             "Zwischen Quellcode und Fertigungshalle liegt der
+              Unterschied zwischen einem Fehler und einem Stillstand.
+              Genau dort arbeite ich."
+           ===================================================== -->
+      <p class="hero__lead" data-i18n="hero.lead">
+        Ich entwickle und optimiere Steuerungssoftware für Produktions-
+        und Prüflinien — von der Prozessanalyse über die virtuelle
+        Absicherung bis zur stabilen Anlage im Dauerbetrieb.
+      </p>
+
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#projekte">
+          <span data-i18n="hero.projectsCta">Projekte ansehen</span>
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h13M13 6l6 6-6 6"/>
+          </svg>
+        </a>
+        <a class="btn btn--ghost" href="#kontakt">
+          <span data-i18n="hero.contactCta">Kontakt aufnehmen</span>
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v7A2.5 2.5 0 0 1 17.5 15H12l-4.5 4v-4.2A3.5 3.5 0 0 1 4 11.5Z"/>
+            <path d="M8 8h8M8 11h5"/>
+          </svg>
+        </a>
+      </div>
+
+      <ul class="facts">
+        <li class="fact">
+          <div class="fact__value">21</div>
+          <div class="fact__label" data-i18n="facts.experience">Jahre Berufserfahrung</div>
+        </li>
+        <li class="fact">
+          <div class="fact__value">40–50</div>
+          <div class="fact__label" data-i18n="facts.commissioned">Anlagen in Betrieb genommen</div>
+        </li>
+        <li class="fact">
+          <div class="fact__value">9</div>
+          <div class="fact__label" data-i18n="facts.countries">Länder mit Einsätzen vor Ort</div>
+        </li>
+        <li class="fact">
+          <div class="fact__value fact__languages" data-profile-languages aria-label="Deutsch, Englisch, Rumänisch">
+            <span class="profile-language profile-language--de" aria-hidden="true" title="Deutsch">DE</span>
+            <span class="profile-language__separator" aria-hidden="true">·</span>
+            <span class="profile-language profile-language--en" aria-hidden="true" title="English">EN</span>
+            <span class="profile-language__separator" aria-hidden="true">·</span>
+            <span class="profile-language profile-language--ro" aria-hidden="true" title="Română">RO</span>
+          </div>
+          <div class="fact__label" data-i18n="facts.languages">Arbeitssprachen</div>
+        </li>
+      </ul>
+
+      <figure class="hero__portrait" aria-hidden="true">
+        <img src="assets/img/portrait.png" alt="" width="705" height="1030">
+      </figure>
+
+    </div>
+  </section>
+
+
+  <!-- ===================== TECH-STACK ===================== -->
+  <section class="stack-strip" aria-labelledby="stack-title">
+    <div class="wrap">
+      <div class="stack-strip__head">
+        <span class="stack-strip__kicker" data-i18n="stack.kicker">CORE STACK</span>
+        <h2 class="stack-strip__title" id="stack-title" data-i18n="stack.title">System-Technologien im Einsatz</h2>
+        <span class="stack-strip__rule" aria-hidden="true"></span>
+      </div>
+
+      <div class="stack-marquee" aria-label="Technologie-Stack" data-i18n-attr="aria-label:stack.ariaLabel">
+        <div class="stack-track" data-stack-track>
+      <ul class="stack-list" data-marquee-source>
+        <li class="stack-item">
+          <span class="stack-mark stack-mark--opcon" aria-hidden="true">
+            <svg class="stack-logo" viewBox="0 0 40 40" focusable="false">
+              <rect x="5" y="7" width="30" height="26" rx="5"></rect>
+              <path d="M11 20h18M20 12v16"></path>
+              <circle cx="11" cy="20" r="2.5"></circle>
+            </svg>
+          </span>
+          <span>
+            <strong class="stack-item__name">OpCon Control</strong>
+            <small class="stack-item__type" data-i18n="stack.opconType">Leitsystem / Classic</small>
+          </span>
+        </li>
+        <li class="stack-item">
+          <span class="stack-mark stack-mark--nexeed" aria-hidden="true">
+            <svg class="stack-logo" viewBox="0 0 40 40" focusable="false">
+              <path d="M8 32V8h6l12 15V8h6v24h-6L14 17v15z"></path>
+              <circle cx="8" cy="8" r="2"></circle>
+              <circle cx="32" cy="32" r="2"></circle>
+            </svg>
+          </span>
+          <span>
+            <strong class="stack-item__name">Nexeed</strong>
+            <small class="stack-item__type" data-i18n="stack.nexeedType">Produktionssystem</small>
+          </span>
+        </li>
+        <li class="stack-item">
+          <span class="stack-mark stack-mark--ctrlx" aria-hidden="true">
+            <svg class="stack-logo stack-logo--ctrlx" viewBox="0 0 64 32" focusable="false">
+              <text class="stack-logo__ctrl" x="2" y="23">ctrl</text>
+              <text class="stack-logo__x" x="40" y="25">X</text>
+            </svg>
+          </span>
+          <span>
+            <strong class="stack-item__name">ctrlX</strong>
+            <small class="stack-item__type" data-i18n="stack.ctrlxType">Automationsplattform</small>
+          </span>
+        </li>
+        <li class="stack-item">
+          <span class="stack-mark stack-mark--twincat" aria-hidden="true">
+            <svg class="stack-logo" viewBox="0 0 40 40" focusable="false">
+              <path d="M7 9h26v7h-9v15h-8V16H7z"></path>
+              <path d="M30 19h-5v12h8V19z" opacity=".55"></path>
+            </svg>
+          </span>
+          <span>
+            <strong class="stack-item__name">TwinCAT</strong>
+            <small class="stack-item__type" data-i18n="stack.twinCatType">PLC / Motion</small>
+          </span>
+        </li>
+        <li class="stack-item">
+          <span class="stack-mark stack-mark--codesys" aria-hidden="true">
+            <svg class="stack-logo stack-logo--codesys" viewBox="0 0 40 40" focusable="false">
+              <path class="stack-logo__cube-top" d="m20 3 15 8-15 8-15-8z"></path>
+              <path class="stack-logo__cube-left" d="M5 13 20 21v16L5 29z"></path>
+              <path class="stack-logo__cube-right" d="m35 13-15 8v16l15-8z"></path>
+              <path class="stack-logo__cube-front" d="m20 21 8-4v16l-8 4z"></path>
+            </svg>
+          </span>
+          <span>
+            <strong class="stack-item__name">CODESYS</strong>
+            <small class="stack-item__type" data-i18n="stack.codesysType">IEC 61131-3</small>
+          </span>
+        </li>
+        <li class="stack-item">
+          <span class="stack-mark stack-mark--plc" aria-hidden="true">
+            <svg class="stack-logo" viewBox="0 0 40 40" focusable="false">
+              <path d="M9 8h6v24H9zM19 8h6v18h7v6H19z"></path>
+              <path d="M8 34h24" opacity=".45"></path>
+            </svg>
+          </span>
+          <span>
+            <strong class="stack-item__name">IndraLogic</strong>
+            <small class="stack-item__type" data-i18n="stack.indraLogicType">PLC</small>
+          </span>
+        </li>
+        <li class="stack-item">
+          <span class="stack-mark stack-mark--bosch" aria-hidden="true">
+            <svg class="stack-logo stack-logo--bosch" viewBox="0 0 40 40" focusable="false">
+              <circle cx="20" cy="20" r="14"></circle>
+              <path d="M13 12v16M27 12v16M13 20h14"></path>
+            </svg>
+          </span>
+          <span>
+            <strong class="stack-item__name" data-i18n="stack.boschName">Bosch Steuerungen</strong>
+            <small class="stack-item__type" data-i18n="stack.boschType">PLC</small>
+          </span>
+        </li>
+        <li class="stack-item">
+          <span class="stack-mark stack-mark--opcua" aria-hidden="true">
+            <svg class="stack-logo stack-logo--opcua" viewBox="0 0 48 40" focusable="false">
+              <path d="M5 20h11m5 0h7m5 0h10" stroke-width="2"></path>
+              <circle cx="7" cy="20" r="3"></circle>
+              <circle cx="20" cy="20" r="3"></circle>
+              <circle cx="33" cy="20" r="3"></circle>
+              <text x="36" y="29">UA</text>
+            </svg>
+          </span>
+          <span>
+            <strong class="stack-item__name">OPC UA</strong>
+            <small class="stack-item__type" data-i18n="stack.opcuaType">Kommunikation</small>
+          </span>
+        </li>
+      </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SYSTEM-VISUALISIERUNG ===================== -->
+  <section class="system-visual" id="system-visual" aria-labelledby="system-visual-title">
+    <div class="wrap">
+
+      <div class="section__head system-visual__head">
+        <span class="section__num" aria-hidden="true">↗</span>
+        <h2 class="section__title" id="system-visual-title" data-i18n="visual.title">Von der Idee zur stabilen Anlage.</h2>
+        <span class="section__rule" aria-hidden="true"></span>
+      </div>
+
+      <div class="system-visual__intro">
+        <div>
+          <span class="system-visual__kicker" data-i18n="visual.kicker">SYSTEMVISUALISIERUNG</span>
+          <p class="system-visual__lead" data-i18n="visual.lead">
+            Analyse, virtuelle Absicherung und Betrieb werden zu einem durchgängigen Automationsprozess — sichtbar, messbar und bereit für die reale Anlage.
+          </p>
+        </div>
+        <div class="system-visual__signal" aria-label="Systemstatus">
+          <span class="system-visual__signal-dot" aria-hidden="true"></span>
+          <span data-i18n="visual.ready">SYSTEM BEREIT</span>
+        </div>
+      </div>
+
+      <div class="system-map" role="group" aria-label="Visualisierung des Automationsablaufs" data-i18n-attr="aria-label:visual.mapLabel">
+        <div class="system-map__topline">
+          <span data-i18n="visual.line">LINIE 04 / CONTROL LOOP</span>
+          <span class="system-map__live"><span aria-hidden="true"></span><span data-i18n="visual.live">LIVE SYSTEM MAP</span></span>
+        </div>
+
+        <div class="system-map__track">
+          <article class="system-node system-node--analysis">
+            <span class="system-node__number">01</span>
+            <svg class="system-node__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="7" y="8" width="34" height="24" rx="3"/><path d="M12 38h24M18 32v6M30 32v6M14 15h20M14 21h11M14 26h7"/>
+            </svg>
+            <strong data-i18n="visual.analysis.title">Planung &amp; Software</strong>
+            <small data-i18n="visual.analysis.note">Prozessdaten / Logik</small>
+          </article>
+
+          <span class="system-map__connector" aria-hidden="true"><i></i></span>
+
+          <article class="system-node system-node--virtual">
+            <span class="system-node__number">02</span>
+            <svg class="system-node__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M24 7 39 15.5v17L24 41 9 32.5v-17L24 7Z"/><path d="m9 15.5 15 8.7 15-8.7M24 24.2V41M17 12.1l15 8.6M32 12.1l-15 8.6"/>
+            </svg>
+            <strong data-i18n="visual.virtual.title">Virtuelle Absicherung</strong>
+            <small data-i18n="visual.virtual.note">Simulation / Test</small>
+          </article>
+
+          <span class="system-map__connector" aria-hidden="true"><i></i></span>
+
+          <article class="system-node system-node--operation">
+            <span class="system-node__number">03</span>
+            <svg class="system-node__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M8 35V14h32v21H8Z"/><path d="M13 29h5v-7h5v4h5v-9h5v12h5M13 39h22"/>
+            </svg>
+            <strong data-i18n="visual.operation.title">Stabiler Betrieb</strong>
+            <small data-i18n="visual.operation.note">Produktion / Service</small>
+          </article>
+        </div>
+
+        <div class="system-map__telemetry" aria-hidden="true">
+          <span><small data-i18n="visual.telemetry.cycle">TAKTZEIT</small><b>0.42 s</b></span>
+          <span><small data-i18n="visual.telemetry.status">SYSTEMSTATUS</small><b data-i18n="visual.telemetry.ready">BEREIT</b></span>
+          <span><small data-i18n="visual.telemetry.path">DATENWEG</small><b>PLC ↔ OPC UA</b></span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================== 01 PROFIL ===================== -->
+  <section class="section" id="profil" aria-labelledby="profil-titel">
+    <div class="wrap">
+
+      <div class="section__head">
+        <span class="section__num" aria-hidden="true">01</span>
+        <h2 class="section__title" id="profil-titel" data-i18n="sections.profile">Profil</h2>
+        <span class="section__rule" aria-hidden="true"></span>
+      </div>
+
+      <div class="about">
+        <div class="about__text prose">
+          <p data-i18n-html="profile.intro">
+            Der Reiz dieser Arbeit ist für mich derselbe geblieben wie am
+            Anfang: Man tippt etwas in einen Rechner — und in der Halle
+            setzen sich Komponenten in Bewegung. <strong>Maschinen Leben
+            geben</strong>, so nenne ich das.
+          </p>
+
+          <p data-i18n="profile.background">
+            Software in der Automatisierung verzeiht wenig: Ein Fehler
+            erzeugt keinen roten Balken in einer Testausgabe, sondern eine
+            stehende Linie. Mein Arbeitsfeld reicht von der Entwicklung
+            bis zur Inbetriebnahme beim Kunden vor Ort — von Europa über
+            die USA und Mexiko bis nach China und Korea.
+          </p>
+
+          <ol class="path">
+            <li class="path__item">
+              <span class="path__role" data-i18n="profile.path.electrician">Elektriker für Haus- und Gebäudetechnik</span>
+              <span class="path__note" data-i18n="profile.path.electricianNote">Ausbildung, danach drei Jahre bei Imtech</span>
+            </li>
+            <li class="path__item">
+              <span class="path__role" data-i18n="profile.path.technician">Elektrotechniker</span>
+              <span class="path__note" data-i18n="profile.path.technicianNote">Werner-Siemens-Schule, Stuttgart</span>
+            </li>
+            <li class="path__item">
+              <span class="path__role" data-i18n="profile.path.developer">Softwareentwickler</span>
+              <span class="path__note" data-i18n="profile.path.developerNote">SMS-Soft GmbH — seit dem Abschluss bis heute</span>
+            </li>
+          </ol>
+
+          <p data-i18n="profile.outsideWork">
+            Außerhalb der Arbeit: Fitness, Joggen — und das eigene Haus,
+            an dem immer irgendwo umgebaut wird.
+          </p>
+        </div>
+
+        <div>
+          <dl class="about__meta">
+            <div>
+              <dt data-i18n="meta.location">Standort</dt>
+              <dd>Stuttgart</dd>
+            </div>
+            <div>
+              <dt data-i18n="meta.workModel">Arbeitsmodell</dt>
+              <dd data-i18n="meta.workModelValue">Vor Ort, hybrid oder remote</dd>
+            </div>
+            <div>
+              <dt data-i18n="meta.languages">Sprachen</dt>
+              <dd data-i18n="meta.languagesValue">Deutsch, Englisch, Rumänisch</dd>
+            </div>
+            <div>
+              <dt data-i18n="meta.travel">Reisebereit</dt>
+              <dd data-i18n="meta.travelValue">Ja, weltweit</dd>
+            </div>
+            <div>
+              <dt data-i18n="meta.locations">Einsatzorte</dt>
+              <dd data-i18n="meta.locationsValue">
+                Frankreich, Tschechien, Ungarn, Rumänien, Türkei,
+                China, Korea, USA, Mexiko
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================== 02 SKILLS ===================== -->
+  <section class="section section--tint" id="skills" aria-labelledby="skills-titel">
+    <div class="wrap">
+
+      <div class="section__head">
+        <span class="section__num" aria-hidden="true">02</span>
+        <h2 class="section__title" id="skills-titel" data-i18n="sections.skills">Technologien &amp; Methoden</h2>
+        <span class="section__rule" aria-hidden="true"></span>
+      </div>
+
+      <!-- Einordnung ehrlich vergeben. „Kernkompetenz" verliert seinen
+           Wert, wenn alles Kernkompetenz ist — drei bis fünf Einträge
+           sind ein glaubwürdiges Maß.
+           Klassen: --core = Kernkompetenz | --solid = sicher | (keine) = Grundkenntnisse -->
+
+      <div class="skills">
+
+        <article class="skill-group">
+          <h3 class="skill-group__title" data-i18n="skills.control">Steuerung &amp; Automatisierung</h3>
+          <ul class="skill-list">
+            <li class="skill"><span class="skill__name">TwinCAT</span><span class="skill__level skill__level--core" data-i18n="skill.core">Kernkompetenz</span></li>
+            <li class="skill"><span class="skill__name">CodeSys</span><span class="skill__level skill__level--core" data-i18n="skill.core">Kernkompetenz</span></li>
+            <li class="skill"><span class="skill__name">IndraLogic</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
+            <li class="skill"><span class="skill__name" data-i18n="skill.bosch">Bosch-Steuerungen</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
+            <li class="skill"><span class="skill__name">ctrlX Automation</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
+            <li class="skill"><span class="skill__name"><span class="todo" data-i18n="skills.control.todo">[[ Einstufung dieser drei prüfen: sicher — oder eher Kernkompetenz bzw. Grundkenntnisse? ]]</span></span></li>
+          </ul>
+        </article>
+
+        <article class="skill-group">
+          <h3 class="skill-group__title" data-i18n="skills.programming">Programmierung</h3>
+          <ul class="skill-list">
+            <li class="skill"><span class="skill__name">IEC 61131-3 — ST</span><span class="skill__level skill__level--core" data-i18n="skill.core">Kernkompetenz</span></li>
+            <li class="skill"><span class="skill__name">IEC 61131-3 — FUP / KOP</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
+            <li class="skill"><span class="skill__name">C++</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
+          </ul>
+        </article>
+
+        <article class="skill-group">
+          <h3 class="skill-group__title" data-i18n="skills.methods">Methoden</h3>
+          <ul class="skill-list">
+            <li class="skill"><span class="skill__name" data-i18n="skill.virtualCommissioning">Virtuelle Inbetriebnahme</span><span class="skill__level skill__level--core" data-i18n="skill.core">Kernkompetenz</span></li>
+            <li class="skill"><span class="skill__name" data-i18n="skill.simulation">Simulation &amp; Absicherung</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
+            <li class="skill"><span class="skill__name" data-i18n="skill.cycleTime">Taktzeitoptimierung</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
+            <li class="skill"><span class="skill__name" data-i18n="skill.troubleshooting">Fehlersuche im laufenden Betrieb</span><span class="skill__level skill__level--core" data-i18n="skill.core">Kernkompetenz</span></li>
+            <li class="skill"><span class="skill__name" data-i18n="skill.retrofit">Retrofit bestehender Anlagen</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
+            <li class="skill"><span class="skill__name"><span class="todo" data-i18n="skills.methods.todo">[[ Diese fünf Einträge stammen von mir, nicht von dir — Einstufungen prüfen, Unzutreffendes löschen. ]]</span></span></li>
+          </ul>
+        </article>
+
+        <article class="skill-group">
+          <h3 class="skill-group__title" data-i18n="skills.tools">Kommunikation &amp; Werkzeuge</h3>
+          <ul class="skill-list">
+            <li class="skill"><span class="skill__name">PROFINET</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
+            <li class="skill"><span class="skill__name">EtherCAT</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
+            <li class="skill"><span class="skill__name" data-i18n="skill.hmi">HMI-Entwicklung</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
+            <li class="skill"><span class="skill__name" data-i18n="skill.versionControl">Git / Versionsverwaltung</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
+          </ul>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================== 03 PROJEKTE ===================== -->
+  <section class="section" id="projekte" aria-labelledby="projekte-titel">
+    <div class="wrap">
+
+      <div class="section__head">
+        <span class="section__num" aria-hidden="true">03</span>
+        <h2 class="section__title" id="projekte-titel" data-i18n="sections.projects">Eigene Projekte</h2>
+        <span class="section__rule" aria-hidden="true"></span>
+      </div>
+
+      <p class="prose card__text" style="margin-bottom: var(--sp-6);" data-i18n="projects.intro">
+        Was hier steht, ist ausschließlich in meiner Freizeit entstanden
+        und gehört mir selbst. Berufliche Projekte unterliegen der
+        Geheimhaltung und werden hier bewusst nicht gezeigt.
+        Alle vier laufen offline weiter, speichern ihre Daten lokal und
+        kommen ohne Build-System aus — ein Arbeitsprinzip aus der
+        Anlagentechnik: Was laufen muss, darf nicht an einer Verbindung
+        hängen.
+      </p>
+
+      <div class="projects">
+
+        <!-- Struktur bewusst gleich für jede Karte: Problem, Lösung,
+             Ergebnis, Technik, Links. Wer drei Karten überfliegt, findet
+             die Information dann immer an derselben Stelle. -->
+
+        <article class="card">
+          <p class="card__kicker">Web-App · PWA</p>
+          <h3 class="card__title">
+            <a target="_blank" rel="noopener noreferrer" href="https://paulfv.github.io/G04Event/">G04Event</a>
+          </h3>
+
+          <div class="card__body">
+            <p>
+              <span class="card__label" data-i18n="project.problem">Problem</span>
+              <span class="card__text" data-i18n="project.event.problem">Wer wissen will, wann das nächste
+              Stadtfest in Prag oder Sevilla stattfindet, sucht sich durch
+              Dutzende Veranstalterseiten.</span>
+            </p>
+            <p>
+              <span class="card__label" data-i18n="project.solution">Lösung</span>
+              <span class="card__text" data-i18n="project.event.solution">300 Termine aus 24 Ländern in acht
+              Kategorien, ausgewählt über eine Kaskade von Land über Region
+              bis Stadt. Die Suche verzeiht fehlende Umlaute, ein
+              Live-Countdown zeigt den nächsten Termin und warnt farblich,
+              wenn er näher rückt.</span>
+            </p>
+            <p>
+              <span class="card__label" data-i18n="project.result">Ergebnis</span>
+              <span class="card__text" data-i18n="project.event.result">Läuft offline, ohne Backend und ohne
+              Build-System. Zweisprachig, mit Hell- und Dunkelmodus, als
+              Android-App verpackt.</span>
+            </p>
+          </div>
+
+          <ul class="tags">
+            <li class="tag">HTML</li>
+            <li class="tag">Service Worker</li>
+            <li class="tag">PWA</li>
+            <li class="tag">Android TWA</li>
+          </ul>
+
+          <p class="card__links">
+            <a target="_blank" rel="noopener noreferrer" href="https://paulfv.github.io/G04Event/" data-i18n="project.try">Ausprobieren</a>
+          </p>
+        </article>
+
+        <article class="card">
+          <p class="card__kicker">Web-App · PWA</p>
+          <h3 class="card__title">
+            <a target="_blank" rel="noopener noreferrer" href="https://paulfv.github.io/G04EggX/">G04EggX</a>
+          </h3>
+
+          <div class="card__body">
+            <p>
+              <span class="card__label" data-i18n="project.problem">Problem</span>
+              <span class="card__text" data-i18n="project.egg.problem">Ein Küchentimer im Browser hat einen
+              unsichtbaren Fehler: Sperrt sich der Bildschirm, hört das
+              Herunterzählen auf — und das Ei kocht weiter.</span>
+            </p>
+            <p>
+              <span class="card__label" data-i18n="project.solution">Lösung</span>
+              <span class="card__text" data-i18n="project.egg.solution">Der Timer zählt nicht herunter,
+              sondern merkt sich den Ziel-Zeitpunkt. Nach dem Aufwecken
+              stimmt die Restzeit deshalb weiterhin. Dazu fünf Härtegrade
+              und ein animiertes Ei, dessen Eigelb während des Kochens
+              sichtbar aushärtet.</span>
+            </p>
+            <p>
+              <span class="card__label" data-i18n="project.result">Ergebnis</span>
+              <span class="card__text" data-i18n="project.egg.result">Installierbare App mit
+              Offline-Betrieb, fünf Alarmtönen samt Vibration und optionalen
+              Push-Benachrichtigungen über einen Cloudflare Worker.</span>
+            </p>
+          </div>
+
+          <ul class="tags">
+            <li class="tag">React</li>
+            <li class="tag">Tailwind CSS</li>
+            <li class="tag">SVG</li>
+            <li class="tag">Service Worker</li>
+            <li class="tag">Cloudflare Worker</li>
+          </ul>
+
+          <p class="card__links">
+            <a target="_blank" rel="noopener noreferrer" href="https://paulfv.github.io/G04EggX/" data-i18n="project.try">Ausprobieren</a>
+          </p>
+        </article>
+
+        <article class="card">
+          <p class="card__kicker">Web-App · PWA</p>
+          <h3 class="card__title">
+            <a target="_blank" rel="noopener noreferrer" href="https://paulfv.github.io/G04Sleep/">G04Sleep</a>
+          </h3>
+
+          <div class="card__body">
+            <p>
+              <span class="card__label" data-i18n="project.problem">Problem</span>
+              <span class="card__text" data-i18n="project.sleep.problem">Ein Wecker, der mitten im Tiefschlaf
+              klingelt, weckt schlechter als einer, der ein paar Minuten
+              später am Ende eines Zyklus läutet.</span>
+            </p>
+            <p>
+              <span class="card__label" data-i18n="project.solution">Lösung</span>
+              <span class="card__text" data-i18n="project.sleep.solution">Die App zeichnet den Schlaf lokal auf
+              und rechnet aus den Zyklen die günstigen Aufstehzeiten aus.
+              Dazu Wecker, eine nachträglich korrigierbare Historie mit
+              Statistik und ein Schlaftagebuch.</span>
+            </p>
+            <p>
+              <span class="card__label" data-i18n="project.result">Ergebnis</span>
+              <span class="card__text" data-i18n="project.sleep.result">Reines HTML, CSS und JavaScript ohne
+              eine einzige Abhängigkeit. Alle Daten bleiben im Browser,
+              nichts wird an einen Server geschickt.</span>
+            </p>
+          </div>
+
+          <ul class="tags">
+            <li class="tag">JavaScript</li>
+            <li class="tag">PWA</li>
+            <li class="tag">Service Worker</li>
+            <li class="tag" data-i18n="tag.localStorage">Lokale Speicherung</li>
+          </ul>
+
+          <p class="card__links">
+            <a target="_blank" rel="noopener noreferrer" href="https://paulfv.github.io/G04Sleep/" data-i18n="project.try">Ausprobieren</a>
+          </p>
+        </article>
+
+        <article class="card">
+          <p class="card__kicker">Web-App · PWA · Desktop</p>
+          <h3 class="card__title">
+            <a target="_blank" rel="noopener noreferrer" href="https://paulfv.github.io/G04Fit/">G04Fit</a>
+          </h3>
+
+          <div class="card__body">
+            <p>
+              <span class="card__label" data-i18n="project.problem">Problem</span>
+              <span class="card__text" data-i18n="project.fit.problem">Trainingsplanung endet meistens in
+              einer Tabelle, die niemand pflegt — oder in einer App, die
+              ein Konto verlangt und mitliest.</span>
+            </p>
+            <p>
+              <span class="card__label" data-i18n="project.solution">Lösung</span>
+              <span class="card__text" data-i18n="project.fit.solution">37 Übungen mit Animationen für sechs
+              Muskelgruppen, Trainingsausführung mit Timern, ein
+              Journey-Modus mit Weltkarte und Erfahrungspunkten sowie
+              Auswertung des Fortschritts. Export der Daten als Markdown.</span>
+            </p>
+            <p>
+              <span class="card__label" data-i18n="project.result">Ergebnis</span>
+              <span class="card__text" data-i18n="project.fit.result">Ohne Konto, ohne Tracking, ohne
+              Backend. Gebaut in reinem JavaScript ohne Framework; zusätzlich
+              als Desktop-Anwendung mit .NET 10 und WebView2. Die
+              Android-Fassung ist in Vorbereitung.</span>
+            </p>
+          </div>
+
+          <ul class="tags">
+            <li class="tag">JavaScript</li>
+            <li class="tag">PWA</li>
+            <li class="tag">.NET 10</li>
+            <li class="tag">WPF / WebView2</li>
+            <li class="tag">ASP.NET Core</li>
+          </ul>
+
+          <p class="card__links">
+            <a target="_blank" rel="noopener noreferrer" href="https://paulfv.github.io/G04Fit/" data-i18n="project.try">Ausprobieren</a>
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================== 04 KONTAKT ===================== -->
+
+  <!-- ===================== 04 PRIVAT ===================== -->
+  <section class="section section--tint" id="privat" aria-labelledby="privat-titel">
+    <div class="wrap">
+
+      <div class="section__head">
+        <span class="section__num" aria-hidden="true">04</span>
+        <h2 class="section__title" id="privat-titel" data-i18n="sections.private">Privat</h2>
+        <span class="section__rule" aria-hidden="true"></span>
+      </div>
+
+      <p class="prose card__text" style="margin-bottom: var(--sp-6);">
+        <span data-i18n="private.lead">Was ich mache, wenn niemand dafür bezahlt.</span>
+      </p>
+
+      <div class="life">
+
+        <article class="life__item">
+          <h3 class="life__title" data-i18n="private.sport.title">Sport</h3>
+          <p data-i18n="private.sport.text">
+            Fußball, Krafttraining und Laufen. Der Sport hält nicht nur
+            fit, sondern auch den Kopf frei — nach einer Woche
+            Inbetriebnahme im Ausland ist das der kürzeste Weg zurück in
+            den eigenen Rhythmus.
+          </p>
+        </article>
+
+        <article class="life__item">
+          <h3 class="life__title" data-i18n="private.home.title">Haus, Werkstatt und Garten</h3>
+          <p data-i18n="private.home.text">
+            Am eigenen Haus ist eigentlich immer etwas offen, drinnen wie
+            draußen. Reparieren, umbauen, verbessern — was im Beruf
+            Retrofit heißt, heißt zu Hause einfach Wochenende.
+          </p>
+        </article>
+
+        <article class="life__item">
+          <h3 class="life__title" data-i18n="private.software.title">Software in der Freizeit</h3>
+          <p data-i18n-html="private.software.text">
+            Die vier Anwendungen aus dem
+            <a href="#projekte">Projektbereich</a> sind abends und an
+            Wochenenden entstanden. Niemand hat sie bestellt, niemand
+            bezahlt dafür — sie existieren, weil mich die Probleme
+            dahinter interessiert haben.
+          </p>
+        </article>
+
+        <article class="life__item">
+          <h3 class="life__title" data-i18n="private.family.title">Familie und Herkunft</h3>
+          <p>
+            <span class="todo" data-i18n="private.family.todo">[[ AUSFÜLLEN: Hier kann ich nichts schreiben, ohne zu erfinden. Zwei bis drei Sätze über deinen Hintergrund — woher du kommst, wie du nach Deutschland gekommen bist, was dir zu Hause wichtig ist. So viel oder so wenig, wie du möchtest. ]]</span>
+          </p>
+        </article>
+
+      </div>
+
+      <p class="card__text" style="margin-top: var(--sp-6);">
+        <span class="todo" data-i18n="private.missing.todo">[[ Bei der Auswahl war noch ein weiterer Punkt dabei, den ich nicht kenne. Sag mir, was fehlt — dann kommt ein fünfter Block dazu. ]]</span>
+      </p>
+
+    </div>
+  </section>
+
+  <section class="section" id="kontakt" aria-labelledby="kontakt-titel">
+    <div class="wrap">
+
+      <div class="section__head">
+        <span class="section__num" aria-hidden="true">05</span>
+        <h2 class="section__title" id="kontakt-titel" data-i18n="sections.contact">Kontakt</h2>
+        <span class="section__rule" aria-hidden="true"></span>
+      </div>
+
+      <p class="contact__lead" data-i18n="contact.lead">
+        Sie haben eine Aufgabe, bei der Software auf reale Fertigung
+        trifft? Dann schreiben Sie mir gern — ich antworte in der Regel
+        innerhalb weniger Tage.
+      </p>
+
+      <!-- Adressen mit HTML-Entities geschrieben. Das bremst einfache
+           Spam-Bots aus, funktioniert aber ohne JavaScript und bleibt
+           per Klick nutzbar. -->
+      <div class="contact__mails">
+        <p class="contact__mailrow">
+          <span class="contact__mailkind" data-i18n="contact.mailWork">Dienstlich</span>
+          <a class="contact__mail" href="mailto:Paul.Fodor&#64;sms-soft&#46;de">Paul.Fodor&#64;sms-soft&#46;de</a>
+        </p>
+        <p class="contact__mailrow">
+          <span class="contact__mailkind" data-i18n="contact.mailPrivate">Privat</span>
+          <a class="contact__mail" href="mailto:fodorpaul&#64;web&#46;de">fodorpaul&#64;web&#46;de</a>
+        </p>
+      </div>
+
+      <!-- GitHub und XING entfernt, weil dort nichts liegt.
+           Ein Link ins Leere ist schlechter als kein Link. -->
+      <div class="contact__links">
+        <a target="_blank" rel="noopener noreferrer" href="http://sms-soft.de/de_de/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <circle cx="12" cy="12" r="9.2"/>
+            <path d="M2.8 12h18.4M12 2.8c2.3 2.5 3.5 5.6 3.5 9.2s-1.2 6.7-3.5 9.2c-2.3-2.5-3.5-5.6-3.5-9.2S9.7 5.3 12 2.8Z"/>
+          </svg>
+          <span data-i18n="contact.employer">SMS-Soft</span>
+        </a>
+
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/PaulFV">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.58v-2.2c-3.34.72-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.4 1.24-3.24-.13-.3-.54-1.53.11-3.18 0 0 1.01-.32 3.3 1.24a11.5 11.5 0 0 1 6.01 0c2.29-1.56 3.3-1.24 3.3-1.24.65 1.65.24 2.88.12 3.18.77.84 1.23 1.92 1.23 3.24 0 4.63-2.8 5.65-5.48 5.95.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"/>
+          </svg>
+          <span data-i18n="contact.github">GitHub</span>
+        </a>
+
+        <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/DEINE-ADRESSE">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.76-1.95 4.02 0 4.76 2.5 4.76 5.76V21h-4v-5.5c0-1.31-.02-3-1.9-3-1.9 0-2.2 1.42-2.2 2.9V21H9z"/>
+          </svg>
+          <span data-i18n="contact.linkedin">LinkedIn</span>
+        </a>
+
+        <a href="https://x.com/PaulFV81" rel="me noopener noreferrer" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+          <span data-i18n="contact.x">X</span>
+        </a>
+      </div>
+
+      <p class="card__text" style="margin-top: var(--sp-4);">
+        <span class="todo" data-i18n="contact.linkedinTodo">[[ LinkedIn-Adresse eintragen: im Link oben „DEINE-ADRESSE" durch den Teil hinter linkedin.com/in/ aus deiner Profil-URL ersetzen. Falls du kein LinkedIn hast, den ganzen LinkedIn-Eintrag löschen. ]]</span>
+      </p>
+
+    </div>
+  </section>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <p>&copy; <span data-year>2026</span> Paul Fodor</p>
+    <p><a href="#top" data-i18n="footer.top">Nach oben ↑</a></p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

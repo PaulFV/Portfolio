@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ==========================================================
+     VORLAGE FÜR EINE PROJEKT-DETAILSEITE
+
+     So legst du ein neues Projekt an:
+       1. Diese Datei kopieren, z. B. nach projekte/pruefstand-simulator.html
+       2. <title>, description und alle [[ … ]]-Stellen ausfüllen
+       3. In index.html die passende Projektkarte auf die neue
+          Datei verlinken (zwei Stellen: Titel und „Details")
+
+     Kurze Faustregel für den Text: Nicht aufzählen, was du benutzt
+     hast, sondern erzählen, welche Entscheidung du getroffen hast
+     und warum. Werkzeuge kennt jeder — Urteilsvermögen nicht.
+     ========================================================== -->
+
+<title>[[ Projektname ]] — Paul Fodor</title>
+<meta name="description" content="[[ AUSFÜLLEN: Ein Satz zum Projekt, erscheint in Suchergebnissen. ]]">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="[[ Projektname ]] — Paul Fodor">
+<meta property="og:description" content="[[ Ein Satz zum Projekt. ]]">
+
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/style.css">
+
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem("theme");
+      if (t === "dark" || t === "light") {
+        document.documentElement.setAttribute("data-theme", t);
+      }
+    } catch (e) {}
+  })();
+</script>
+</head>
+
+<body>
+
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="../index.html">Paul&nbsp;Fodor</a>
+
+    <nav class="nav" aria-label="Hauptnavigation">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="../index.html#profil">Profil</a></li>
+        <li><a class="nav__link" href="../index.html#skills">Skills</a></li>
+        <li><a class="nav__link" href="../index.html#projekte">Projekte</a></li>
+        <li><a class="nav__link" href="../index.html#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+
+    <button class="theme-toggle" type="button"
+            data-theme-toggle
+            aria-label="Farbschema umschalten">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.2"/>
+        <path d="M12 2v2.2M12 19.8V22M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2 12h2.2M19.8 12H22M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/>
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1Z"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+
+<main id="main">
+
+  <article>
+
+    <!-- ===== Kopf ===== -->
+    <div class="hero">
+      <div class="wrap">
+        <p class="card__kicker">
+          <a href="../index.html#projekte" style="text-decoration: none;">← Alle Projekte</a>
+        </p>
+
+        <h1 class="hero__title" style="max-width: 22ch; margin-top: var(--sp-4);">
+          <span class="todo">[[ Projektname ]]</span>
+        </h1>
+
+        <p class="hero__lead">
+          <span class="todo">[[ AUSFÜLLEN: Ein bis zwei Sätze, die das Projekt einordnen. Was ist es, und für wen? ]]</span>
+        </p>
+
+        <ul class="tags" style="margin-top: var(--sp-5);">
+          <li class="tag">Technik 1</li>
+          <li class="tag">Technik 2</li>
+          <li class="tag">Technik 3</li>
+        </ul>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="https://github.com/">Quellcode ansehen</a>
+          <!-- Falls es keine Live-Demo gibt, den folgenden Link löschen -->
+          <a class="btn btn--ghost" href="#">Live-Demo</a>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ===== Eckdaten ===== -->
+    <section class="section" aria-labelledby="eckdaten-titel">
+      <div class="wrap">
+        <h2 class="visually-hidden" id="eckdaten-titel">Eckdaten</h2>
+
+        <dl class="about__meta" style="margin-top: 0; max-width: 34rem;">
+          <div>
+            <dt>Zeitraum</dt>
+            <dd><span class="todo">[[ z. B. Frühjahr 2026, ca. 3 Wochen ]]</span></dd>
+          </div>
+          <div>
+            <dt>Rolle</dt>
+            <dd><span class="todo">[[ allein / im Team von X ]]</span></dd>
+          </div>
+          <div>
+            <dt>Status</dt>
+            <dd><span class="todo">[[ in Betrieb / abgeschlossen / in Arbeit ]]</span></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+
+    <!-- ===== Ausgangslage ===== -->
+    <section class="section" aria-labelledby="problem-titel">
+      <div class="wrap">
+        <div class="section__head">
+          <span class="section__num" aria-hidden="true">01</span>
+          <h2 class="section__title" id="problem-titel">Ausgangslage</h2>
+          <span class="section__rule" aria-hidden="true"></span>
+        </div>
+
+        <div class="prose">
+          <p>
+            <span class="todo">[[ AUSFÜLLEN: Welches Problem gab es, und warum war es überhaupt eines? Wer eine Ausgangslage konkret schildert, zeigt damit, dass er Probleme versteht, statt nur Aufgaben abzuarbeiten. ]]</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== Umsetzung ===== -->
+    <section class="section section--tint" aria-labelledby="loesung-titel">
+      <div class="wrap">
+        <div class="section__head">
+          <span class="section__num" aria-hidden="true">02</span>
+          <h2 class="section__title" id="loesung-titel">Umsetzung</h2>
+          <span class="section__rule" aria-hidden="true"></span>
+        </div>
+
+        <div class="prose">
+          <p>
+            <span class="todo">[[ AUSFÜLLEN: Wie bist du vorgegangen? ]]</span>
+          </p>
+
+          <h3 style="margin-top: var(--sp-5);">Die interessanteste Entscheidung</h3>
+          <p>
+            <span class="todo">[[ AUSFÜLLEN: Welche Abwägung war die schwierigste? Welche Alternativen hattest du, und warum ist es diese geworden? Genau dieser Absatz unterscheidet ein Portfolio von einer Linkliste — hier liest ein Techniker heraus, wie du denkst. ]]</span>
+          </p>
+        </div>
+
+        <!-- Optional: Screenshot oder Diagramm
+        <figure style="margin-top: var(--sp-6);">
+          <img src="../assets/img/projekt-1.png"
+               alt="[[ Beschreibe, was auf dem Bild zu sehen ist ]]"
+               width="1200" height="750" loading="lazy"
+               style="border: 1px solid var(--c-border); border-radius: var(--radius);">
+          <figcaption class="card__text" style="margin-top: var(--sp-3);">
+            [[ Bildunterschrift ]]
+          </figcaption>
+        </figure>
+        -->
+      </div>
+    </section>
+
+
+    <!-- ===== Ergebnis ===== -->
+    <section class="section" aria-labelledby="ergebnis-titel">
+      <div class="wrap">
+        <div class="section__head">
+          <span class="section__num" aria-hidden="true">03</span>
+          <h2 class="section__title" id="ergebnis-titel">Ergebnis &amp; Gelerntes</h2>
+          <span class="section__rule" aria-hidden="true"></span>
+        </div>
+
+        <div class="prose">
+          <p>
+            <span class="todo">[[ AUSFÜLLEN: Was kam heraus? Etwas Messbares ist ideal. ]]</span>
+          </p>
+          <p>
+            <span class="todo">[[ AUSFÜLLEN: Was würdest du beim nächsten Mal anders machen? Diese Frage ehrlich zu beantworten wirkt souverän, nicht schwach — es ist eine der häufigsten Fragen im Vorstellungsgespräch. ]]</span>
+          </p>
+        </div>
+
+        <p class="card__links">
+          <a href="../index.html#projekte">Zurück zur Übersicht</a>
+          <a href="../index.html#kontakt">Kontakt</a>
+        </p>
+      </div>
+    </section>
+
+  </article>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <p>&copy; <span data-year>2026</span> Paul Fodor</p>
+    <p><a href="../index.html">Zur Startseite</a></p>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>
