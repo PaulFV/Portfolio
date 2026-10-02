@@ -46,7 +46,15 @@
 
 <header class="site-header">
   <div class="wrap site-header__inner">
-    <a class="brand" href="#top">Paul&nbsp;Fodor</a>
+    <button class="menu-toggle" type="button"
+            data-menu-toggle
+            aria-controls="mobile-navigation"
+            aria-expanded="false"
+            aria-label="Menü öffnen">
+      <span class="menu-toggle__bar"></span>
+      <span class="menu-toggle__bar"></span>
+      <span class="menu-toggle__bar"></span>
+    </button>
 
     <nav class="nav" id="mobile-navigation" aria-label="Hauptnavigation">
       <ul class="nav__list">
@@ -59,15 +67,6 @@
     </nav>
 
     <div class="header-tools">
-      <button class="menu-toggle" type="button"
-              data-menu-toggle
-              aria-controls="mobile-navigation"
-              aria-expanded="false"
-              aria-label="Menü öffnen">
-        <span class="menu-toggle__bar"></span>
-        <span class="menu-toggle__bar"></span>
-        <span class="menu-toggle__bar"></span>
-      </button>
       <div class="language-menu" aria-label="Sprache auswählen" data-language-menu>
         <button class="language-menu__toggle" type="button"
                 data-language-menu-toggle
@@ -172,8 +171,16 @@
         <span data-i18n="hero.title">Software, die Maschinen bewegt.</span>
       </h1>
 
-      <figure class="hero__portrait" aria-hidden="true">
+      <figure class="hero__portrait">
         <img src="assets/img/portrait.png" alt="" width="705" height="1030">
+        <figcaption class="hero__name">
+          <svg viewBox="0 0 100 100" focusable="false">
+            <defs>
+              <path id="hero-name-orbit" d="M50,50 m-46.5,0 a46.5,46.5 0 1,1 93,0 a46.5,46.5 0 1,1 -93,0"/>
+            </defs>
+            <text><textPath href="#hero-name-orbit" startOffset="25%" text-anchor="middle">PAUL FODOR</textPath></text>
+          </svg>
+        </figcaption>
       </figure>
 
       <!-- =====================================================

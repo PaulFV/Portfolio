@@ -933,11 +933,21 @@ button { font: inherit; color: inherit; }
 }
 
 /* Kennzahlen unter dem Hero */
+/* Der Hero-Inhalt ist mindestens so hoch wie Profilkreis, Name und
+   Kennzahlen zusammen; die Kennzahlen stehen dadurch immer unter dem Kreis. */
+.hero .wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(var(--portrait-size) + 9rem);
+}
+
+.hero__lead { margin-bottom: var(--sp-8); }
+
 .facts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
   gap: var(--sp-5);
-  margin-top: var(--sp-8);
+  margin-top: auto;
   padding-top: var(--sp-5);
   border-top: 1px solid var(--c-border-strong);
   position: relative;
@@ -950,13 +960,12 @@ button { font: inherit; color: inherit; }
   position: absolute !important;
   z-index: 1 !important;
   right: var(--portrait-right);
-  top: 32%;
+  top: 0;
   width: var(--portrait-size);
-  height: clamp(24rem, 43vw, 38rem);
+  height: calc(var(--portrait-size) + 1rem);
   margin: 0;
   display: grid;
   place-items: center;
-  transform: translateY(-50%);
   filter: drop-shadow(0 1.5rem 2rem color-mix(in srgb, var(--c-accent) 16%, transparent));
   pointer-events: none;
   animation: portrait-float 6s ease-in-out infinite;
@@ -1005,9 +1014,38 @@ button { font: inherit; color: inherit; }
   filter: saturate(1.05) contrast(1.04) drop-shadow(0 0.8rem 0.8rem rgba(0, 0, 0, 0.35));
 }
 
+/* Name läuft auf einer Kreisbahn zwischen den beiden Ringen langsam um das Bild */
+.hero__name {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+}
+
+.hero__name svg {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: visible;
+  animation: name-orbit 26s linear infinite;
+}
+
+.hero__name text {
+  fill: #f43f5e;
+  font-family: var(--font-mono);
+  font-size: 4.4px;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+  filter: drop-shadow(0 0 1.2px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 2px color-mix(in srgb, #f43f5e 55%, transparent));
+}
+
+@keyframes name-orbit {
+  to { transform: rotate(360deg); }
+}
+
 @keyframes portrait-float {
-  0%, 100% { transform: translateY(-50%) rotateZ(-0.6deg); }
-  50%      { transform: translateY(calc(-50% - 0.65rem)) rotateZ(0.6deg); }
+  0%, 100% { transform: translateY(0) rotateZ(-0.6deg); }
+  50%      { transform: translateY(-0.65rem) rotateZ(0.6deg); }
 }
 
 @keyframes portrait-orbit {
@@ -2947,4 +2985,8 @@ a:hover {
   .card__links { padding-top: var(--sp-4); }
 
   .projects__intro { display: none; }
+
+  .hero .wrap { display: block; min-height: 0; }
+  .hero__lead { margin-bottom: 0; }
+
 }
