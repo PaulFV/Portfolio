@@ -1692,11 +1692,12 @@ button { font: inherit; color: inherit; }
 }
 
 .profile-language--en {
-  background-color: #3e66b5;
+  background-color: #2350a8;
   background-image:
-    linear-gradient(90deg, transparent 40%, #fff 40% 60%, transparent 60%),
-    linear-gradient(0deg, transparent 40%, #d11f35 40% 60%, transparent 60%),
-    #173b86;
+    linear-gradient(90deg, transparent 40%, #e0283f 40% 60%, transparent 60%),
+    linear-gradient(0deg, transparent 38%, #e0283f 38% 62%, transparent 62%),
+    linear-gradient(90deg, transparent 30%, #ffffff 30% 70%, transparent 70%),
+    linear-gradient(0deg, transparent 28%, #ffffff 28% 72%, transparent 72%);
 }
 
 .profile-language--ro {
