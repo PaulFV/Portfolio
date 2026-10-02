@@ -928,8 +928,8 @@ button { font: inherit; color: inherit; }
   z-index: 1 !important;
   right: clamp(0rem, 4vw, 4.5rem);
   top: 32%;
-  width: clamp(19rem, 35vw, 29rem);
-  height: clamp(20rem, 35vw, 30rem);
+  width: clamp(21rem, 39vw, 33rem);
+  height: clamp(22rem, 39vw, 34rem);
   margin: 0;
   display: grid;
   place-items: center;
@@ -2615,8 +2615,8 @@ button { font: inherit; color: inherit; }
   .hero::after { display: none; }
 
   .hero__portrait {
-    width: min(14rem, 64vw);
-    height: min(14rem, 64vw);
+    width: min(16rem, 70vw);
+    height: min(16rem, 70vw);
     margin-top: var(--sp-7);
   }
 
@@ -2670,8 +2670,8 @@ button { font: inherit; color: inherit; }
     position: relative !important;
     top: auto;
     right: auto;
-    width: min(16rem, 64vw);
-    height: min(16rem, 64vw);
+    width: min(18rem, 70vw);
+    height: min(18rem, 70vw);
     margin: var(--sp-7) auto 0;
     transform: none;
     animation: portrait-float-mobile 6s ease-in-out infinite;
