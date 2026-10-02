@@ -2356,20 +2356,21 @@ button { font: inherit; color: inherit; }
 }
 
 .contact-link--sms-soft {
-  color: #0066cc;
+  color: #ff1744;
 }
 
 .contact-link--sms-soft:hover {
-  color: #0052a3;
-  text-shadow: 0 0 0.6rem rgba(0, 102, 204, 0.5);
+  color: #ff5a7f;
+  text-shadow: 0 0 0.8rem rgba(255, 23, 68, 0.6);
 }
 
 .contact-link--sms-soft svg {
-  filter: drop-shadow(1px 2px 0 rgba(0, 102, 204, 0.3));
+  stroke: #ff1744;
+  filter: drop-shadow(1px 2px 0 rgba(255, 23, 68, 0.4));
 }
 
 .contact-link--sms-soft:hover svg {
-  filter: drop-shadow(2px 3px 0 #0066cc) drop-shadow(0 0 0.5rem rgba(0, 102, 204, 0.6));
+  filter: drop-shadow(2px 3px 0 #ff1744) drop-shadow(0 0 0.8rem rgba(255, 23, 68, 0.7));
 }
 
 .contact-link--github {
@@ -2378,43 +2379,51 @@ button { font: inherit; color: inherit; }
 
 .contact-link--github:hover {
   color: #111827;
-  text-shadow: 0 0 0.6rem rgba(31, 41, 55, 0.5);
+  text-shadow: 0 0 0.8rem rgba(31, 41, 55, 0.6);
 }
 
 .contact-link--github svg {
-  filter: drop-shadow(1px 2px 0 rgba(31, 41, 55, 0.3));
+  fill: #1f2937;
+  filter: drop-shadow(1px 2px 0 rgba(31, 41, 55, 0.4));
 }
 
 .contact-link--github:hover svg {
-  filter: drop-shadow(2px 3px 0 #1f2937) drop-shadow(0 0 0.5rem rgba(31, 41, 55, 0.6));
+  fill: #111827;
+  filter: drop-shadow(2px 3px 0 #1f2937) drop-shadow(0 0 0.8rem rgba(31, 41, 55, 0.7));
 }
 
 .contact-link--x {
-  color: #000000;
+  color: #00bfff;
 }
 
 .contact-link--x:hover {
-  color: #1a1a1a;
-  text-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.5);
+  color: #1ed5ff;
+  text-shadow: 0 0 0.8rem rgba(0, 191, 255, 0.6);
 }
 
 .contact-link--x svg {
-  filter: drop-shadow(1px 2px 0 rgba(0, 0, 0, 0.3));
+  fill: #00bfff;
+  filter: drop-shadow(1px 2px 0 rgba(0, 191, 255, 0.4));
 }
 
 .contact-link--x:hover svg {
-  filter: drop-shadow(2px 3px 0 #000000) drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.6));
+  fill: #1ed5ff;
+  filter: drop-shadow(2px 3px 0 #00bfff) drop-shadow(0 0 0.8rem rgba(0, 191, 255, 0.7));
 }
 
 /* Dark Mode Anpassungen */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .contact-link--sms-soft {
-    color: #3b82f6;
+    color: #ff1744;
   }
 
   :root:not([data-theme="light"]) .contact-link--sms-soft:hover {
-    color: #60a5fa;
-    text-shadow: 0 0 0.8rem rgba(59, 130, 246, 0.6);
+    color: #ff5a7f;
+    text-shadow: 0 0 0.8rem rgba(255, 23, 68, 0.6);
+  }
+
+  :root:not([data-theme="light"]) .contact-link--sms-soft svg {
+    stroke: #ff1744;
   }
 
   :root:not([data-theme="light"]) .contact-link--github {
@@ -2426,23 +2435,43 @@ button { font: inherit; color: inherit; }
     text-shadow: 0 0 0.8rem rgba(229, 231, 235, 0.6);
   }
 
+  :root:not([data-theme="light"]) .contact-link--github svg {
+    fill: #e5e7eb;
+  }
+
+  :root:not([data-theme="light"]) .contact-link--github:hover svg {
+    fill: #ffffff;
+  }
+
   :root:not([data-theme="light"]) .contact-link--x {
-    color: #ffffff;
+    color: #00bfff;
   }
 
   :root:not([data-theme="light"]) .contact-link--x:hover {
-    color: #f3f4f6;
-    text-shadow: 0 0 0.8rem rgba(255, 255, 255, 0.6);
+    color: #1ed5ff;
+    text-shadow: 0 0 0.8rem rgba(0, 191, 255, 0.6);
+  }
+
+  :root:not([data-theme="light"]) .contact-link--x svg {
+    fill: #00bfff;
+  }
+
+  :root:not([data-theme="light"]) .contact-link--x:hover svg {
+    fill: #1ed5ff;
   }
 }
 
 :root[data-theme="dark"] .contact-link--sms-soft {
-  color: #3b82f6;
+  color: #ff1744;
 }
 
 :root[data-theme="dark"] .contact-link--sms-soft:hover {
-  color: #60a5fa;
-  text-shadow: 0 0 0.8rem rgba(59, 130, 246, 0.6);
+  color: #ff5a7f;
+  text-shadow: 0 0 0.8rem rgba(255, 23, 68, 0.6);
+}
+
+:root[data-theme="dark"] .contact-link--sms-soft svg {
+  stroke: #ff1744;
 }
 
 :root[data-theme="dark"] .contact-link--github {
@@ -2454,13 +2483,29 @@ button { font: inherit; color: inherit; }
   text-shadow: 0 0 0.8rem rgba(229, 231, 235, 0.6);
 }
 
+:root[data-theme="dark"] .contact-link--github svg {
+  fill: #e5e7eb;
+}
+
+:root[data-theme="dark"] .contact-link--github:hover svg {
+  fill: #ffffff;
+}
+
 :root[data-theme="dark"] .contact-link--x {
-  color: #ffffff;
+  color: #00bfff;
 }
 
 :root[data-theme="dark"] .contact-link--x:hover {
-  color: #f3f4f6;
-  text-shadow: 0 0 0.8rem rgba(255, 255, 255, 0.6);
+  color: #1ed5ff;
+  text-shadow: 0 0 0.8rem rgba(0, 191, 255, 0.6);
+}
+
+:root[data-theme="dark"] .contact-link--x svg {
+  fill: #00bfff;
+}
+
+:root[data-theme="dark"] .contact-link--x:hover svg {
+  fill: #1ed5ff;
 }
 
 
