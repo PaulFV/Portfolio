@@ -23,6 +23,7 @@ $types = @{
   ".webp" = "image/webp"
   ".ico"  = "image/x-icon"
   ".json" = "application/json"
+  ".webmanifest" = "application/manifest+json"
   ".md"   = "text/plain; charset=utf-8"
   ".txt"  = "text/plain; charset=utf-8"
 }
