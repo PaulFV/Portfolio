@@ -1027,7 +1027,7 @@ button { font: inherit; color: inherit; }
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: visible;
-  animation: name-orbit 26s linear infinite;
+  animation: name-orbit 60s linear infinite;
 }
 
 .hero__name text {
