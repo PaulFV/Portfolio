@@ -164,11 +164,12 @@ h4,
     0 0.45rem 1rem color-mix(in srgb, var(--c-accent-2) 24%, transparent);
 }
 
-/* Previous system-technology ribbon: real logos, smooth marquee, original copy retained below. */
+/* Six original technology marks in the reference's floating glass tiles. */
 .stack-strip {
-  padding-block: 1.15rem 1.4rem;
-  background: #fff;
-  border-color: #e1e7ef;
+  padding-block: clamp(5rem, 9.5vw, 12rem);
+  background:
+    radial-gradient(ellipse at 50% 47%, #fff 0%, #f4f8ff 56%, #eef4fc 100%);
+  border-color: #d8e6f6;
   color: #26374d;
 }
 
@@ -177,34 +178,31 @@ h4,
   display: none;
 }
 
+.stack-strip .wrap {
+  width: min(100% - 2.5rem, 134rem);
+  max-width: none;
+}
+
+/* Keep the translated section name for screen readers without changing the reference. */
 .stack-strip__head {
-  gap: 0.9rem;
-  margin-bottom: 0.9rem;
-}
-
-.stack-strip__kicker {
-  color: #63758a;
-  font-size: 0.58rem;
-  letter-spacing: 0.18em;
-}
-
-.stack-strip__title {
-  color: #26374d;
-  font-family: var(--font-sans);
-  font-size: var(--step--1);
-  letter-spacing: -0.01em;
-}
-
-.stack-strip__rule {
-  background: #d9e2ec;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 .stack-marquee {
   overflow: hidden;
-  padding-block: 0.15rem;
-  background: #fff;
-  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  margin-inline: -0.45rem;
+  padding: 1.1rem 0.45rem 1.45rem;
+  background: transparent;
+  mask-image: none;
+  -webkit-mask-image: none;
 }
 
 .stack-track {
@@ -213,147 +211,343 @@ h4,
 }
 
 .stack-track.is-looping {
-  animation: logo-scroll 32s linear infinite;
+  animation: logo-scroll 38s linear infinite;
 }
 
 .stack-list {
-  gap: 0;
-  padding-right: 0;
+  gap: clamp(0.65rem, 0.9vw, 1.2rem);
+  padding-right: clamp(0.65rem, 0.9vw, 1.2rem);
 }
 
 .stack-item,
 .stack-item:hover {
   display: grid;
   place-items: center;
-  width: 13.1rem;
-  flex-basis: 13.1rem;
-  height: 5.8rem;
+  width: clamp(11.5rem, calc((100vw - 8rem) / 6), 19.5rem);
+  flex-basis: clamp(11.5rem, calc((100vw - 8rem) / 6), 19.5rem);
+  height: clamp(8.4rem, 11.1vw, 14.25rem);
   min-height: 0;
-  padding: 0.65rem 1.6rem;
+  padding: 1.2rem;
   overflow: hidden;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  transform: none;
+  border: 1.5px solid transparent;
+  border-radius: clamp(0.75rem, 0.8vw, 1.05rem);
+  background:
+    linear-gradient(145deg, rgba(249, 252, 255, 0.8), rgba(226, 237, 255, 0.49)) padding-box,
+    linear-gradient(125deg, #5bdfff 0%, #8dc3ff 38%, #4a80ff 68%, #a656ff 100%) border-box;
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.72),
+    0 0.65rem 1.8rem rgba(44, 84, 157, 0.2),
+    0 0 1.2rem rgba(73, 163, 255, 0.19);
+  transform: translateZ(0);
   outline: 0;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform 260ms ease, box-shadow 260ms ease;
 }
 
 .stack-item::before {
-  display: none;
+  display: block;
+  content: "";
+  position: absolute;
+  inset: 0;
+  height: auto;
+  background: linear-gradient(128deg, transparent 0 40%, rgba(255, 255, 255, 0.55) 40% 56%, transparent 56% 100%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.stack-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 11%;
+  width: 78%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #a8fbff 24%, #fff 47%, #81a9ff 72%, transparent);
+  filter: blur(0.5px);
+  pointer-events: none;
+}
+
+.brand-lockup {
+  position: relative;
+  z-index: 1;
+  width: 92%;
+  height: 76%;
+  display: grid;
+  place-items: center;
+  transition: transform 260ms ease;
 }
 
 .brand-logo {
-  width: 10.4rem;
-  height: 4.65rem;
+  width: 100%;
+  height: 100%;
   max-width: none;
   overflow: hidden;
   filter: none;
-  transition: transform 220ms ease;
 }
 
-.stack-item:hover .brand-logo {
-  transform: scale(1.06);
+.stack-item--codesys .brand-lockup {
+  height: 88%;
 }
 
-/* Dark mode keeps the logos readable while the ribbon joins the neon page theme. */
-:root[data-theme="dark"] .stack-strip,
-:root[data-theme="dark"] .stack-strip__title {
-  color: var(--c-text);
+.brand-logo--dark-ink {
+  display: none;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
+.stack-item:hover {
+  transform: translateY(-0.35rem) perspective(700px) rotateX(2deg);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    0 1.1rem 2.2rem rgba(39, 79, 149, 0.24),
+    0 0 1.7rem rgba(100, 144, 255, 0.3);
+}
+
+.stack-item:hover .brand-lockup {
+  transform: scale(1.045);
+}
+
+/* Dark reference: compact heading, midnight cards, electric blue/violet rims. */
 :root[data-theme="dark"] .stack-strip {
-  background:
-    linear-gradient(90deg, color-mix(in srgb, var(--c-accent) 9%, transparent), transparent 35%, color-mix(in srgb, var(--c-accent-2) 10%, transparent)),
-    var(--c-bg);
-  border-color: var(--c-border);
+  padding-block: 1.56rem 0.525rem;
+  background: #031021;
+  border-color: #17314d;
+}
+
+:root[data-theme="dark"] .stack-strip .wrap { width: calc(100% - 4.75rem); }
+
+:root[data-theme="dark"] .stack-strip::after {
+  display: block;
+  top: auto;
+  right: 2.5%;
+  bottom: 1rem;
+  left: 2.5%;
+  width: auto;
+  height: 1px;
+  background: #294258;
+  filter: none;
+  animation: none;
+  transform: none;
+}
+
+:root[data-theme="dark"] .stack-strip__head {
+  position: relative;
+  display: grid;
+  gap: 0.18rem;
+  width: auto;
+  height: auto;
+  margin: 0 0 1rem;
+  padding: 0 0 1.55rem;
+  overflow: visible;
+  clip-path: none;
+  white-space: normal;
 }
 
 :root[data-theme="dark"] .stack-strip__kicker {
-  color: var(--c-text-muted);
+  color: #79cbe8;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
 :root[data-theme="dark"] .stack-strip__title {
-  color: var(--c-text);
+  color: #f4f8ff;
+  font-family: var(--font-sans);
+  font-size: clamp(1.4rem, 1.9vw, 1.85rem);
+  font-weight: 400;
+  letter-spacing: -0.015em;
 }
 
 :root[data-theme="dark"] .stack-strip__rule {
-  background: var(--c-border);
-}
-
-:root[data-theme="dark"] .stack-item {
-  margin-block: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-}
-
-:root[data-theme="dark"] .stack-marquee {
-  background:
-    radial-gradient(circle at 18% 50%, color-mix(in srgb, var(--c-accent) 12%, transparent), transparent 26%),
-    radial-gradient(circle at 78% 50%, color-mix(in srgb, var(--c-accent-2) 10%, transparent), transparent 28%),
-    rgba(4, 17, 14, 0.78);
-  border-block: 1px solid color-mix(in srgb, var(--c-accent) 24%, transparent);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.28);
-}
-
-:root[data-theme="dark"] .brand-logo {
-  filter: drop-shadow(0 0 0.55rem color-mix(in srgb, var(--c-accent) 18%, transparent));
-  mix-blend-mode: normal;
+  position: relative;
+  top: 0.43rem;
+  width: 100%;
+  background: #294258;
   opacity: 1;
 }
 
+:root[data-theme="dark"] .stack-marquee {
+  margin-inline: -2.375rem;
+  padding-inline: 0;
+  width: calc(100% + 4.75rem);
+}
+
+:root[data-theme="dark"] .stack-list {
+  gap: 1.35rem;
+  padding-right: 1.35rem;
+}
+
+:root[data-theme="dark"] .stack-item,
+:root[data-theme="dark"] .stack-item:hover {
+  width: 20.5rem;
+  flex-basis: 20.5rem;
+  height: 15.125rem;
+  border-radius: 0.8rem;
+  background:
+    linear-gradient(145deg, #061b34 0%, #031326 63%, #0b1030 100%) padding-box,
+    linear-gradient(135deg, #35d9ff 0%, #338aff 46%, #8754ff 100%) border-box;
+  box-shadow:
+    inset 0 0 1.25rem rgba(39, 121, 212, 0.11),
+    0 0 0.6rem rgba(33, 155, 255, 0.34),
+    0 0 1.5rem rgba(74, 81, 245, 0.18);
+}
+
+:root[data-theme="dark"] .stack-item::before {
+  background: linear-gradient(130deg, transparent 0 30%, rgba(31, 75, 131, 0.08) 30% 42%, transparent 42%);
+  opacity: 1;
+}
+
+:root[data-theme="dark"] .stack-item::after {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(90deg, #12bfff, transparent 24%, #27d8ff 45%, transparent 64%, #6082ff 78%, transparent) top / 100% 2px no-repeat,
+    linear-gradient(90deg, #4778ff, transparent 34%, #21caff 58%, transparent 75%, #8b56ff) bottom / 100% 2px no-repeat;
+  filter: drop-shadow(0 0 0.35rem #41b8ff);
+}
+
+:root[data-theme="dark"] .stack-item--staubli .brand-logo { filter: brightness(0) invert(1); }
+
+:root[data-theme="dark"] .brand-logo--dark-ink {
+  display: block;
+  filter: brightness(0) invert(0.91);
+}
+
+:root[data-theme="dark"] .stack-item--codesys .brand-logo--dark-ink { clip-path: inset(69% 0 0); }
+:root[data-theme="dark"] .stack-item--bosch .brand-logo--dark-ink { clip-path: inset(0 78% 0 0); }
+:root[data-theme="dark"] .stack-item--opcua .brand-logo--dark-ink { clip-path: inset(0 0 0 22%); }
+
+:root[data-theme="dark"] .stack-item:hover {
+  box-shadow:
+    inset 0 0 1.25rem rgba(39, 121, 212, 0.16),
+    0 0 0.8rem rgba(33, 155, 255, 0.54),
+    0 0 2rem rgba(90, 82, 255, 0.35);
+}
+
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .stack-strip,
-  :root:not([data-theme="light"]) .stack-strip__title {
-    color: var(--c-text);
+  :root:not([data-theme="light"]) .stack-strip {
+    padding-block: 1.56rem 0.525rem;
+    background: #031021;
+    border-color: #17314d;
   }
 
-  :root:not([data-theme="light"]) .stack-strip {
-    background:
-      linear-gradient(90deg, color-mix(in srgb, var(--c-accent) 9%, transparent), transparent 35%, color-mix(in srgb, var(--c-accent-2) 10%, transparent)),
-      var(--c-bg);
-    border-color: var(--c-border);
+  :root:not([data-theme="light"]) .stack-strip .wrap { width: calc(100% - 4.75rem); }
+
+  :root:not([data-theme="light"]) .stack-strip::after {
+    display: block;
+    top: auto;
+    right: 2.5%;
+    bottom: 1rem;
+    left: 2.5%;
+    width: auto;
+    height: 1px;
+    background: #294258;
+    filter: none;
+    animation: none;
+    transform: none;
+  }
+
+  :root:not([data-theme="light"]) .stack-strip__head {
+    position: relative;
+    display: grid;
+    gap: 0.18rem;
+    width: auto;
+    height: auto;
+    margin: 0 0 1rem;
+    padding: 0 0 1.55rem;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
   }
 
   :root:not([data-theme="light"]) .stack-strip__kicker {
-    color: var(--c-text-muted);
+    color: #79cbe8;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
   }
 
   :root:not([data-theme="light"]) .stack-strip__title {
-    color: var(--c-text);
+    color: #f4f8ff;
+    font-family: var(--font-sans);
+    font-size: clamp(1.4rem, 1.9vw, 1.85rem);
+    font-weight: 400;
+    letter-spacing: -0.015em;
   }
 
   :root:not([data-theme="light"]) .stack-strip__rule {
-    background: var(--c-border);
-  }
-
-  :root:not([data-theme="light"]) .stack-item {
-    margin-block: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
+    position: relative;
+    top: 0.43rem;
+    width: 100%;
+    background: #294258;
+    opacity: 1;
   }
 
   :root:not([data-theme="light"]) .stack-marquee {
-    background:
-      radial-gradient(circle at 18% 50%, color-mix(in srgb, var(--c-accent) 12%, transparent), transparent 26%),
-      radial-gradient(circle at 78% 50%, color-mix(in srgb, var(--c-accent-2) 10%, transparent), transparent 28%),
-      rgba(4, 17, 14, 0.78);
-    border-block: 1px solid color-mix(in srgb, var(--c-accent) 24%, transparent);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.05),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.28);
+    margin-inline: -2.375rem;
+    padding-inline: 0;
+    width: calc(100% + 4.75rem);
   }
 
-  :root:not([data-theme="light"]) .brand-logo {
-    filter: drop-shadow(0 0 0.55rem color-mix(in srgb, var(--c-accent) 18%, transparent));
-    mix-blend-mode: normal;
+  :root:not([data-theme="light"]) .stack-list {
+    gap: 1.35rem;
+    padding-right: 1.35rem;
+  }
+
+  :root:not([data-theme="light"]) .stack-item,
+  :root:not([data-theme="light"]) .stack-item:hover {
+    width: 20.5rem;
+    flex-basis: 20.5rem;
+    height: 15.125rem;
+    border-radius: 0.8rem;
+    background:
+      linear-gradient(145deg, #061b34 0%, #031326 63%, #0b1030 100%) padding-box,
+      linear-gradient(135deg, #35d9ff 0%, #338aff 46%, #8754ff 100%) border-box;
+    box-shadow:
+      inset 0 0 1.25rem rgba(39, 121, 212, 0.11),
+      0 0 0.6rem rgba(33, 155, 255, 0.34),
+      0 0 1.5rem rgba(74, 81, 245, 0.18);
+  }
+
+  :root:not([data-theme="light"]) .stack-item::before {
+    background: linear-gradient(130deg, transparent 0 30%, rgba(31, 75, 131, 0.08) 30% 42%, transparent 42%);
     opacity: 1;
+  }
+
+  :root:not([data-theme="light"]) .stack-item::after {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+      linear-gradient(90deg, #12bfff, transparent 24%, #27d8ff 45%, transparent 64%, #6082ff 78%, transparent) top / 100% 2px no-repeat,
+      linear-gradient(90deg, #4778ff, transparent 34%, #21caff 58%, transparent 75%, #8b56ff) bottom / 100% 2px no-repeat;
+    filter: drop-shadow(0 0 0.35rem #41b8ff);
+  }
+
+  :root:not([data-theme="light"]) .stack-item--staubli .brand-logo { filter: brightness(0) invert(1); }
+
+  :root:not([data-theme="light"]) .brand-logo--dark-ink {
+    display: block;
+    filter: brightness(0) invert(0.91);
+  }
+
+  :root:not([data-theme="light"]) .stack-item--codesys .brand-logo--dark-ink { clip-path: inset(69% 0 0); }
+  :root:not([data-theme="light"]) .stack-item--bosch .brand-logo--dark-ink { clip-path: inset(0 78% 0 0); }
+  :root:not([data-theme="light"]) .stack-item--opcua .brand-logo--dark-ink { clip-path: inset(0 0 0 22%); }
+
+  :root:not([data-theme="light"]) .stack-item:hover {
+    box-shadow:
+      inset 0 0 1.25rem rgba(39, 121, 212, 0.16),
+      0 0 0.8rem rgba(33, 155, 255, 0.54),
+      0 0 2rem rgba(90, 82, 255, 0.35);
   }
 }
 
@@ -404,30 +598,24 @@ h4,
 
 @media (max-width: 40em) {
   .stack-strip {
-    padding-block: 0.9rem 1.1rem;
+    padding-block: 3.5rem;
   }
 
-  .stack-strip__head {
-    flex-wrap: wrap;
-    margin-bottom: 0.55rem;
-  }
-
-  .stack-strip__title {
-    flex: 1;
-    font-size: 0.72rem;
+  .stack-strip .wrap {
+    width: calc(100% - 1.5rem);
   }
 
   .stack-item,
   .stack-item:hover {
-    width: 10.2rem;
-    flex-basis: 10.2rem;
-    height: 5rem;
-    padding-inline: 1rem;
+    width: 12.5rem;
+    flex-basis: 12.5rem;
+    height: 9.2rem;
+    padding: 0.9rem;
   }
 
-  .brand-logo {
-    width: 8.3rem;
-    height: 4rem;
+  .brand-lockup {
+    width: 94%;
+    height: 78%;
   }
 
   .stack-track.is-looping {
@@ -680,15 +868,15 @@ h4,
 
   .stack-item,
   .stack-item:hover {
-    width: 8.8rem;
-    flex-basis: 8.8rem;
-    height: 4.5rem;
-    padding-inline: 0.65rem;
+    width: 12.5rem;
+    flex-basis: 12.5rem;
+    height: 9.2rem;
+    padding: 0.9rem;
   }
 
-  .brand-logo {
-    width: 7.2rem;
-    height: 3.45rem;
+  .brand-lockup {
+    width: 94%;
+    height: 78%;
   }
 
   .system-map {
@@ -1989,6 +2177,7 @@ h4,
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .stack-track.is-looping { animation: none; }
   .system-node__icon,
   .card__logo,
   .life__icon,
