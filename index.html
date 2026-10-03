@@ -181,19 +181,21 @@
   <!-- ===================== HERO ===================== -->
   <section class="hero" id="top">
     <div class="wrap">
+      <div class="hero__stage">
 
       <h1 class="hero__title">
-        <span data-i18n="hero.title">Software, die Maschinen bewegt.</span>
+        <span data-i18n-html="hero.titleVisual"><span class="hero__title-line hero__title-line--light">Software, die </span><span class="hero__title-line hero__title-line--cyan">Maschinen </span><span class="hero__title-line hero__title-line--violet">bewegt.</span></span>
       </h1>
 
       <figure class="hero__portrait">
         <img src="assets/img/portrait.png" alt="" width="705" height="1030">
-        <figcaption class="hero__name">
-          <svg viewBox="0 0 100 100" focusable="false">
+        <figcaption class="hero__name" aria-label="Paul Fodor">
+          <svg viewBox="0 0 100 100" focusable="false" aria-hidden="true">
             <defs>
-              <path id="hero-name-orbit" d="M50,50 m-46.5,0 a46.5,46.5 0 1,1 93,0 a46.5,46.5 0 1,1 -93,0"/>
+              <path id="hero-name-outer-orbit" d="M50,50 m-46.5,0 a46.5,46.5 0 1,1 93,0 a46.5,46.5 0 1,1 -93,0"/>
             </defs>
-            <text><textPath href="#hero-name-orbit" startOffset="25%" text-anchor="middle">PAUL FODOR</textPath></text>
+            <circle class="hero__name-track" cx="50" cy="50" r="46.5"/>
+            <text><textPath href="#hero-name-outer-orbit" startOffset="25%" text-anchor="middle">PAUL FODOR</textPath></text>
           </svg>
         </figcaption>
       </figure>
@@ -215,11 +217,22 @@
               Unterschied zwischen einem Fehler und einem Stillstand.
               Genau dort arbeite ich."
            ===================================================== -->
-      <p class="hero__lead" data-i18n="hero.lead">
-        Wir entwickeln und optimieren Steuerungssoftware für Produktions-
-        und Prüflinien — von der Prozessanalyse über die virtuelle
-        Absicherung bis zur stabilen Anlage im Dauerbetrieb.
+      <p class="hero__lead" data-i18n-html="hero.leadVisual">
+        <span class="hero__lead-line">Wir entwickeln und optimieren </span><span class="hero__lead-line">Steuerungssoftware für </span><span class="hero__lead-line">Produktions- und Prüflinien — von der </span><span class="hero__lead-line">Prozessanalyse über die virtuelle </span><span class="hero__lead-line">Absicherung bis zur stabilen Anlage </span><span class="hero__lead-line">im Dauerbetrieb.</span>
       </p>
+
+      <div class="hero__actions">
+        <a class="btn btn--primary hero__button" href="#projekte">
+          <span data-i18n="hero.projects">Projekte ansehen</span>
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M9 5h10v10"/></svg>
+        </a>
+        <a class="btn btn--ghost hero__button" href="#kontakt">
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="m3 6 9 7 9-7"/></svg>
+          <span data-i18n="hero.contact">Kontakt aufnehmen</span>
+        </a>
+      </div>
+
+      </div>
 
       <ul class="facts">
         <li class="fact fact--experience">
@@ -325,7 +338,7 @@
 
       <div class="section__head system-visual__head">
         <span class="section__num" aria-hidden="true">↗</span>
-        <h2 class="section__title" id="system-visual-title" data-i18n="visual.title">Von der Idee zur stabilen Anlage.</h2>
+        <h2 class="section__title" id="system-visual-title" data-i18n-html="visual.titleVisual"><span>Von der Idee zur </span><span class="system-visual__title-accent">stabilen Anlage.</span></h2>
         <span class="section__rule" aria-hidden="true"></span>
       </div>
 
@@ -351,7 +364,7 @@
         <div class="system-map__track">
           <article class="system-node system-node--analysis">
             <span class="system-node__number">01</span>
-            <svg class="icon-3d system-node__art" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><use href="#i-code"/></svg>
+            <img class="icon-3d system-node__icon system-node__art" src="assets/img/system-visual-monitor.png" alt="" width="270" height="280" aria-hidden="true">
             <strong data-i18n="visual.analysis.title">Planung &amp; Software</strong>
             <small data-i18n="visual.analysis.note">Prozessdaten / Logik</small>
           </article>
@@ -360,7 +373,7 @@
 
           <article class="system-node system-node--virtual">
             <span class="system-node__number">02</span>
-            <svg class="icon-3d system-node__art" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><use href="#i-cube"/></svg>
+            <img class="icon-3d system-node__icon system-node__art" src="assets/img/system-visual-cube.png" alt="" width="278" height="280" aria-hidden="true">
             <strong data-i18n="visual.virtual.title">Virtuelle Absicherung</strong>
             <small data-i18n="visual.virtual.note">Simulation / Test</small>
           </article>
@@ -369,7 +382,7 @@
 
           <article class="system-node system-node--operation">
             <span class="system-node__number">03</span>
-            <svg class="icon-3d system-node__art" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><use href="#i-chart"/></svg>
+            <img class="icon-3d system-node__icon system-node__art" src="assets/img/system-visual-chart.png" alt="" width="305" height="280" aria-hidden="true">
             <strong data-i18n="visual.operation.title">Stabiler Betrieb</strong>
             <small data-i18n="visual.operation.note">Produktion / Service</small>
           </article>
@@ -387,7 +400,7 @@
 
 
   <!-- ===================== 01 PROFIL ===================== -->
-  <section class="section" id="profil" aria-labelledby="profil-titel">
+  <section class="section profile-section" id="profil" aria-labelledby="profil-titel">
     <div class="wrap">
 
       <div class="section__head">
@@ -395,8 +408,9 @@
         <span class="section__rule" aria-hidden="true"></span>
       </div>
 
-      <div class="about">
-        <div class="about__text prose">
+      <div class="about profile-layout">
+        <div class="about__text prose profile-copy">
+          <h3 class="profile-headline" data-i18n-html="profile.headline">Maschinen <span>Leben geben.</span></h3>
           <p data-i18n-html="profile.intro">
             Der Reiz dieser Arbeit ist für mich derselbe geblieben wie am
             Anfang: Man tippt etwas in einen Rechner — und in der Halle
@@ -412,54 +426,63 @@
             die USA und Mexiko bis nach China und Korea.
           </p>
 
-          <ol class="path">
+          <ol class="path profile-timeline">
             <li class="path__item">
+              <span class="profile-timeline__icon profile-timeline__icon--electrician" aria-hidden="true"><img src="assets/img/profile-bolt.png" alt=""></span>
               <span class="path__role" data-i18n="profile.path.electrician">Elektriker für Haus- und Gebäudetechnik</span>
               <span class="path__note" data-i18n="profile.path.electricianNote">Ausbildung, danach drei Jahre bei Imtech</span>
             </li>
             <li class="path__item">
+              <span class="profile-timeline__icon profile-timeline__icon--technician" aria-hidden="true"><img src="assets/img/profile-graduation.png" alt=""></span>
               <span class="path__role" data-i18n="profile.path.technician">Elektrotechniker</span>
               <span class="path__note" data-i18n="profile.path.technicianNote">Werner-Siemens-Schule, Stuttgart</span>
             </li>
             <li class="path__item">
+              <span class="profile-timeline__icon profile-timeline__icon--developer" aria-hidden="true"><img src="assets/img/profile-code.png" alt=""></span>
               <span class="path__role" data-i18n="profile.path.developer">Softwareentwickler</span>
               <span class="path__note" data-i18n="profile.path.developerNote">SMS-Soft GmbH — seit dem Abschluss bis heute</span>
             </li>
           </ol>
 
-          <p data-i18n="profile.outsideWork">
-            Außerhalb der Arbeit: Fitness, Joggen — und das eigene Haus,
-            an dem immer irgendwo umgebaut wird.
-          </p>
+          <div class="profile-outside">
+            <img src="assets/img/profile-hobby.png" alt="" aria-hidden="true">
+            <p data-i18n="profile.outsideWork">Außerhalb der Arbeit: Fitness, Joggen — und das eigene Haus, an dem immer irgendwo umgebaut wird.</p>
+          </div>
         </div>
 
-        <div>
+        <aside class="profile-facts" aria-label="Profilinformationen">
+          <div class="profile-globe" aria-hidden="true"><img src="assets/img/profile-globe.png" alt=""></div>
           <dl class="about__meta">
-            <div>
+            <div class="profile-fact profile-fact--location">
+              <span class="profile-fact__icon" aria-hidden="true"><img src="assets/img/profile-location.png" alt=""></span>
               <dt data-i18n="meta.location">Standort</dt>
               <dd>Stuttgart</dd>
             </div>
-            <div>
+            <div class="profile-fact profile-fact--work">
+              <span class="profile-fact__icon" aria-hidden="true"><img src="assets/img/profile-monitor.png" alt=""></span>
               <dt data-i18n="meta.workModel">Arbeitsmodell</dt>
               <dd data-i18n="meta.workModelValue">Vor Ort, hybrid oder remote</dd>
             </div>
-            <div>
+            <div class="profile-fact profile-fact--languages">
+              <span class="profile-fact__icon" aria-hidden="true"><img src="assets/img/profile-chat.png" alt=""></span>
               <dt data-i18n="meta.languages">Sprachen</dt>
               <dd data-i18n="meta.languagesValue">Deutsch, Englisch, Rumänisch</dd>
             </div>
-            <div>
+            <div class="profile-fact profile-fact--travel">
+              <span class="profile-fact__icon" aria-hidden="true"><img src="assets/img/profile-plane.png" alt=""></span>
               <dt data-i18n="meta.travel">Reisebereit</dt>
               <dd data-i18n="meta.travelValue">Ja, weltweit</dd>
             </div>
-            <div>
+            <div class="profile-fact profile-fact--locations">
+              <span class="profile-fact__icon" aria-hidden="true"><img src="assets/img/profile-map.png" alt=""></span>
               <dt data-i18n="meta.locations">Einsatzorte</dt>
-              <dd data-i18n="meta.locationsValue">
+              <dd class="profile-location-chips" data-i18n="meta.locationsValue">
                 Frankreich, Tschechien, Ungarn, Rumänien, Türkei,
                 China, Korea, USA, Mexiko
               </dd>
             </div>
           </dl>
-        </div>
+        </aside>
       </div>
 
     </div>
@@ -542,7 +565,7 @@
 
 
   <!-- ===================== 03 PROJEKTE ===================== -->
-  <section class="section" id="projekte" aria-labelledby="projekte-titel">
+  <section class="section projects-section" id="projekte" aria-labelledby="projekte-titel">
     <div class="wrap">
 
       <div class="section__head">
@@ -550,7 +573,7 @@
         <span class="section__rule" aria-hidden="true"></span>
       </div>
 
-      <p class="prose card__text projects__intro" style="margin-bottom: var(--sp-6);" data-i18n="projects.intro">
+      <p class="prose card__text projects__intro" data-i18n="projects.intro">
         Was hier steht, ist ausschließlich in meiner Freizeit entstanden
         und gehört mir selbst. Berufliche Projekte unterliegen der
         Geheimhaltung und werden hier bewusst nicht gezeigt.
@@ -578,8 +601,8 @@
           </div>
 
           <p class="card__links">
-            <a target="_blank" rel="noopener noreferrer" href="https://paulfv.github.io/G04Event/" data-i18n="project.try">Ausprobieren</a>
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/PaulFV/G04Event">GitHub</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://paulfv.github.io/G04Event/"><span data-i18n="project.try">Ausprobieren</span></a>
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/PaulFV/G04Event"><img src="assets/img/github-mark.svg" alt="" aria-hidden="true">GitHub</a>
           </p>
         </article>
 
@@ -595,8 +618,8 @@
           </div>
 
           <p class="card__links">
-            <a target="_blank" rel="noopener noreferrer" href="https://paulfv.github.io/G04EggX/" data-i18n="project.try">Ausprobieren</a>
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/PaulFV/G04EggX">GitHub</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://paulfv.github.io/G04EggX/"><span data-i18n="project.try">Ausprobieren</span></a>
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/PaulFV/G04EggX"><img src="assets/img/github-mark.svg" alt="" aria-hidden="true">GitHub</a>
           </p>
         </article>
 
@@ -612,8 +635,8 @@
           </div>
 
           <p class="card__links">
-            <a target="_blank" rel="noopener noreferrer" href="https://paulfv.github.io/G04Sleep/" data-i18n="project.try">Ausprobieren</a>
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/PaulFV/G04Sleep">GitHub</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://paulfv.github.io/G04Sleep/"><span data-i18n="project.try">Ausprobieren</span></a>
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/PaulFV/G04Sleep"><img src="assets/img/github-mark.svg" alt="" aria-hidden="true">GitHub</a>
           </p>
         </article>
 
@@ -629,8 +652,8 @@
           </div>
 
           <p class="card__links">
-            <a target="_blank" rel="noopener noreferrer" href="https://paulfv.github.io/G04Fit/" data-i18n="project.try">Ausprobieren</a>
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/PaulFV/G04Fit">GitHub</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://paulfv.github.io/G04Fit/"><span data-i18n="project.try">Ausprobieren</span></a>
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/PaulFV/G04Fit"><img src="assets/img/github-mark.svg" alt="" aria-hidden="true">GitHub</a>
           </p>
         </article>
 
@@ -646,8 +669,8 @@
           </div>
 
           <p class="card__links">
-            <a target="_blank" rel="noopener noreferrer" href="https://paulfv.github.io/G04TV/" data-i18n="project.try">Ausprobieren</a>
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/PaulFV/G04TV">GitHub</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://paulfv.github.io/G04TV/"><span data-i18n="project.try">Ausprobieren</span></a>
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/PaulFV/G04TV"><img src="assets/img/github-mark.svg" alt="" aria-hidden="true">GitHub</a>
           </p>
         </article>
 
@@ -663,8 +686,8 @@
           </div>
 
           <p class="card__links">
-            <a target="_blank" rel="noopener noreferrer" href="https://paulfv.github.io/G04Explore/" data-i18n="project.try">Ausprobieren</a>
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/PaulFV/G04Explore">GitHub</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://paulfv.github.io/G04Explore/"><span data-i18n="project.try">Ausprobieren</span></a>
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/PaulFV/G04Explore"><img src="assets/img/github-mark.svg" alt="" aria-hidden="true">GitHub</a>
           </p>
         </article>
 

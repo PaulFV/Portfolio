@@ -21,8 +21,12 @@
     "nav.contact": "Contact",
     "hero.status": "Open to new opportunities",
     "hero.title": "Software that moves machines.",
+    "hero.titleVisual": "<span class=\"hero__title-line hero__title-line--light\">Software that </span><span class=\"hero__title-line hero__title-line--cyan\">moves </span><span class=\"hero__title-line hero__title-line--violet\">machines.</span>",
+    "hero.projects": "View projects",
+    "hero.contact": "Get in touch",
     "hero.role": "Software Developer · Industrial Automation",
     "hero.lead": "We develop and optimize control software for production and test lines — from process analysis and virtual validation to stable continuous operation.",
+    "hero.leadVisual": "We develop and optimize control software for production and test lines — from process analysis and virtual validation to stable continuous operation.",
     "facts.experience": "Years of experience",
     "facts.commissioned": "Systems commissioned",
     "facts.countries": "Countries with on-site assignments",
@@ -40,6 +44,7 @@
     "stack.boschType": "PLC",
     "stack.opcuaType": "Communication",
     "visual.title": "From idea to stable production.",
+    "visual.titleVisual": "<span>From idea to </span><span class=\"system-visual__title-accent\">stable production.</span>",
     "visual.kicker": "SYSTEM VISUALIZATION",
     "visual.lead": "Analysis, virtual validation and operation become one continuous automation process — visible, measurable and ready for the real line.",
     "visual.ready": "SYSTEM READY",
@@ -57,6 +62,7 @@
     "visual.telemetry.ready": "READY",
     "visual.telemetry.path": "DATA PATH",
     "sections.profile": "Profile",
+    "profile.headline": "Giving machines <span>life.</span>",
     "profile.intro": "The appeal of this work has stayed the same for me from the beginning: you type something into a computer — and components start moving on the shop floor. <strong>Giving machines life</strong> is what I call it.",
     "profile.background": "Automation software leaves little room for error: a mistake does not produce a red bar in a test report, but a stopped line. My work ranges from development to commissioning at the customer’s site — across Europe, the USA and Mexico, as well as China and Korea.",
     "profile.path.electrician": "Electrician for residential & building systems",
@@ -133,8 +139,12 @@
     "nav.contact": "Contact",
     "hero.status": "Deschis pentru noi provocări",
     "hero.title": "Software care pune mașinile în mișcare.",
+    "hero.titleVisual": "<span class=\"hero__title-line hero__title-line--light\">Software care </span><span class=\"hero__title-line hero__title-line--cyan\">pune mașinile </span><span class=\"hero__title-line hero__title-line--violet\">în mișcare.</span>",
+    "hero.projects": "Vezi proiectele",
+    "hero.contact": "Contactează-mă",
     "hero.role": "Dezvoltator software · Automatizări industriale",
     "hero.lead": "Dezvoltăm și optimizăm software de control pentru linii de producție și testare — de la analiza proceselor și validarea virtuală până la funcționarea stabilă continuă.",
+    "hero.leadVisual": "Dezvoltăm și optimizăm software de control pentru linii de producție și testare — de la analiza proceselor și validarea virtuală până la funcționarea stabilă continuă.",
     "facts.experience": "Ani de experiență",
     "facts.commissioned": "Sisteme puse în funcțiune",
     "facts.countries": "Țări cu intervenții la fața locului",
@@ -152,6 +162,7 @@
     "stack.boschType": "PLC",
     "stack.opcuaType": "Comunicare",
     "visual.title": "De la idee la producție stabilă.",
+    "visual.titleVisual": "<span>De la idee la </span><span class=\"system-visual__title-accent\">producție stabilă.</span>",
     "visual.kicker": "VIZUALIZARE SISTEM",
     "visual.lead": "Analiza, validarea virtuală și operarea devin un singur proces continuu de automatizare — vizibil, măsurabil și pregătit pentru linia reală.",
     "visual.ready": "SISTEM PREGĂTIT",
@@ -169,6 +180,7 @@
     "visual.telemetry.ready": "PREGĂTIT",
     "visual.telemetry.path": "RUTĂ DATE",
     "sections.profile": "Profil",
+    "profile.headline": "A da viață <span>mașinilor.</span>",
     "profile.intro": "Atracția acestei munci a rămas aceeași pentru mine de la început: introduci ceva într-un calculator — iar componentele încep să se miște în hală. <strong>Dau viață mașinilor</strong>, așa numesc eu acest lucru.",
     "profile.background": "Software-ul de automatizare lasă puțin loc pentru erori: o greșeală nu produce o bară roșie într-un raport de testare, ci o linie oprită. Munca mea merge de la dezvoltare până la punerea în funcțiune la client — în Europa, SUA și Mexic, dar și în China și Coreea.",
     "profile.path.electrician": "Electrician pentru instalații electrice în clădiri",
@@ -245,7 +257,11 @@
     "nav.contact": "Kapcsolat",
     "hero.status": "Nyitott vagyok új feladatokra",
     "hero.title": "Szoftver, amely gépeket mozgat.",
+    "hero.titleVisual": "<span class=\"hero__title-line hero__title-line--light\">Szoftver, amely </span><span class=\"hero__title-line hero__title-line--cyan\">gépeket </span><span class=\"hero__title-line hero__title-line--violet\">mozgat.</span>",
+    "hero.projects": "Projektek megtekintése",
+    "hero.contact": "Kapcsolatfelvétel",
     "hero.lead": "Gyártó- és tesztsorok vezérlőszoftverét fejlesztjük és optimalizáljuk — a folyamatelemzéstől és a virtuális validálástól a stabil, folyamatos üzemig.",
+    "hero.leadVisual": "Gyártó- és tesztsorok vezérlőszoftverét fejlesztjük és optimalizáljuk — a folyamatelemzéstől és a virtuális validálástól a stabil, folyamatos üzemig.",
     "facts.experience": "Év szakmai tapasztalat",
     "facts.commissioned": "Üzembe helyezett berendezés",
     "facts.countries": "Ország helyszíni munkával",
@@ -263,6 +279,7 @@
     "stack.boschType": "PLC",
     "stack.opcuaType": "Kommunikáció",
     "visual.title": "Az ötlettől a stabil berendezésig.",
+    "visual.titleVisual": "<span>Az ötlettől a </span><span class=\"system-visual__title-accent\">stabil berendezésig.</span>",
     "visual.kicker": "RENDSZERVIZUALIZÁCIÓ",
     "visual.lead": "Az elemzés, a virtuális validálás és az üzemeltetés egyetlen összefüggő automatizálási folyamattá válik — láthatóan, mérhetően, készen a valódi berendezésre.",
     "visual.ready": "RENDSZER KÉSZ",
@@ -280,6 +297,7 @@
     "visual.telemetry.ready": "KÉSZ",
     "visual.telemetry.path": "ADATÚT",
     "sections.profile": "Profil",
+    "profile.headline": "Életet adni <span>a gépeknek.</span>",
     "profile.intro": "Ennek a munkának a varázsa számomra ugyanaz maradt, mint a kezdetekkor: beírsz valamit a számítógépbe — és a csarnokban megmozdulnak az alkatrészek. <strong>Életet adni a gépeknek</strong> — így hívom ezt.",
     "profile.background": "Az automatizálási szoftver kevés hibát enged meg: egy hiba nem piros sávot eredményez egy tesztjelentésben, hanem álló gyártósort. Munkám a fejlesztéstől az ügyfélnél történő helyszíni üzembe helyezésig terjed — Európától az USA-n és Mexikón át Kínáig és Koreáig.",
     "profile.path.electrician": "Villanyszerelő (épületvillamosság)",
@@ -348,7 +366,11 @@
     "nav.contact": "İletişim",
     "hero.status": "Yeni görevlere açığım",
     "hero.title": "Makineleri hareket ettiren yazılım.",
+    "hero.titleVisual": "<span class=\"hero__title-line hero__title-line--light\">Makineleri </span><span class=\"hero__title-line hero__title-line--cyan\">hareket ettiren </span><span class=\"hero__title-line hero__title-line--violet\">yazılım.</span>",
+    "hero.projects": "Projeleri gör",
+    "hero.contact": "İletişime geç",
     "hero.lead": "Üretim ve test hatları için kontrol yazılımı geliştiriyor ve optimize ediyoruz — süreç analizinden ve sanal doğrulamadan kesintisiz çalışan kararlı tesise kadar.",
+    "hero.leadVisual": "Üretim ve test hatları için kontrol yazılımı geliştiriyor ve optimize ediyoruz — süreç analizinden ve sanal doğrulamadan kesintisiz çalışan kararlı tesise kadar.",
     "facts.experience": "Yıllık mesleki deneyim",
     "facts.commissioned": "Devreye alınan tesis",
     "facts.countries": "Sahada çalışılan ülke",
@@ -366,6 +388,7 @@
     "stack.boschType": "PLC",
     "stack.opcuaType": "İletişim",
     "visual.title": "Fikirden kararlı tesise.",
+    "visual.titleVisual": "<span>Fikirden </span><span class=\"system-visual__title-accent\">kararlı tesise.</span>",
     "visual.kicker": "SİSTEM GÖRSELLEŞTİRME",
     "visual.lead": "Analiz, sanal doğrulama ve işletme tek ve kesintisiz bir otomasyon sürecine dönüşür — görünür, ölçülebilir ve gerçek tesise hazır.",
     "visual.ready": "SİSTEM HAZIR",
@@ -383,6 +406,7 @@
     "visual.telemetry.ready": "HAZIR",
     "visual.telemetry.path": "VERİ YOLU",
     "sections.profile": "Profil",
+    "profile.headline": "Makinelere <span>hayat vermek.</span>",
     "profile.intro": "Bu işin cazibesi benim için başından beri aynı kaldı: bilgisayara bir şey yazıyorsunuz — ve sahada parçalar hareket etmeye başlıyor. Ben buna <strong>makinelere hayat vermek</strong> diyorum.",
     "profile.background": "Otomasyon yazılımı hataya pek yer bırakmaz: bir hata test raporunda kırmızı bir çubuk değil, duran bir hat demektir. Çalışma alanım geliştirmeden müşteride yerinde devreye almaya kadar uzanıyor — Avrupa’dan ABD ve Meksika’ya, Çin ve Kore’ye kadar.",
     "profile.path.electrician": "Bina elektrik tesisatı elektrikçisi",
@@ -451,7 +475,11 @@
     "nav.contact": "Contacto",
     "hero.status": "Abierto a nuevos retos",
     "hero.title": "Software que mueve máquinas.",
+    "hero.titleVisual": "<span class=\"hero__title-line hero__title-line--light\">Software que </span><span class=\"hero__title-line hero__title-line--cyan\">mueve </span><span class=\"hero__title-line hero__title-line--violet\">máquinas.</span>",
+    "hero.projects": "Ver proyectos",
+    "hero.contact": "Contactar",
     "hero.lead": "Desarrollamos y optimizamos software de control para líneas de producción y de prueba — desde el análisis de procesos y la validación virtual hasta una instalación estable en funcionamiento continuo.",
+    "hero.leadVisual": "Desarrollamos y optimizamos software de control para líneas de producción y de prueba — desde el análisis de procesos y la validación virtual hasta una instalación estable en funcionamiento continuo.",
     "facts.experience": "Años de experiencia",
     "facts.commissioned": "Instalaciones puestas en marcha",
     "facts.countries": "Países con trabajos in situ",
@@ -469,6 +497,7 @@
     "stack.boschType": "PLC",
     "stack.opcuaType": "Comunicación",
     "visual.title": "De la idea a una instalación estable.",
+    "visual.titleVisual": "<span>De la idea a </span><span class=\"system-visual__title-accent\">una instalación estable.</span>",
     "visual.kicker": "VISUALIZACIÓN DEL SISTEMA",
     "visual.lead": "El análisis, la validación virtual y la operación se convierten en un proceso de automatización continuo — visible, medible y listo para la instalación real.",
     "visual.ready": "SISTEMA LISTO",
@@ -486,6 +515,7 @@
     "visual.telemetry.ready": "LISTO",
     "visual.telemetry.path": "RUTA DE DATOS",
     "sections.profile": "Perfil",
+    "profile.headline": "Dar vida <span>a las máquinas.</span>",
     "profile.intro": "El atractivo de este trabajo sigue siendo para mí el mismo que al principio: escribes algo en un ordenador — y en la nave empiezan a moverse los componentes. <strong>Dar vida a las máquinas</strong>, así lo llamo yo.",
     "profile.background": "El software de automatización deja poco margen de error: un fallo no produce una barra roja en un informe de pruebas, sino una línea parada. Mi trabajo abarca desde el desarrollo hasta la puesta en marcha en las instalaciones del cliente — de Europa a EE. UU. y México, hasta China y Corea.",
     "profile.path.electrician": "Electricista de instalaciones en edificios",
@@ -720,6 +750,19 @@
         }
       }
     });
+
+    var locationChips = document.querySelector(".profile-location-chips");
+    if (locationChips) {
+      var locations = locationChips.textContent.split(/[,;]+/).map(function (place) {
+        return place.trim();
+      }).filter(Boolean);
+      locationChips.textContent = "";
+      locations.forEach(function (place) {
+        var chip = document.createElement("span");
+        chip.textContent = place;
+        locationChips.appendChild(chip);
+      });
+    }
 
     document.documentElement.lang = language;
     document.documentElement.style.setProperty("--facts-kicker", text.kicker);
