@@ -222,19 +222,23 @@
       </p>
 
       <ul class="facts">
-        <li class="fact">
+        <li class="fact fact--experience">
+          <span class="fact__icon" aria-hidden="true"></span>
           <div class="fact__value">21</div>
           <div class="fact__label" data-i18n="facts.experience">Jahre Berufserfahrung</div>
         </li>
-        <li class="fact">
+        <li class="fact fact--systems">
+          <span class="fact__icon" aria-hidden="true"></span>
           <div class="fact__value">40–50</div>
           <div class="fact__label" data-i18n="facts.commissioned">Anlagen in Betrieb genommen</div>
         </li>
-        <li class="fact">
+        <li class="fact fact--countries">
+          <span class="fact__icon" aria-hidden="true"></span>
           <div class="fact__value">9</div>
           <div class="fact__label" data-i18n="facts.countries">Länder mit Einsätzen vor Ort</div>
         </li>
-        <li class="fact">
+        <li class="fact fact--languages">
+          <span class="fact__icon" aria-hidden="true"></span>
           <div class="fact__value fact__languages" data-profile-languages aria-label="Deutsch, Englisch, Rumänisch">
             <span class="profile-language profile-language--de" aria-hidden="true" title="Deutsch">DE</span>
             <span class="profile-language__separator" aria-hidden="true">·</span>
@@ -480,7 +484,7 @@
 
         <article class="skill-group">
           <div class="skill-group__heading">
-            <svg class="skill-group__icon" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><use href="#i-chip"/></svg>
+            <span class="skill-group__art skill-group__art--control" aria-hidden="true"></span>
             <h3 class="skill-group__title" data-i18n="skills.control">Steuerung &amp; Automatisierung</h3>
           </div>
           <ul class="skill-list">
@@ -494,7 +498,7 @@
 
         <article class="skill-group">
           <div class="skill-group__heading">
-            <svg class="skill-group__icon" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><use href="#i-code"/></svg>
+            <span class="skill-group__art skill-group__art--programming" aria-hidden="true"></span>
             <h3 class="skill-group__title" data-i18n="skills.programming">Programmierung</h3>
           </div>
           <ul class="skill-list">
@@ -506,7 +510,7 @@
 
         <article class="skill-group">
           <div class="skill-group__heading">
-            <svg class="skill-group__icon" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><use href="#i-cube"/></svg>
+            <span class="skill-group__art skill-group__art--methods" aria-hidden="true"></span>
             <h3 class="skill-group__title" data-i18n="skills.methods">Methoden</h3>
           </div>
           <ul class="skill-list">
@@ -520,7 +524,7 @@
 
         <article class="skill-group">
           <div class="skill-group__heading">
-            <svg class="skill-group__icon" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><use href="#i-network"/></svg>
+            <span class="skill-group__art skill-group__art--tools" aria-hidden="true"></span>
             <h3 class="skill-group__title" data-i18n="skills.tools">Kommunikation &amp; Werkzeuge</h3>
           </div>
           <ul class="skill-list">
@@ -681,49 +685,49 @@
         <span class="section__rule" aria-hidden="true"></span>
       </div>
 
-      <p class="prose card__text" style="margin-bottom: var(--sp-6);">
+      <p class="personal__lead">
         <span data-i18n="private.lead">Was ich mache, wenn niemand dafür bezahlt.</span>
       </p>
 
       <div class="life">
 
         <article class="life__item">
-          <div class="life__heading">
+          <div class="life__art life__art--sport" aria-hidden="true"></div>
+          <div class="life__body">
             <h3 class="life__title" data-i18n="private.sport.title">Sport</h3>
-            <svg class="life__icon" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><use href="#i-sport"/></svg>
+            <p data-i18n="private.sport.text">
+              Fußball, Krafttraining und Laufen. Der Sport hält nicht nur
+              fit, sondern auch den Kopf frei — nach einer Woche
+              Inbetriebnahme im Ausland ist das der kürzeste Weg zurück in
+              den eigenen Rhythmus.
+            </p>
           </div>
-          <p data-i18n="private.sport.text">
-            Fußball, Krafttraining und Laufen. Der Sport hält nicht nur
-            fit, sondern auch den Kopf frei — nach einer Woche
-            Inbetriebnahme im Ausland ist das der kürzeste Weg zurück in
-            den eigenen Rhythmus.
-          </p>
         </article>
 
         <article class="life__item">
-          <div class="life__heading">
+          <div class="life__art life__art--home" aria-hidden="true"></div>
+          <div class="life__body">
             <h3 class="life__title" data-i18n="private.home.title">Haus, Werkstatt und Garten</h3>
-            <svg class="life__icon" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><use href="#i-home"/></svg>
+            <p data-i18n="private.home.text">
+              Am eigenen Haus ist eigentlich immer etwas offen, drinnen wie
+              draußen. Reparieren, umbauen, verbessern — was im Beruf
+              Retrofit heißt, heißt zu Hause einfach Wochenende.
+            </p>
           </div>
-          <p data-i18n="private.home.text">
-            Am eigenen Haus ist eigentlich immer etwas offen, drinnen wie
-            draußen. Reparieren, umbauen, verbessern — was im Beruf
-            Retrofit heißt, heißt zu Hause einfach Wochenende.
-          </p>
         </article>
 
         <article class="life__item">
-          <div class="life__heading">
+          <div class="life__art life__art--software" aria-hidden="true"></div>
+          <div class="life__body">
             <h3 class="life__title" data-i18n="private.software.title">Software in der Freizeit</h3>
-            <svg class="life__icon" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><use href="#i-code"/></svg>
+            <p data-i18n-html="private.software.text">
+              Die sechs Anwendungen aus dem
+              <a href="#projekte">Projektbereich</a> sind abends und an
+              Wochenenden entstanden. Niemand hat sie bestellt, niemand
+              bezahlt dafür — sie existieren, weil mich die Probleme
+              dahinter interessiert haben.
+            </p>
           </div>
-          <p data-i18n-html="private.software.text">
-            Die sechs Anwendungen aus dem
-            <a href="#projekte">Projektbereich</a> sind abends und an
-            Wochenenden entstanden. Niemand hat sie bestellt, niemand
-            bezahlt dafür — sie existieren, weil mich die Probleme
-            dahinter interessiert haben.
-          </p>
         </article>
 
 
@@ -735,35 +739,46 @@
 
   <section class="section" id="kontakt" aria-labelledby="kontakt-titel">
     <div class="wrap">
+      <div class="contact__intro">
+        <div class="contact__copy">
+          <p class="status contact__status">
+            <span class="status__dot" aria-hidden="true"></span>
+            <span data-i18n="hero.status">Offen für neue Aufgaben</span>
+          </p>
 
-      <p class="status" style="margin-bottom: var(--sp-6);">
-        <span class="status__dot" aria-hidden="true"></span>
-        <span data-i18n="hero.status">Offen für neue Aufgaben</span>
-      </p>
+          <div class="section__head">
+            <h2 class="section__title" id="kontakt-titel" data-i18n="sections.contact">Kontakt</h2>
+          </div>
 
-      <div class="section__head">
-        <h2 class="section__title" id="kontakt-titel" data-i18n="sections.contact">Kontakt</h2>
-        <span class="section__rule" aria-hidden="true"></span>
+          <p class="contact__lead" data-i18n="contact.lead">
+            Sie haben eine Aufgabe, bei der Software auf reale Fertigung
+            trifft? Dann schreiben Sie mir gern — ich antworte in der Regel
+            innerhalb weniger Tage.
+          </p>
+        </div>
+        <div class="contact__art" aria-hidden="true"></div>
       </div>
-
-      <p class="contact__lead" data-i18n="contact.lead">
-        Sie haben eine Aufgabe, bei der Software auf reale Fertigung
-        trifft? Dann schreiben Sie mir gern — ich antworte in der Regel
-        innerhalb weniger Tage.
-      </p>
 
       <!-- Adressen mit HTML-Entities geschrieben. Das bremst einfache
            Spam-Bots aus, funktioniert aber ohne JavaScript und bleibt
            per Klick nutzbar. -->
       <div class="contact__mails">
-        <p class="contact__mailrow">
-          <span class="contact__mailkind" data-i18n="contact.mailWork">Dienstlich</span>
-          <a class="contact__mail" href="mailto:Paul.Fodor&#64;sms-soft&#46;de">Paul.Fodor&#64;sms-soft&#46;de</a>
-        </p>
-        <p class="contact__mailrow">
-          <span class="contact__mailkind" data-i18n="contact.mailPrivate">Privat</span>
-          <a class="contact__mail" href="mailto:fodorpaul&#64;web&#46;de">fodorpaul&#64;web&#46;de</a>
-        </p>
+        <a class="contact__mailrow" href="mailto:Paul.Fodor&#64;sms-soft&#46;de">
+          <span class="contact__mailicon contact__mailicon--work" aria-hidden="true"></span>
+          <span class="contact__mailtext">
+            <span class="contact__mailkind" data-i18n="contact.mailWork">Dienstlich</span>
+            <span class="contact__mail">Paul.Fodor&#64;sms-soft&#46;de</span>
+          </span>
+          <span class="contact__mailarrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="contact__mailrow" href="mailto:fodorpaul&#64;web&#46;de">
+          <span class="contact__mailicon contact__mailicon--personal" aria-hidden="true"></span>
+          <span class="contact__mailtext">
+            <span class="contact__mailkind" data-i18n="contact.mailPrivate">Privat</span>
+            <span class="contact__mail">fodorpaul&#64;web&#46;de</span>
+          </span>
+          <span class="contact__mailarrow" aria-hidden="true">↗</span>
+        </a>
       </div>
 
       <div class="contact__links">
