@@ -1049,7 +1049,8 @@
 
   var projectsBox = document.querySelector("#projekte .projects");
   var projectIntro = document.querySelector("#projekte .projects__intro");
-  var compactProjects = window.matchMedia("(max-width: 40em)");
+  var compactProjects = window.matchMedia("(min-width: 0px)"); /* Karten: auf allen Größen aufklappbar */
+  var compactIntro = window.matchMedia("(max-width: 40em)"); /* Einleitung: nur auf dem Handy gekürzt */
 
   if (projectsBox) {
     var projectCards = Array.prototype.slice.call(projectsBox.querySelectorAll(".card"));
@@ -1146,7 +1147,7 @@
   if (projectIntro) {
     var syncProjectIntro = function () {
       projectIntro.classList.remove("is-open");
-      if (compactProjects.matches) {
+      if (compactIntro.matches) {
         projectIntro.setAttribute("role", "button");
         projectIntro.setAttribute("tabindex", "0");
         projectIntro.setAttribute("aria-expanded", "false");
@@ -1163,19 +1164,19 @@
     };
 
     projectIntro.addEventListener("click", function () {
-      if (compactProjects.matches) { toggleProjectIntro(); }
+      if (compactIntro.matches) { toggleProjectIntro(); }
     });
     projectIntro.addEventListener("keydown", function (event) {
-      if (compactProjects.matches && (event.key === "Enter" || event.key === " ")) {
+      if (compactIntro.matches && (event.key === "Enter" || event.key === " ")) {
         event.preventDefault();
         toggleProjectIntro();
       }
     });
     syncProjectIntro();
-    if (compactProjects.addEventListener) {
-      compactProjects.addEventListener("change", syncProjectIntro);
-    } else if (compactProjects.addListener) {
-      compactProjects.addListener(syncProjectIntro);
+    if (compactIntro.addEventListener) {
+      compactIntro.addEventListener("change", syncProjectIntro);
+    } else if (compactIntro.addListener) {
+      compactIntro.addListener(syncProjectIntro);
     }
   }
 

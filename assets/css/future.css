@@ -4338,17 +4338,6 @@ body { line-height: 1.55; }
   to   { rotate: 406deg; }
 }
 
-/* Roboter: schwenkt um die Basis, als würde der Arm arbeiten. */
-.fact--systems:hover .fact__icon {
-  transform-origin: 47.1cqw 47.3cqw;
-  animation: fact-robot-sway 2.8s ease-in-out infinite;
-}
-@keyframes fact-robot-sway {
-  0%, 100% { rotate: -5deg; translate: -0.6cqw 0; }
-  25%      { rotate: 2deg;  translate: 0 -0.8cqw; }
-  50%      { rotate: 6deg;  translate: 0.6cqw 0; }
-  75%      { rotate: -1deg; translate: 0 -0.5cqw; }
-}
 
 /* Globus: kreisrunde Ebene mit demselben Bildausschnitt dreht sich über dem Original. */
 .fact--countries .fact__icon::after {
@@ -4376,7 +4365,8 @@ body { line-height: 1.55; }
 @media (prefers-reduced-motion: reduce) {
   .fact--experience:hover .fact__clock,
   .fact--countries:hover .fact__icon::after { opacity: 0; }
-  .fact--systems:hover .fact__icon { animation: none; rotate: none; translate: none; }
+  .fact--systems:hover .fact__icon::before,
+  .fact--systems:hover .fact__icon::after { opacity: 0; }
 }
 
 /* DE · EN · RO: Sprechblasen schweben, die drei Punkte "tippen" nacheinander, die Sprachkürzel leuchten der Reihe nach auf.
@@ -4523,3 +4513,172 @@ body { line-height: 1.55; }
 /* Privat: Titel links, Pfeil immer ganz rechts in der Kachel. */
 #privat .life__body { justify-content: space-between; text-align: left; }
 #privat .life__title { text-align: left; }
+
+/* ==========================================================
+   Eigene Projekte: Kacheln wie bei Privat, auf allen Bildschirmgrößen.
+   Logo oben, Name links, Pfeil ganz rechts; Beschreibung und Buttons klappen in einem Feld unter der Reihe auf.
+   Handy: 3 pro Reihe, Tablet: 3, Desktop: 6 in einer Reihe.
+   ========================================================== */
+#projekte .projects { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; align-items: stretch; }
+@media (min-width: 40.01em) { #projekte .projects { gap: .8rem; } }
+@media (min-width: 64.01em) { #projekte .projects { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+
+#projekte .card {
+  display: block;
+  min-height: 0;
+  aspect-ratio: auto;
+  padding: .7rem .6rem .65rem;
+  text-align: left;
+  cursor: pointer;
+}
+#projekte .card__kicker { display: none; }
+#projekte .card > .card__body,
+#projekte .card > .card__links { display: none; }
+
+#projekte .card__title {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: .35rem;
+  row-gap: .55rem;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  font-size: .8rem;
+  line-height: 1.15;
+}
+#projekte .card__logo {
+  position: static;
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 3.1rem;
+  height: 3.1rem;
+  margin: 0;
+}
+#projekte .card__title a { pointer-events: none; font-size: inherit; }
+#projekte .card__title a::after { display: none; }
+#projekte .card__title::after {
+  content: "";
+  width: .9rem;
+  height: .9rem;
+  justify-self: end;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dff3ff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14M5.5 12.5 12 19l6.5-6.5'/%3E%3C/svg%3E") center / contain no-repeat;
+  opacity: .85;
+  transition: transform .25s ease;
+}
+#projekte .card.is-open .card__title::after { transform: rotate(180deg); }
+
+@media (min-width: 40.01em) {
+  #projekte .card { padding: .9rem .9rem .8rem; }
+  #projekte .card__logo { width: 4rem; height: 4rem; }
+  #projekte .card__title { font-size: 1.02rem; }
+  #projekte .card__title::after { width: 1.15rem; height: 1.15rem; }
+}
+
+/* Detailfeld unter dem Raster (alle Größen) */
+.projects__panel:not([hidden]) {
+  --tone: #18c5ff;
+  display: block;
+  max-width: 60rem;
+  margin-top: .7rem;
+  padding: .9rem 1.1rem 1rem;
+  border: 1.5px solid var(--tone);
+  border-radius: .8rem;
+  background: rgba(4, 20, 44, .85);
+  box-shadow: 0 0 .9rem color-mix(in srgb, var(--tone) 35%, transparent);
+}
+.projects__panel[data-tone="2"] { --tone: #ff9a3c; }
+.projects__panel[data-tone="3"] { --tone: #a463ff; }
+.projects__panel[data-tone="4"] { --tone: #ff4d6d; }
+.projects__panel[data-tone="5"] { --tone: #28c8ff; }
+.projects__panel[data-tone="6"] { --tone: #16e0c0; }
+.projects__panel-title { display: inline-block; margin-bottom: .4rem; color: #f5f8ff; font-size: 1.2rem; font-weight: 700; text-decoration: none; }
+#projekte .projects__panel .card__body { display: block; margin: 0; }
+#projekte .projects__panel .card__text { font-size: .95rem; line-height: 1.55; }
+#projekte .projects__panel .card__links { display: flex; flex-direction: row; flex-wrap: wrap; gap: .5rem; margin: 0; padding-top: .7rem; }
+#projekte .projects__panel .card__links a { width: auto; min-height: 2.1rem; padding: .25rem .85rem; font-size: .8rem; }
+@media (prefers-reduced-motion: reduce) {
+  #projekte .card__title::after { transition: none; }
+}
+
+/* ==========================================================
+   Rand färbt sich ein: Kacheln haben im Ruhezustand einen dezenten Rand
+   und bekommen beim Überfahren, bei Tastaturfokus und wenn sie aufgeklappt sind ihre Farbe samt Schein.
+   ========================================================== */
+
+/* Eigene Projekte (Rand ist der Verlauf auf der border-box-Ebene) */
+#projekte .card {
+  background:
+    radial-gradient(circle at 88% 15%, var(--card-halo), transparent 52%) padding-box,
+    linear-gradient(128deg, var(--card-fill-start), var(--card-fill-end)) padding-box,
+    linear-gradient(135deg, rgba(150, 185, 230, .34), rgba(150, 185, 230, .14)) border-box;
+  box-shadow: inset 0 0 2rem rgba(34, 118, 235, .08), 0 .8rem 1.8rem rgba(0, 0, 0, .2);
+}
+#projekte .card:hover,
+#projekte .card:focus-visible,
+#projekte .card.is-open {
+  background:
+    radial-gradient(circle at 88% 15%, var(--card-halo), transparent 52%) padding-box,
+    linear-gradient(128deg, var(--card-fill-start), var(--card-fill-end)) padding-box,
+    linear-gradient(135deg, var(--edge-a), var(--edge-b)) border-box;
+  box-shadow: inset 0 0 2rem rgba(34, 118, 235, .08), 0 0 1.5rem var(--card-glow), 0 1rem 2.2rem rgba(0, 0, 0, .25);
+}
+#projekte .card:focus-visible { outline: none; }
+
+/* Privat */
+#privat .life__item:nth-child(1) { --edge: #ff8b53; --glow: rgba(255, 85, 48, .55); }
+#privat .life__item:nth-child(2) { --edge: #00e9ca; --glow: rgba(0, 237, 199, .45); }
+#privat .life__item:nth-child(3) { --edge: #8b58ff; --glow: rgba(90, 110, 255, .5); }
+#privat .life__item:nth-child(n) {
+  border-color: rgba(150, 185, 230, .3);
+  box-shadow: inset 0 0 1.5rem rgba(0, 0, 0, .18), 0 .6rem 1.4rem rgba(0, 0, 0, .22);
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+#privat .life__item:nth-child(n):hover,
+#privat .life__item:nth-child(n):focus-visible,
+#privat .life__item:nth-child(n).is-open {
+  border-color: var(--edge);
+  box-shadow: 0 0 1.3rem var(--glow), inset 0 0 1.5rem color-mix(in srgb, var(--edge) 14%, transparent);
+}
+#privat .life__item:focus-visible { outline: none; }
+
+/* Live Profil-Daten */
+.hero .fact {
+  border-color: rgba(120, 170, 220, .34);
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+.hero .fact:hover {
+  border-color: #3de2ff;
+  box-shadow: inset 0 1px 0 rgba(197, 244, 255, .24), inset 0 -1rem 2rem rgba(0, 7, 20, .25), 0 0 1.2rem rgba(31, 208, 255, .38);
+}
+
+/* Roboter: Nur der Arm schwingt um sein Schultergelenk, der Sockel bleibt stehen.
+   Das Roboterbild ist in zwei Ebenen zerlegt (robot-static.png: Sockel mit sauberem Hintergrund,
+   robot-arm.png: freigestellter Arm), Ausschnitt (700|170) 300 x 270 aus dem Bild, in cqw umgerechnet. */
+.fact--systems .fact__icon::before,
+.fact--systems .fact__icon::after {
+  content: "";
+  position: absolute;
+  left: 24.15cqw;
+  top: 2.68cqw;
+  width: 60.9cqw;
+  height: 54.8cqw;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  pointer-events: none;
+}
+.fact--systems .fact__icon::before { background-image: url("../img/robot-static.png"); }
+.fact--systems .fact__icon::after {
+  background-image: url("../img/robot-arm.png");
+  transform-origin: 31.7% 68.5%; /* Schultergelenk */
+}
+.fact--systems:hover .fact__icon::before,
+.fact--systems:hover .fact__icon::after { opacity: 1; }
+.fact--systems:hover .fact__icon::after { animation: fact-arm-swing 3.2s ease-in-out infinite; }
+@keyframes fact-arm-swing {
+  0%, 100% { rotate: -5deg; }
+  30%      { rotate: 7deg; }
+  55%      { rotate: 1deg; }
+  80%      { rotate: 8deg; }
+}
