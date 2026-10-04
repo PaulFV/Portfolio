@@ -2416,7 +2416,7 @@ h4,
   text-shadow: 0 0 1rem color-mix(in srgb, var(--node-color) 70%, transparent);
 }
 
-.system-node__icon.system-node__art {
+.system-node__art {
   flex: 0 0 auto;
   align-self: center;
   min-height: 0;
@@ -2426,26 +2426,28 @@ h4,
   margin: 0 auto auto;
   border: 0;
   border-radius: 0;
-  background: none;
+  background-image: url("../img/system-visual-reference.png");
+  background-repeat: no-repeat;
+  background-size: 530% auto;
+  mask-image:
+    linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent),
+    linear-gradient(180deg, transparent, #000 7%, #000 92%, transparent);
+  mask-composite: intersect;
   box-shadow: none;
-  object-fit: contain;
-  filter: drop-shadow(0 0.8rem 1.1rem rgba(0, 7, 28, 0.5)) drop-shadow(0 0 1.4rem color-mix(in srgb, var(--node-color) 30%, transparent));
-  animation: system-art-float 5.2s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 1;
 }
 
+.system-node__art--analysis { background-position: 11% 51.5%; }
+.system-node__art--virtual { background-position: 50% 51.5%; }
+.system-node__art--operation { background-position: 89.5% 51.5%; }
+
 @media (min-width: 52.001em) and (max-width: 64em) {
-  .system-node__icon.system-node__art {
+  .system-node__art {
     width: min(82%, 14rem);
     height: clamp(9rem, 17vw, 14rem);
   }
-}
-
-.system-node--virtual .system-node__art { animation-delay: -1.7s; }
-.system-node--operation .system-node__art { animation-delay: -3.4s; }
-
-@keyframes system-art-float {
-  0%, 100% { transform: translate3d(0, 0.25rem, 8px); }
-  50% { transform: translate3d(0, -0.45rem, 16px); }
 }
 
 .system-node strong {
@@ -2522,9 +2524,9 @@ h4,
 @media (max-width: 52em) {
   .system-visual__intro { grid-template-columns: 1fr; align-items: start; gap: 1rem; }
   .system-visual__signal { justify-self: start; }
-  .system-map__track { min-height: 0; }
-  .system-node { min-height: 25rem; }
-  .system-node__icon.system-node__art { width: min(65%, 16rem); height: 14rem; max-height: none; }
+  .system-map__track { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+  .system-node { min-height: 25rem; aspect-ratio: auto; }
+  .system-node__art { width: min(65%, 16rem); height: 14rem; max-height: none; }
 }
 
 @media (max-width: 40em) {
@@ -2535,8 +2537,8 @@ h4,
   .system-map { padding: 1rem; border-radius: 1rem; }
   .system-map__topline { align-items: flex-start; }
   .system-map__live { padding: 0.45rem 0.65rem; font-size: 0.48rem; }
-  .system-node { min-height: 20rem; padding: 1.1rem; }
-  .system-node__icon.system-node__art { width: min(66%, 13rem); height: 11rem; }
+  .system-node { display: flex; flex-direction: column; align-items: stretch; min-height: 21rem; padding: 1.1rem; }
+  .system-node__art { width: min(78%, 15rem); height: auto; }
   .system-node strong { font-size: 1.3rem; }
   .system-node small { font-size: 0.95rem; }
   .system-map__telemetry { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 1rem; }
@@ -2551,7 +2553,6 @@ h4,
   .system-map__live > span:first-child,
   .system-map__connector i,
   .system-node::after,
-  .system-node__icon.system-node__art { animation: none; }
 }
 
 /* Profile — composition follows the supplied glass-panel reference. */
@@ -3198,4 +3199,143 @@ h4,
   #projekte .card__links a { min-height: 3rem; padding-inline: .4rem; font-size: clamp(.82rem, 3.5vw, 1rem); }
   #projekte .card__links img { width: 1.2rem; height: 1.2rem; margin-right: .2rem; }
   #projekte .card__links a::after { margin-left: .18rem; }
+}
+
+/* Density pass: the same compositions, sized for quicker scanning on every screen. */
+:root {
+  font-size: 90%;
+  --sp-5: 1.25rem;
+  --sp-6: 1.65rem;
+  --sp-7: 2.4rem;
+  --sp-8: 3.7rem;
+  --sp-9: 5.2rem;
+}
+
+body { line-height: 1.55; }
+
+.hero { --portrait-size: clamp(17rem, 36vw, 34rem); }
+.hero__title { font-size: clamp(2.8rem, 5.5vw, 5.4rem); }
+.hero__lead { margin-top: 1.6rem; font-size: clamp(1.08rem, 1.7vw, 1.55rem); }
+.hero__button { min-height: 3.15rem; font-size: clamp(.9rem, 1.2vw, 1.1rem); }
+.hero .facts { max-width: 72rem; margin-inline: auto; }
+
+#profil.profile-section,
+#skills,
+#projekte.projects-section,
+#privat,
+#kontakt { padding-block: clamp(2.6rem, 4vw, 4rem); }
+
+#profil .section__head,
+#skills .section__head,
+#projekte .section__head { margin-bottom: 1.35rem; }
+
+#profil .profile-headline { font-size: clamp(1.9rem, 3.8vw, 3.5rem); }
+#profil .profile-copy > p { font-size: clamp(.95rem, 1.25vw, 1.12rem); }
+#profil .profile-timeline { margin-top: 1rem; padding: .8rem 1rem; gap: .55rem; }
+#profil .profile-timeline .path__item { min-height: 4.3rem; }
+#profil .profile-timeline__icon { width: clamp(3.2rem, 5vw, 4.4rem); }
+#profil .profile-outside { margin-top: .8rem; }
+#profil .profile-globe { height: clamp(5.8rem, 9vw, 8rem); }
+#profil .about__meta .profile-fact { min-height: 4.3rem; padding-block: .5rem; }
+#profil .profile-fact__icon { width: 3rem; height: 3rem; }
+
+#skills .skill-group { min-height: 0; padding: clamp(1rem, 1.8vw, 1.45rem); }
+#skills .skill-group__details { width: 100%; }
+#skills .skill-group__heading {
+  display: flex;
+  align-items: center;
+  min-height: 4.7rem;
+  margin-bottom: .6rem;
+  list-style: none;
+}
+#skills .skill-group__heading::-webkit-details-marker { display: none; }
+#skills .skill-group__art { width: clamp(4rem, 6vw, 5.7rem); }
+#skills .skill { min-height: 2.85rem; }
+#skills .skill-group__details:not([open]) .skill-group__heading { margin-bottom: 0; }
+
+#projekte .card { min-height: 18.8rem; padding: clamp(1rem, 1.65vw, 1.45rem); }
+#projekte .card__title { min-height: 5.8rem; margin-top: .65rem; font-size: clamp(1.5rem, 2.6vw, 2.1rem); }
+#projekte .card__logo { width: clamp(6.1rem, 10vw, 7.7rem); height: clamp(6.1rem, 10vw, 7.7rem); }
+#projekte .card__links { padding-top: .85rem; }
+#projekte .card__links a { min-height: 3rem; }
+
+#privat .life__item { aspect-ratio: 478 / 585; }
+#privat .life__art { aspect-ratio: 478 / 330; }
+#privat .life__body { padding: 1rem 7% 6%; }
+#privat .life__title { margin-bottom: .7rem; }
+#kontakt .contact__lead { font-size: clamp(1rem, 1.7vw, 1.5rem); }
+
+.system-visual { padding-block: clamp(2.3rem, 3.3vw, 3.3rem); }
+.system-visual__head .section__title { font-size: clamp(2rem, 4vw, 3.6rem); }
+.system-visual__intro { margin-bottom: 1rem; }
+.system-visual__lead { font-size: clamp(.98rem, 1.45vw, 1.32rem); }
+.system-map { padding: clamp(1rem, 2vw, 1.8rem); }
+.system-map__topline { padding-bottom: 1rem; }
+.system-node { aspect-ratio: .96; padding: clamp(.9rem, 1.45vw, 1.35rem); }
+.system-node__art { width: min(78%, 16rem); height: clamp(8rem, 17vw, 15rem); }
+.system-node strong { font-size: clamp(1.2rem, 1.6vw, 1.55rem); }
+.system-node small { font-size: clamp(.88rem, 1.1vw, 1rem); }
+.system-map__telemetry { margin-top: 1.4rem; padding-top: 1rem; }
+
+@media (min-width: 40.01em) {
+  .hero .wrap { min-height: calc(var(--portrait-size) + 10rem); }
+  .hero__stage { min-height: clamp(36rem, calc(85svh - 5rem), 47rem); padding-block: 2rem 2.8rem; }
+}
+
+@media (max-width: 64em) {
+  .hero__title { font-size: clamp(2.8rem, 5.6vw, 4.8rem); }
+  #privat .life__item { aspect-ratio: 478 / 610; }
+}
+
+@media (max-width: 52em) {
+  #skills .skill-group__heading { min-height: 4rem; cursor: pointer; }
+  #skills .skill-group__heading::after {
+    content: "+";
+    margin-left: auto;
+    color: var(--skill-color);
+    font-size: 1.7rem;
+    line-height: 1;
+  }
+  #skills .skill-group__details[open] .skill-group__heading::after { content: "−"; }
+  #skills .skill-group { padding: .85rem 1rem; }
+  #skills .skill-group__art { width: 3.8rem; }
+  .system-node { aspect-ratio: auto; min-height: 18rem; }
+  .system-node__art { width: min(65%, 13rem); height: 12rem; }
+  #projekte .card { min-height: 18rem; }
+  #projekte .card__logo { width: 6.5rem; height: 6.5rem; }
+  #privat .life__item { aspect-ratio: auto; }
+}
+
+@media (max-width: 40em) {
+  .hero__stage { padding-block: 1.8rem 1.6rem; }
+  .hero__title { font-size: clamp(2.1rem, 8vw, 3rem); }
+  .hero__lead { margin: 1rem 0 1.2rem; font-size: 1rem; }
+  .hero__portrait { width: min(15.5rem, 63vw); height: min(15.5rem, 63vw); margin-top: 1.2rem; }
+  .hero__button { min-height: 3rem; font-size: .9rem; }
+  .hero .facts { max-width: 20rem; padding-top: 2.5rem; }
+  .facts::before, .facts::after { letter-spacing: .1em; }
+  #profil.profile-section,
+  #skills,
+  #projekte.projects-section,
+  #privat,
+  #kontakt { padding-block: 2.3rem; }
+  #profil .profile-headline { font-size: clamp(1.9rem, 8vw, 2.6rem); }
+  #profil .profile-timeline .path__item { min-height: 3.9rem; }
+  #skills .section__title,
+  #projekte .section__title,
+  #privat .section__title { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+  #skills .skill-group__heading { min-height: 3.6rem; }
+  #skills .skill-group__art { width: 3.25rem; }
+  #skills .skill-group__title { font-size: 1rem; }
+  #projekte .card { min-height: 17rem; padding: 1rem; }
+  #projekte .card__title { min-height: 4.4rem; padding-right: 5rem; font-size: 1.5rem; }
+  #projekte .card__logo { top: -2.1rem; width: 5rem; height: 5rem; }
+  #projekte .card__links a { min-height: 2.9rem; }
+  #privat .life__art { aspect-ratio: 478 / 300; }
+  #privat .life__body { padding: .9rem 6% 1.1rem; }
+  .system-visual { padding-block: 2rem; }
+  .system-visual__head .section__title { font-size: clamp(1.75rem, 7.2vw, 2.4rem); }
+  .system-node { min-height: 17rem; padding: 1rem; }
+  .system-node__art { width: min(75%, 12rem); height: auto; }
+  .system-map__telemetry { margin-top: 1rem; }
 }

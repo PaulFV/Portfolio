@@ -380,7 +380,7 @@
         <div class="system-map__track">
           <article class="system-node system-node--analysis">
             <span class="system-node__number">01</span>
-            <img class="icon-3d system-node__icon system-node__art" src="assets/img/system-visual-monitor.png" alt="" width="270" height="280" aria-hidden="true">
+            <span class="system-node__art system-node__art--analysis" aria-hidden="true"></span>
             <strong data-i18n="visual.analysis.title">Planung &amp; Software</strong>
             <small data-i18n="visual.analysis.note">Prozessdaten / Logik</small>
           </article>
@@ -389,7 +389,7 @@
 
           <article class="system-node system-node--virtual">
             <span class="system-node__number">02</span>
-            <img class="icon-3d system-node__icon system-node__art" src="assets/img/system-visual-cube.png" alt="" width="278" height="280" aria-hidden="true">
+            <span class="system-node__art system-node__art--virtual" aria-hidden="true"></span>
             <strong data-i18n="visual.virtual.title">Virtuelle Absicherung</strong>
             <small data-i18n="visual.virtual.note">Simulation / Test</small>
           </article>
@@ -398,7 +398,7 @@
 
           <article class="system-node system-node--operation">
             <span class="system-node__number">03</span>
-            <img class="icon-3d system-node__icon system-node__art" src="assets/img/system-visual-chart.png" alt="" width="305" height="280" aria-hidden="true">
+            <span class="system-node__art system-node__art--operation" aria-hidden="true"></span>
             <strong data-i18n="visual.operation.title">Stabiler Betrieb</strong>
             <small data-i18n="visual.operation.note">Produktion / Service</small>
           </article>
@@ -522,10 +522,11 @@
       <div class="skills">
 
         <article class="skill-group">
-          <div class="skill-group__heading">
-            <span class="skill-group__art skill-group__art--control" aria-hidden="true"></span>
-            <h3 class="skill-group__title" data-i18n="skills.control">Steuerung &amp; Automatisierung</h3>
-          </div>
+          <details class="skill-group__details" open>
+            <summary class="skill-group__heading">
+              <span class="skill-group__art skill-group__art--control" aria-hidden="true"></span>
+              <span class="skill-group__title" role="heading" aria-level="3" data-i18n="skills.control">Steuerung &amp; Automatisierung</span>
+            </summary>
           <ul class="skill-list">
             <li class="skill"><span class="skill__name">TwinCAT</span><span class="skill__level skill__level--core" data-i18n="skill.core">Kernkompetenz</span></li>
             <li class="skill"><span class="skill__name">CodeSys</span><span class="skill__level skill__level--core" data-i18n="skill.core">Kernkompetenz</span></li>
@@ -533,25 +534,29 @@
             <li class="skill"><span class="skill__name" data-i18n="skill.bosch">Bosch-Steuerungen</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
             <li class="skill"><span class="skill__name">ctrlX Automation</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
           </ul>
+          </details>
         </article>
 
         <article class="skill-group">
-          <div class="skill-group__heading">
-            <span class="skill-group__art skill-group__art--programming" aria-hidden="true"></span>
-            <h3 class="skill-group__title" data-i18n="skills.programming">Programmierung</h3>
-          </div>
+          <details class="skill-group__details" open>
+            <summary class="skill-group__heading">
+              <span class="skill-group__art skill-group__art--programming" aria-hidden="true"></span>
+              <span class="skill-group__title" role="heading" aria-level="3" data-i18n="skills.programming">Programmierung</span>
+            </summary>
           <ul class="skill-list">
             <li class="skill"><span class="skill__name">IEC 61131-3 — ST</span><span class="skill__level skill__level--core" data-i18n="skill.core">Kernkompetenz</span></li>
             <li class="skill"><span class="skill__name">IEC 61131-3 — FUP / KOP</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
             <li class="skill"><span class="skill__name">C++</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
           </ul>
+          </details>
         </article>
 
         <article class="skill-group">
-          <div class="skill-group__heading">
-            <span class="skill-group__art skill-group__art--methods" aria-hidden="true"></span>
-            <h3 class="skill-group__title" data-i18n="skills.methods">Methoden</h3>
-          </div>
+          <details class="skill-group__details" open>
+            <summary class="skill-group__heading">
+              <span class="skill-group__art skill-group__art--methods" aria-hidden="true"></span>
+              <span class="skill-group__title" role="heading" aria-level="3" data-i18n="skills.methods">Methoden</span>
+            </summary>
           <ul class="skill-list">
             <li class="skill"><span class="skill__name" data-i18n="skill.virtualCommissioning">Virtuelle Inbetriebnahme</span><span class="skill__level skill__level--core" data-i18n="skill.core">Kernkompetenz</span></li>
             <li class="skill"><span class="skill__name" data-i18n="skill.simulation">Simulation &amp; Absicherung</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
@@ -559,19 +564,22 @@
             <li class="skill"><span class="skill__name" data-i18n="skill.troubleshooting">Fehlersuche im laufenden Betrieb</span><span class="skill__level skill__level--core" data-i18n="skill.core">Kernkompetenz</span></li>
             <li class="skill"><span class="skill__name" data-i18n="skill.retrofit">Retrofit bestehender Anlagen</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
           </ul>
+          </details>
         </article>
 
         <article class="skill-group">
-          <div class="skill-group__heading">
-            <span class="skill-group__art skill-group__art--tools" aria-hidden="true"></span>
-            <h3 class="skill-group__title" data-i18n="skills.tools">Kommunikation &amp; Werkzeuge</h3>
-          </div>
+          <details class="skill-group__details" open>
+            <summary class="skill-group__heading">
+              <span class="skill-group__art skill-group__art--tools" aria-hidden="true"></span>
+              <span class="skill-group__title" role="heading" aria-level="3" data-i18n="skills.tools">Kommunikation &amp; Werkzeuge</span>
+            </summary>
           <ul class="skill-list">
             <li class="skill"><span class="skill__name">PROFINET</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
             <li class="skill"><span class="skill__name">EtherCAT</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
             <li class="skill"><span class="skill__name" data-i18n="skill.hmi">HMI-Entwicklung</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
             <li class="skill"><span class="skill__name" data-i18n="skill.versionControl">Git / Versionsverwaltung</span><span class="skill__level skill__level--solid" data-i18n="skill.solid">sicher</span></li>
           </ul>
+          </details>
         </article>
 
       </div>

@@ -915,6 +915,27 @@
   }
 
 
+  /* --- Kompakte Skill-Gruppen auf Handy und Tablet ----------- */
+
+  var skillDetails = Array.prototype.slice.call(
+    document.querySelectorAll(".skill-group__details")
+  );
+  var compactSkills = window.matchMedia("(max-width: 52em)");
+
+  function syncSkillDetails() {
+    skillDetails.forEach(function (details) {
+      details.open = !compactSkills.matches;
+    });
+  }
+
+  syncSkillDetails();
+  if (compactSkills.addEventListener) {
+    compactSkills.addEventListener("change", syncSkillDetails);
+  } else if (compactSkills.addListener) {
+    compactSkills.addListener(syncSkillDetails);
+  }
+
+
   /* --- Aktiven Navigationspunkt beim Scrollen markieren ------
      IntersectionObserver statt eines scroll-Handlers: Der Browser
      rechnet das selbst aus, statt bei jedem Scroll-Ereignis
