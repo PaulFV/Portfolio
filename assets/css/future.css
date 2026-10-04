@@ -2552,7 +2552,9 @@ h4,
   .system-visual__signal-dot,
   .system-map__live > span:first-child,
   .system-map__connector i,
-  .system-node::after,
+  .system-node::after {
+    animation: none;
+  }
 }
 
 /* Profile — composition follows the supplied glass-panel reference. */
@@ -3338,4 +3340,23 @@ body { line-height: 1.55; }
   .system-node { min-height: 17rem; padding: 1rem; }
   .system-node__art { width: min(75%, 12rem); height: auto; }
   .system-map__telemetry { margin-top: 1rem; }
+}
+
+/* Tablet im Hochformat: drei Karten nebeneinander statt einer langen Spalte. */
+@media (min-width: 40.01em) and (max-width: 52em) {
+  .system-map__track { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .system-map__connector { display: none; }
+  .system-node { min-height: 0; aspect-ratio: .78; padding: 1rem; }
+  .system-node__art { width: min(100%, 12rem); height: auto; }
+  .system-node strong { max-width: none; font-size: 1.1rem; }
+  .system-node small { font-size: .85rem; }
+}
+
+/* Tablet: Skills und Projekte zweispaltig statt einer schmalen Spalte. */
+@media (min-width: 40.01em) and (max-width: 64em) {
+  #skills .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+}
+
+@media (min-width: 40.01em) and (max-width: 52em) {
+  #projekte .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
