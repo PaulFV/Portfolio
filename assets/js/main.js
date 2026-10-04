@@ -114,7 +114,7 @@
     "sections.private": "Personal",
     "private.sport.title": "Sport",
     "private.sport.text": "Football, strength training and running. Sport keeps me fit and clears my head — after a week of commissioning abroad, it is the fastest way back into my own rhythm.",
-    "private.home.title": "House, workshop & garden",
+    "private.home.title": "House & garden",
     "private.home.text": "There is always something unfinished around our own house, inside and out. Repair, rebuild, improve — what is called retrofit at work is simply the weekend at home.",
     "private.software.title": "Software in my spare time",
     "private.software.text": "The six applications in the <a href=\"#projekte\">projects section</a> were built in the evenings and on weekends. Nobody commissioned them, nobody paid for them — they exist because the problems behind them interested me.",
@@ -242,7 +242,7 @@
     "sections.private": "Personal",
     "private.sport.title": "Sport",
     "private.sport.text": "Fotbal, antrenamente de forță și alergare. Sportul mă menține în formă și îmi limpezește mintea — după o săptămână de punere în funcțiune în străinătate, este cel mai rapid mod de a-mi regăsi ritmul.",
-    "private.home.title": "Casă, atelier și grădină",
+    "private.home.title": "Casă și grădină",
     "private.home.text": "În jurul casei noastre există mereu ceva neterminat, în interior sau afară. Repară, reconstruiește, îmbunătățește — ceea ce la muncă se numește retrofit este pur și simplu weekendul acasă.",
     "private.software.title": "Software în timpul liber",
     "private.software.text": "Cele șase aplicații din <a href=\"#projekte\">secțiunea de proiecte</a> au fost construite seara și în weekend. Nimeni nu le-a comandat și nimeni nu m-a plătit pentru ele — există pentru că problemele din spatele lor m-au interesat.",
@@ -367,7 +367,7 @@
     "sections.private": "Magánélet",
     "private.sport.title": "Sport",
     "private.sport.text": "Foci, erősítő edzés és futás. A sport nemcsak fitten tart, hanem a fejemet is kitisztítja — egy külföldi üzembe helyezéssel töltött hét után ez a leggyorsabb út vissza a saját ritmusomhoz.",
-    "private.home.title": "Ház, műhely és kert",
+    "private.home.title": "Ház és kert",
     "private.home.text": "A saját házunk körül szinte mindig van valami befejezetlen, bent és kint egyaránt. Javítani, átépíteni, jobbá tenni — amit a munkában retrofitnek hívnak, az otthon egyszerűen a hétvége.",
     "private.software.title": "Szoftver szabadidőben",
     "private.software.text": "A <a href=\"#projekte\">projektek</a> között bemutatott hat alkalmazás esténként és hétvégén készült. Senki sem rendelte meg, senki sem fizetett értük — azért léteznek, mert érdekeltek a mögöttük álló problémák.",
@@ -486,7 +486,7 @@
     "sections.private": "Kişisel",
     "private.sport.title": "Spor",
     "private.sport.text": "Futbol, kuvvet antrenmanı ve koşu. Spor beni sadece formda tutmuyor, kafamı da boşaltıyor — yurt dışında bir haftalık devreye alma işinden sonra kendi ritmime dönmenin en kısa yolu bu.",
-    "private.home.title": "Ev, atölye ve bahçe",
+    "private.home.title": "Ev ve bahçe",
     "private.home.text": "Kendi evimizde içeride ya da dışarıda hemen her zaman bitmemiş bir iş vardır. Onarmak, yeniden yapmak, iyileştirmek — işte retrofit denen şey, evde sadece hafta sonudur.",
     "private.software.title": "Boş zamanda yazılım",
     "private.software.text": "<a href=\"#projekte\">Projeler bölümündeki</a> altı uygulama akşamları ve hafta sonları ortaya çıktı. Kimse sipariş etmedi, kimse ücret ödemedi — arkalarındaki problemler ilgimi çektiği için varlar.",
@@ -605,7 +605,7 @@
     "sections.private": "Personal",
     "private.sport.title": "Deporte",
     "private.sport.text": "Fútbol, entrenamiento de fuerza y correr. El deporte no solo me mantiene en forma, también me despeja la cabeza — después de una semana de puesta en marcha en el extranjero, es el camino más rápido para recuperar mi propio ritmo.",
-    "private.home.title": "Casa, taller y jardín",
+    "private.home.title": "Casa y jardín",
     "private.home.text": "En nuestra propia casa casi siempre hay algo pendiente, dentro y fuera. Reparar, reformar, mejorar — lo que en el trabajo se llama retrofit, en casa es simplemente el fin de semana.",
     "private.software.title": "Software en mi tiempo libre",
     "private.software.text": "Las seis aplicaciones de la <a href=\"#projekte\">sección de proyectos</a> nacieron por las tardes y los fines de semana. Nadie las encargó, nadie pagó por ellas — existen porque me interesaban los problemas que hay detrás.",
@@ -1346,70 +1346,62 @@
 
 
   /* --- Aktiven Navigationspunkt beim Scrollen markieren ------
-     IntersectionObserver statt eines scroll-Handlers: Der Browser
-     rechnet das selbst aus, statt bei jedem Scroll-Ereignis
-     Layout-Werte abzufragen.                                  */
+     Aktiv ist der letzte Abschnitt, dessen Oberkante die Linie unter der
+     Kopfzeile (100 px + 10 % der Fensterhöhe) schon passiert hat. Am Seitenende
+     zählt immer der letzte Abschnitt. Das gilt auch für kurze Abschnitte
+     wie "Dienstprojekte". "Eigene Projekte" steht unter Privat und zählt
+     zu dessen Menüpunkt. Die Prüfung läuft höchstens einmal pro Frame. */
 
   var links = Array.prototype.slice.call(
     document.querySelectorAll(".nav__link")
   );
 
-  var sections = links
-    .map(function (link) {
-      var id = link.getAttribute("href");
-      return id && id.charAt(0) === "#" ? document.querySelector(id) : null;
-    })
-    .filter(Boolean);
+  var spyIds = [];
+  links.forEach(function (link) {
+    var href = link.getAttribute("href");
+    if (href && href.charAt(0) === "#" && document.querySelector(href)) {
+      spyIds.push(href.slice(1));
+      if (href === "#privat" && document.getElementById("projekte")) { spyIds.push("projekte"); }
+    }
+  });
 
-  if (sections.length && "IntersectionObserver" in window) {
-    var visible = new Set();
+  if (spyIds.length) {
+    var spyQueued = false;
 
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            visible.add(entry.target.id);
-          } else {
-            visible.delete(entry.target.id);
-          }
-        });
-
-        /* Bei mehreren gleichzeitig sichtbaren Abschnitten gewinnt
-           der oberste in der Dokumentreihenfolge. */
-        var activeId = null;
-        for (var i = 0; i < sections.length; i++) {
-          if (visible.has(sections[i].id)) {
-            activeId = sections[i].id;
-            break;
-          }
+    var updateNavSpy = function () {
+      spyQueued = false;
+      var line = 100 + window.innerHeight * 0.1;
+      var activeId = null;
+      for (var i = 0; i < spyIds.length; i++) {
+        if (document.getElementById(spyIds[i]).getBoundingClientRect().top <= line) {
+          activeId = spyIds[i];
         }
-        /* „Eigene Projekte" steht unter Privat und zählt zu dessen Menüpunkt. */
-        if (!activeId && visible.has("projekte")) { activeId = "privat"; }
-
-        links.forEach(function (link) {
-          var isActive = link.getAttribute("href") === "#" + activeId;
-          if (isActive) {
-            link.setAttribute("aria-current", "true");
-          } else {
-            link.removeAttribute("aria-current");
-          }
-        });
-      },
-      {
-        /* Oben um die Höhe der Kopfzeile einrücken, unten so weit,
-           dass ein Abschnitt erst „aktiv" wird, wenn er wirklich
-           den Blick füllt.
-           Achtung: rootMargin erlaubt nur px und %, kein rem. */
-        rootMargin: "-100px 0px -55% 0px",
-        threshold: 0
       }
-    );
+      var doc = document.documentElement;
+      if (window.innerHeight + window.pageYOffset >= doc.scrollHeight - 4) {
+        activeId = spyIds[spyIds.length - 1];
+      }
+      if (activeId === "projekte") { activeId = "privat"; }
 
-    sections.forEach(function (section) {
-      observer.observe(section);
-    });
-    var ownProjects = document.getElementById("projekte");
-    if (ownProjects) { observer.observe(ownProjects); }
+      links.forEach(function (link) {
+        if (link.getAttribute("href") === "#" + activeId) {
+          link.setAttribute("aria-current", "true");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+    };
+
+    var queueNavSpy = function () {
+      if (!spyQueued) {
+        spyQueued = true;
+        window.requestAnimationFrame(updateNavSpy);
+      }
+    };
+
+    window.addEventListener("scroll", queueNavSpy, { passive: true });
+    window.addEventListener("resize", queueNavSpy);
+    updateNavSpy();
   }
 
 
