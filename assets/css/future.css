@@ -4097,3 +4097,32 @@ body { line-height: 1.55; }
   .hero .fact { border-radius: 1rem; }
   #skills .skills { align-items: stretch; }
 }
+
+/* Desktop: Profilbild mit Kreis weiter nach links. Die Verschiebung wächst mit der Bildschirmbreite (ab ca. 1150 px), damit die Schriftbahn dem Text nicht zu nahe kommt. */
+@media (min-width: 64.01em) {
+  .hero { --portrait-right: clamp(0px, (100vw - 80rem) * .3, 11rem); }
+}
+
+/* Desktop: Live Profil-Daten so breit wie der Kasten der Systemvisualisierung (min(95 %, 90 rem)).
+   Der Hero-Bereich ist schmaler (min(88 %, 90 rem)), deshalb wird die Breite aus der Elternbreite umgerechnet und mittig gehalten. */
+@media (min-width: 64.01em) {
+  .hero .facts {
+    --facts-w: min(calc(100% * .95 / .88), 90rem);
+    width: var(--facts-w);
+    max-width: none;
+    margin-inline: calc((100% - var(--facts-w)) / 2);
+  }
+}
+
+/* Alle Abschnittsüberschriften gleich groß und dezent: Profil, Von der Idee zur stabilen Anlage, Technologien & Methoden, Eigene Projekte, Privat, Kontakt. */
+#profil .section__title,
+#system-visual .section__title,
+#skills .section__title,
+#projekte .section__title,
+#privat .section__title,
+#kontakt .section__title {
+  font-size: clamp(1.45rem, 2.2vw, 2rem);
+  font-weight: 720;
+  line-height: 1.15;
+  letter-spacing: -.03em;
+}
