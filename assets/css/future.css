@@ -3581,7 +3581,7 @@ body { line-height: 1.55; }
   letter-spacing: .08em;
   white-space: nowrap;
   text-shadow: 0 0 .5rem rgba(49, 225, 251, .75);
-  animation: comet-code var(--t, 11s) linear var(--d, 0s) infinite;
+  animation: comet-code calc(var(--t, 11s) * 1.5) linear var(--d, 0s) infinite; /* 1,5x langsamer */
 }
 
 .hero__comet-code span:nth-child(1)  { --x: 20%; --t: 19s; --d: 2s; }
