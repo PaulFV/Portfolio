@@ -4216,3 +4216,48 @@ body { line-height: 1.55; }
 /* Systemvisualisierung: Die "LIVE SYSTEM MAP"-Pille ist am Desktop absolut positioniert (42 px hoch) und ragte über die Karten.
    Die Kopfzeile bekommt deshalb mindestens die Höhe der Pille plus Abstand. */
 .system-map__topline { min-height: 3.5rem; }
+
+/* Einheitliche Inhaltsbreite: Kopfzeile, Hero, alle Abschnitte und Fußzeile beginnen und enden auf derselben Linie
+   (wie die Systemvisualisierung: 95 %, höchstens 90 rem; auf dem Handy Bildschirmbreite minus 2 rem). */
+.site-header__inner,
+.hero .wrap,
+.system-visual .wrap,
+#profil .wrap,
+#skills .wrap,
+#projekte .wrap,
+#privat .wrap,
+#kontakt .wrap,
+.site-footer .wrap {
+  width: min(95%, 90rem);
+}
+@media (max-width: 40em) {
+  .site-header__inner,
+  .hero .wrap,
+  .system-visual .wrap,
+  #profil .wrap,
+  #skills .wrap,
+  #projekte .wrap,
+  #privat .wrap,
+  #kontakt .wrap,
+  .site-footer .wrap {
+    width: min(100% - 2rem, 90rem);
+  }
+}
+
+/* Live Profil-Daten füllen jetzt einfach den (gleich breiten) Hero-Container. */
+@media (min-width: 64.01em) {
+  .hero .facts { --facts-w: 100%; margin-inline: 0; }
+}
+
+/* Überschrift "Eigene Projekte" bündig mit den anderen Abschnitten (der Kopfbereich hatte 1 rem seitlichen Außenabstand). */
+#projekte .section__head { margin-inline: 0; }
+
+/* Live Profil-Daten auch auf Tablets über die volle Container-Breite. */
+@media (min-width: 40.01em) {
+  .hero .facts { width: 100%; max-width: none; margin-inline: 0; }
+}
+
+/* Privat-Kacheln auf Tablets ebenfalls über die volle Container-Breite statt mittig begrenzt. */
+@media (min-width: 40.01em) {
+  #privat .life { max-width: none; margin-inline: 0; }
+}
