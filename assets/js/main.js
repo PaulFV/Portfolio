@@ -100,6 +100,9 @@
     "skill.hmi": "HMI development",
     "skill.versionControl": "Git / version control",
     "sections.projects": "Personal Projects",
+    "sections.work": "Work Projects",
+    "work.status": "In progress",
+    "work.note": "This section is being set up.",
     "projects.intro": "Everything here was created in my spare time and belongs to me. Professional projects are confidential and are deliberately not shown here. All six run offline, store their data locally and require no build system — an engineering principle from industrial automation: what has to run must not depend on a connection.",
     "project.try": "Try it",
     "project.event.summary": "Event calendar with 300 dates from 24 countries, live countdown and search. Works offline.",
@@ -225,6 +228,9 @@
     "skill.hmi": "Dezvoltare HMI",
     "skill.versionControl": "Git / controlul versiunilor",
     "sections.projects": "Proiecte personale",
+    "sections.work": "Proiecte de serviciu",
+    "work.status": "În lucru",
+    "work.note": "Această secțiune este în curs de realizare.",
     "projects.intro": "Tot ce apare aici a fost creat în timpul liber și îmi aparține. Proiectele profesionale sunt confidențiale și nu sunt prezentate aici. Toate cele șase aplicații funcționează offline, își păstrează datele local și nu au nevoie de un sistem de build — un principiu din automatizările industriale: ceea ce trebuie să funcționeze nu trebuie să depindă de o conexiune.",
     "project.try": "Încearcă",
     "project.event.summary": "Calendar de evenimente cu 300 de date din 24 de țări, cronometru live și căutare. Funcționează offline.",
@@ -347,6 +353,9 @@
     "skill.hmi": "HMI-fejlesztés",
     "skill.versionControl": "Git / verziókezelés",
     "sections.projects": "Saját projektek",
+    "sections.work": "Munkahelyi projektek",
+    "work.status": "Folyamatban",
+    "work.note": "Ez a rész jelenleg készül.",
     "projects.intro": "Minden, ami itt látható, a szabadidőmben készült, és az enyém. A munkahelyi projektek titkosak, ezért szándékosan nem szerepelnek itt. Mind a hat alkalmazás offline is működik, az adatokat helyben tárolja, és nincs szüksége build-rendszerre — ez az ipari automatizálásból hozott elv: aminek működnie kell, az nem függhet egy kapcsolattól.",
     "project.try": "Kipróbálom",
     "project.event.summary": "Rendezvénynaptár 24 ország 300 időpontjával, élő visszaszámlálással és kereséssel. Offline is működik.",
@@ -463,6 +472,9 @@
     "skill.hmi": "HMI geliştirme",
     "skill.versionControl": "Git / sürüm kontrolü",
     "sections.projects": "Kişisel projeler",
+    "sections.work": "İş projeleri",
+    "work.status": "Devam ediyor",
+    "work.note": "Bu bölüm şu anda hazırlanıyor.",
     "projects.intro": "Burada gördüğünüz her şey boş zamanımda ortaya çıktı ve bana ait. İş projeleri gizlidir, bu yüzden bilinçli olarak burada gösterilmiyor. Altı uygulamanın tamamı çevrimdışı çalışır, verilerini yerel olarak saklar ve bir build sistemine ihtiyaç duymaz — tesis otomasyonundan gelen bir çalışma ilkesi: çalışması gereken şey bir bağlantıya bağlı olmamalıdır.",
     "project.try": "Dene",
     "project.event.summary": "24 ülkeden 300 tarih içeren etkinlik takvimi; canlı geri sayım ve arama. Çevrimdışı çalışır.",
@@ -579,6 +591,9 @@
     "skill.hmi": "Desarrollo de HMI",
     "skill.versionControl": "Git / control de versiones",
     "sections.projects": "Proyectos personales",
+    "sections.work": "Proyectos profesionales",
+    "work.status": "En curso",
+    "work.note": "Esta sección se está preparando.",
     "projects.intro": "Todo lo que aparece aquí lo he creado en mi tiempo libre y me pertenece. Los proyectos profesionales son confidenciales y no se muestran aquí deliberadamente. Las seis aplicaciones funcionan sin conexión, guardan sus datos localmente y no necesitan ningún sistema de build — un principio de la automatización industrial: lo que tiene que funcionar no puede depender de una conexión.",
     "project.try": "Probar",
     "project.event.summary": "Calendario de eventos con 300 fechas de 24 países, cuenta atrás en vivo y búsqueda. Funciona sin conexión.",
@@ -1263,6 +1278,15 @@
       if (arrow) { arrow.textContent = open ? "↑" : "↓"; }
     };
 
+    /* Jede Karte bekommt eine eigene Zelle; das Formular wandert beim Öffnen
+       direkt unter die angeklickte Karte und ist dann genauso breit. */
+    mailRows.forEach(function (row) {
+      var cell = document.createElement("div");
+      cell.className = "contact__mailcell";
+      row.parentNode.insertBefore(cell, row);
+      cell.appendChild(row);
+    });
+
     var closeMailForm = function () {
       if (!activeMailRow) { return; }
       activeMailRow.classList.remove("is-open");
@@ -1288,6 +1312,7 @@
       });
       mailTarget.disabled = mailTarget.options.length < 2;
       mailForm.setAttribute("data-tone", String(mailRows.indexOf(row) + 1));
+      row.parentNode.appendChild(mailForm);
       mailForm.hidden = false;
     };
 
@@ -1358,6 +1383,8 @@
             break;
           }
         }
+        /* „Eigene Projekte" steht unter Privat und zählt zu dessen Menüpunkt. */
+        if (!activeId && visible.has("projekte")) { activeId = "privat"; }
 
         links.forEach(function (link) {
           var isActive = link.getAttribute("href") === "#" + activeId;
@@ -1381,6 +1408,8 @@
     sections.forEach(function (section) {
       observer.observe(section);
     });
+    var ownProjects = document.getElementById("projekte");
+    if (ownProjects) { observer.observe(ownProjects); }
   }
 
 

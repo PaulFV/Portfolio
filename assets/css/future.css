@@ -4551,8 +4551,8 @@ body { line-height: 1.55; }
   position: static;
   grid-column: 1 / -1;
   justify-self: center;
-  width: 3.1rem;
-  height: 3.1rem;
+  width: 3.7rem;
+  height: 3.7rem;
   margin: 0;
 }
 #projekte .card__title a { pointer-events: none; font-size: inherit; }
@@ -4570,7 +4570,7 @@ body { line-height: 1.55; }
 
 @media (min-width: 40.01em) {
   #projekte .card { padding: .9rem .9rem .8rem; }
-  #projekte .card__logo { width: 4rem; height: 4rem; }
+  #projekte .card__logo { width: 4.8rem; height: 4.8rem; }
   #projekte .card__title { font-size: 1.02rem; }
   #projekte .card__title::after { width: 1.15rem; height: 1.15rem; }
 }
@@ -4694,9 +4694,13 @@ body { line-height: 1.55; }
 #kontakt .contact__mailrow[data-tone],
 #kontakt .contact__mailrow { cursor: pointer; }
 
+#kontakt .contact__mails { align-items: start; }
+.contact__mailcell { min-width: 0; }
 .contact__form {
   --tone: #3de2ff;
-  max-width: 46rem;
+  container-type: inline-size;
+  width: 100%;
+  max-width: none;
   margin-top: .8rem;
   padding: 1.1rem 1.2rem 1.2rem;
   border: 1.5px solid var(--tone);
@@ -4733,6 +4737,8 @@ body { line-height: 1.55; }
 
 @media (max-width: 40em) {
   .contact__form { padding: .9rem; }
+}
+@container (max-width: 30rem) {
   .contact__form-grid { grid-template-columns: minmax(0, 1fr); }
 }
 
@@ -4855,4 +4861,93 @@ body { line-height: 1.55; }
 .orbit-sat:nth-child(1) { --img: url("../img/satellite-hubble-1.png"); --ar: 1.6; --a: 120deg; --w: clamp(2.6rem, 4.4vw, 4rem); }
 @media (max-width: 40em) {
   .orbit-sat:nth-child(1) { --w: clamp(2.3rem, 9.5vw, 3.1rem); }
+}
+
+
+/* Dienstprojekte: Platzhalter "In Arbeit" mit laufenden Zahnrädern und Fortschrittsbalken. */
+.workwip {
+  --tone: #3de2ff;
+  display: flex;
+  align-items: center;
+  gap: clamp(.9rem, 2vw, 1.5rem);
+  padding: .9rem clamp(1rem, 2vw, 1.5rem);
+  border: 1.5px solid rgba(61, 226, 255, .35);
+  border-radius: .9rem;
+  background: rgba(4, 20, 44, .72);
+  color: #dff3ff;
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+.workwip:hover { border-color: var(--tone); box-shadow: 0 0 1.4rem rgba(61, 226, 255, .28); }
+
+.workwip__gears { position: relative; flex: none; width: 4.4rem; height: 3.4rem; color: var(--tone); }
+.workwip__gear { position: absolute; display: block; max-width: none; filter: drop-shadow(0 0 .35rem rgba(61, 226, 255, .55)); }
+.workwip__gear--big { left: 0; top: 0; width: 2.9rem; height: 2.9rem; animation: workwip-spin 9s linear infinite; }
+.workwip__gear--small { right: 0; bottom: 0; width: 1.9rem; height: 1.9rem; color: #b98cff; animation: workwip-spin 6s linear infinite reverse; }
+
+.workwip__text { display: grid; gap: .3rem; flex: 1; min-width: 0; }
+.workwip__title { display: flex; align-items: baseline; gap: .15rem; font-size: clamp(1rem, 1.5vw, 1.25rem); font-weight: 700; color: #f5f8ff; }
+.workwip__dots { display: inline-flex; gap: .22rem; margin-left: .35rem; }
+.workwip__dots i { width: .38rem; height: .38rem; border-radius: 50%; background: var(--tone); animation: workwip-dot 1.2s ease-in-out infinite; }
+.workwip__dots i:nth-child(2) { animation-delay: .2s; }
+.workwip__dots i:nth-child(3) { animation-delay: .4s; }
+.workwip__note { color: #9baeca; font-size: clamp(.78rem, 1vw, .9rem); line-height: 1.4; }
+
+.workwip__bar {
+  position: relative;
+  display: block;
+  height: .42rem;
+  margin-top: .2rem;
+  overflow: hidden;
+  border-radius: 99px;
+  background: rgba(120, 170, 220, .18);
+}
+.workwip__bar::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 38%;
+  border-radius: inherit;
+  background: repeating-linear-gradient(-45deg, #3de2ff 0 .55rem, #b98cff .55rem 1.1rem);
+  background-size: 1.55rem 100%;
+  animation: workwip-bar 2.6s ease-in-out infinite alternate, workwip-stripes 1s linear infinite;
+}
+
+@keyframes workwip-spin { to { transform: rotate(360deg); } }
+@keyframes workwip-dot { 0%, 100% { opacity: .25; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-.22rem); } }
+@keyframes workwip-bar { from { transform: translateX(0); } to { transform: translateX(163%); } }
+@keyframes workwip-stripes { to { background-position: 1.55rem 0; } }
+
+@media (max-width: 40em) {
+  .workwip { padding: .75rem .85rem; gap: .8rem; }
+  .workwip__gears { width: 3.6rem; height: 2.9rem; }
+  .workwip__gear--big { width: 2.4rem; height: 2.4rem; }
+  .workwip__gear--small { width: 1.6rem; height: 1.6rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .workwip__gear, .workwip__dots i, .workwip__bar::before { animation: none; }
+  .workwip__bar::before { width: 55%; }
+}
+
+/* Dienstprojekte: Kopfbereich wie bei Privat und Eigene Projekte. */
+#dienstprojekte .wrap { width: min(95%, 90rem); max-width: none; }
+#dienstprojekte .section__head {
+  align-items: center;
+  gap: clamp(1rem, 1.8vw, 1.8rem);
+  margin: 0 0 clamp(.85rem, 1.6vw, 1.4rem);
+}
+#dienstprojekte .section__title {
+  flex: 0 0 auto;
+  color: #f8f9ff;
+  font-size: clamp(1.45rem, 2.2vw, 2rem);
+  font-weight: 720;
+  line-height: 1.15;
+  letter-spacing: -.03em;
+}
+#dienstprojekte .section__rule {
+  height: 2px;
+  opacity: 1;
+  background: linear-gradient(90deg, #42d5ff, #7049ff 75%, transparent);
+}
+@media (max-width: 40em) {
+  #dienstprojekte .wrap { width: min(100% - 2rem, 90rem); }
 }
