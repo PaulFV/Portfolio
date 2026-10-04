@@ -969,7 +969,7 @@
   if (lifeBox) {
     var lifeItems = Array.prototype.slice.call(lifeBox.querySelectorAll(".life__item"));
     var lifePanel = document.createElement("div");
-    var compactLife = window.matchMedia("(max-width: 40em)");
+    var compactLife = window.matchMedia("(min-width: 0px)");
     var activeLife = null;
 
     lifePanel.className = "life__panel";

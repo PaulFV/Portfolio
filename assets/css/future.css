@@ -3822,10 +3822,10 @@ body { line-height: 1.55; }
 }
 
 
-/* Privat auf dem Handy: drei kleine Kacheln nebeneinander (Bild + Titel), der Text klappt per Tipp in einem Feld darunter auf. */
+/* Privat (alle Bildschirmgrößen): drei Kacheln nebeneinander (Bild + Titel), der Text klappt per Tipp in einem Feld darunter auf. */
 .life__panel { display: none; }
 
-@media (max-width: 40em) {
+@media (min-width: 0px) {
   #privat .life {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -4378,3 +4378,148 @@ body { line-height: 1.55; }
   .fact--countries:hover .fact__icon::after { opacity: 0; }
   .fact--systems:hover .fact__icon { animation: none; rotate: none; translate: none; }
 }
+
+/* DE · EN · RO: Sprechblasen schweben, die drei Punkte "tippen" nacheinander, die Sprachkürzel leuchten der Reihe nach auf.
+   Positionen der Punkte aus dem Bild (2172 x 724): (1811|1843|1875, 283), Durchmesser 16 px, in cqw umgerechnet. */
+.fact__typing {
+  position: absolute;
+  left: 38.1cqw;
+  top: 23.9cqw;
+  display: flex;
+  gap: 3.24cqw;
+  opacity: 0;
+  transition: opacity .2s ease;
+  pointer-events: none;
+}
+.fact__typing i {
+  position: relative;
+  width: 3.25cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, #c4f7ff 0 30%, #3fd9ff 62%, rgba(63, 217, 255, 0) 100%);
+  filter: drop-shadow(0 0 .5cqw #1fd0ff);
+}
+.fact--languages:hover .fact__typing { opacity: 1; }
+.fact--languages:hover .fact__typing i { animation: fact-typing 1.2s ease-in-out infinite; }
+.fact--languages:hover .fact__typing i:nth-child(2) { animation-delay: .18s; }
+.fact--languages:hover .fact__typing i:nth-child(3) { animation-delay: .36s; }
+@keyframes fact-typing {
+  0%, 60%, 100% { scale: 1; filter: drop-shadow(0 0 .4cqw #1fd0ff); }
+  30%           { scale: 1.4; filter: drop-shadow(0 0 1cqw #6af0ff) brightness(1.25); }
+}
+
+.fact--languages:hover .fact__icon {
+  transform-origin: 50% 60%;
+  animation: fact-bubbles-bob 2.6s ease-in-out infinite;
+}
+@keyframes fact-bubbles-bob {
+  0%, 100% { translate: 0 0; rotate: -1.2deg; }
+  50%      { translate: 0 -1.1cqw; rotate: 1.2deg; }
+}
+
+.fact--languages:hover .profile-language {
+  display: inline-block;
+  animation: fact-lang-glow 3s ease-in-out infinite;
+}
+.fact--languages:hover .profile-language--en { animation-delay: 1s; }
+.fact--languages:hover .profile-language--ro { animation-delay: 2s; }
+@keyframes fact-lang-glow {
+  0%, 38%, 100% { color: #f4fbff; scale: 1; }
+  12%, 24%      { color: #5fe6ff; scale: 1.14; text-shadow: 0 0 .9rem rgba(31, 208, 255, .9); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fact--languages:hover .fact__typing { opacity: 0; }
+  .fact--languages:hover .fact__icon { animation: none; rotate: none; translate: none; }
+  .fact--languages:hover .profile-language { animation: none; }
+}
+
+
+/* Profil-Infoblock: Überschrift füllt auch auf Tablet und Desktop die Fläche links neben dem Globus. */
+@media (min-width: 40.01em) {
+  #profil .profile-facts { position: relative; }
+  #profil .profile-facts__heading {
+    position: absolute;
+    top: 0;
+    left: 1.5rem;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    height: clamp(5.8rem, 9vw, 8rem);
+    max-width: calc(100% - 15rem);
+    color: #eaf6ff;
+    font-size: clamp(1.15rem, 1.7vw, 1.55rem);
+    font-weight: 720;
+    letter-spacing: -.02em;
+    line-height: 1.15;
+    pointer-events: none;
+  }
+  #profil .profile-facts__heading::before {
+    content: "";
+    width: .55rem;
+    height: .55rem;
+    margin-right: .7rem;
+    flex: none;
+    border-radius: 50%;
+    background: #3de2ff;
+    box-shadow: 0 0 .7rem #1fd0ff;
+  }
+}
+
+/* Globus im Infoblock: beim Überfahren schwenkt er sanft um seinen Mittelpunkt und atmet. */
+#profil .profile-globe img { transform-origin: 56% 52%; }
+#profil .profile-facts:hover .profile-globe { overflow: visible; }
+#profil .profile-facts:hover .profile-globe img {
+  animation: profile-globe-tilt 7s ease-in-out infinite;
+}
+@keyframes profile-globe-tilt {
+  0%, 100% { rotate: -14deg; scale: 1; }
+  50%      { rotate: 14deg;  scale: 1.06; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #profil .profile-facts:hover .profile-globe img { animation: none; rotate: none; scale: none; }
+}
+
+/* Privat: Die Bildfläche hat wieder das volle Seitenverhältnis des Bildausschnitts (478 : 367) und die ganze Kachelbreite.
+   So sind die Motive komplett zu sehen und werden nicht abgeschnitten. Auf dem Handy richtet sich die Kachelhöhe nach Bild und Titel. */
+#privat .life__art {
+  flex: 0 0 auto;
+  width: 100%;
+  min-height: 0;
+  margin: 0;
+  aspect-ratio: 478 / 367;
+  border-radius: 1.25rem 1.25rem 1.1rem 1.1rem;
+}
+@media (max-width: 40em) {
+  #privat .life__item { aspect-ratio: auto; }
+  #privat .life__art { border-radius: .7rem .7rem .6rem .6rem; }
+}
+
+/* Privat auf Tablets: Kachelhöhe richtet sich nach Bild und Text statt nach einem festen Seitenverhältnis. */
+@media (min-width: 40.01em) and (max-width: 64em) {
+  #privat .life__item { aspect-ratio: auto; min-height: max-content; }
+}
+
+/* Privat zum Ausklappen auf Tablet und Desktop: größere Titel, Pfeil und Textfeld. */
+@media (min-width: 40.01em) {
+  #privat .life { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; gap: .9rem; }
+  #privat .life__title { font-size: 1.1rem; }
+  #privat .life__body { padding: .9rem 1rem 1rem; }
+  #privat .life__body::after { width: 1.25rem; height: 1.25rem; margin-top: .55rem; }
+  .life__panel:not([hidden]) { max-width: 60rem; padding: 1rem 1.3rem 1.2rem; }
+  .life__panel p { font-size: 1rem; line-height: 1.6; }
+}
+
+/* Privat: Pfeil rechts neben dem Titel in derselben Zeile (statt darunter). */
+#privat .life__body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+}
+#privat .life__title { margin: 0; }
+#privat .life__body::after { flex: none; margin: 0; }
+
+/* Privat: Titel links, Pfeil immer ganz rechts in der Kachel. */
+#privat .life__body { justify-content: space-between; text-align: left; }
+#privat .life__title { text-align: left; }
