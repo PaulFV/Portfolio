@@ -677,6 +677,24 @@
   var stackSource = document.querySelector("[data-marquee-source]");
   if (stackSource && stackSource.parentNode) {
     var stackTrack = stackSource.parentNode;
+
+    /* Die Gruppe so oft wiederholen, bis sie breiter als der Bildschirm ist.
+       Sonst bleibt beim Durchlaufen rechts eine Lücke, und die Leiste wirkt,
+       als finge sie erst in der Bildmitte an. */
+    var stackOriginals = Array.prototype.slice.call(stackSource.children);
+    var stackTarget = Math.max(window.screen ? window.screen.width : 0, window.innerWidth, 1920);
+    var stackGuard = 0;
+    while (stackSource.getBoundingClientRect().width < stackTarget && stackGuard < 8) {
+      stackOriginals.forEach(function (item) {
+        var copy = item.cloneNode(true);
+        copy.setAttribute("aria-hidden", "true");
+        stackSource.appendChild(copy);
+      });
+      stackGuard += 1;
+    }
+    /* Tempo etwa gleich halten, egal wie lang die Gruppe ist (ca. 45 px pro Sekunde). */
+    stackTrack.style.animationDuration = Math.max(20, Math.round(stackSource.getBoundingClientRect().width / 45)) + "s";
+
     var stackClone = stackSource.cloneNode(true);
     stackClone.removeAttribute("data-marquee-source");
     stackClone.removeAttribute("data-i18n-attr");

@@ -4076,3 +4076,24 @@ body { line-height: 1.55; }
 :root:root .stack-item:hover .brand-lockup { transform: none; }
 
 :root:root .stack-strip { padding-block: .5rem .45rem; }
+
+/* Kopfzeile fest im Bild: html + body mit overflow-x: hidden machten body zum Scroll-Container, sodass sticky nicht am Fenster haftete.
+   clip verhindert seitliches Scrollen weiterhin, erzeugt aber keinen Scroll-Container. */
+@supports (overflow: clip) {
+  html, body { overflow-x: clip; }
+}
+
+/* Profilbild: kein Nebel mehr um den Kreis (Hülle, Schein, Glühen). Schweif, Funken und Code bleiben. */
+.hero__comet::before { display: none; }
+.hero__portrait { filter: none; }
+.hero .wrap::after { display: none; }
+.hero__portrait::before {
+  box-shadow: inset 0 0 2.5rem rgba(4, 12, 36, .72);
+}
+
+/* Desktop: Live Profil-Daten größer, Skill-Gruppen gleich hoch. */
+@media (min-width: 64.01em) {
+  .hero .facts { max-width: 64rem; gap: 1.1rem; padding-top: 2rem; }
+  .hero .fact { border-radius: 1rem; }
+  #skills .skills { align-items: stretch; }
+}
