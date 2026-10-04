@@ -180,6 +180,7 @@
 
   <!-- ===================== HERO ===================== -->
   <section class="hero" id="top">
+    <div class="hero__earth" aria-hidden="true"></div>
     <div class="wrap">
       <div class="hero__stage">
 
@@ -188,6 +189,23 @@
       </h1>
 
       <figure class="hero__portrait">
+        <span class="hero__comet" aria-hidden="true">
+          <span class="hero__comet-dust"></span>
+          <span class="hero__comet-ion"></span>
+        </span>
+        <span class="hero__comet-sparks" aria-hidden="true"></span>
+        <span class="hero__comet-code" aria-hidden="true">
+          <span>0110 1001</span>
+          <span>TwinCAT</span>
+          <span>1 0 1 1</span>
+          <span>PROFINET</span>
+          <span>if (run) {</span>
+          <span>OPC UA</span>
+          <span>0 1 0 0</span>
+          <span>CODESYS</span>
+          <span>MC_MoveAbs</span>
+          <span>1011 0</span>
+        </span>
         <img src="assets/img/portrait.png" alt="" width="705" height="1030">
         <figcaption class="hero__name" aria-label="Paul Fodor">
           <svg viewBox="0 0 100 100" focusable="false" aria-hidden="true">
@@ -468,7 +486,9 @@
 
         <aside class="profile-facts" aria-label="Profilinformationen">
           <div class="profile-globe" aria-hidden="true"><img src="assets/img/profile-globe.png" alt=""></div>
-          <dl class="about__meta">
+          <span class="profile-facts__heading" data-i18n="meta.heading">Auf einen Blick</span>
+          <button class="profile-facts__toggle" type="button" aria-expanded="false" aria-controls="profil-facts-list" aria-label="Profilinformationen ein- oder ausklappen"></button>
+          <dl class="about__meta" id="profil-facts-list">
             <div class="profile-fact profile-fact--location">
               <span class="profile-fact__icon" aria-hidden="true"><img src="assets/img/profile-location.png" alt=""></span>
               <dt data-i18n="meta.location">Standort</dt>

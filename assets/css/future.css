@@ -1257,28 +1257,41 @@ h4,
   border-left-color: rgba(19, 124, 255, 0.42);
   opacity: 0.76;
 }
+/* Foto konzentrisch im Kreis: gleiche Mitte wie ::before (inset 2.5 %),
+   abzüglich Rahmen, damit nichts über den Rand ragt. */
 .hero__portrait img {
-  width: 90%;
-  height: 88%;
+  width: calc(95% - 14px);
+  height: calc(95% - 14px);
+  box-sizing: border-box;
+  padding-top: 7%; /* Luft über dem Kopf: der Freisteller beginnt in der obersten Bildzeile */
   object-position: 50% 0;
-  filter: saturate(1.02) contrast(1.05) drop-shadow(0 0.6rem 1rem rgba(0, 0, 0, 0.36));
-  transform: translate3d(0, 1.2rem, 12px);
+  border-radius: 50%;
+  clip-path: none;
+  filter: saturate(1.02) contrast(1.05);
+  transform: translateZ(12px);
 }
 .hero__name { z-index: 3; }
+/* Zweite, äußere Bahn: Schrift läuft deutlich außerhalb des gestrichelten Rings. */
+.hero__portrait { --orbit: 112%; }
+.hero__name { display: block; }
 .hero__name > svg {
-  width: 124%;
+  display: block;
+  width: var(--orbit);
+  max-width: none; /* globales svg { max-width: 100% } würde die Bahn sonst auf Bildgröße kappen */
+  /* Mitte auf der Bildmitte halten (Prozentwerte beziehen sich auf die Bildbreite) */
+  margin: calc((100% - var(--orbit)) / 2) 0 0 calc((100% - var(--orbit)) / 2);
   animation-duration: 38s;
 }
 .hero__name-track {
   fill: none;
-  stroke: rgba(255, 71, 87, 0.38);
-  stroke-width: 0.18;
-  stroke-dasharray: 0.5 1.5;
+  stroke: rgba(255, 71, 87, 0.7);
+  stroke-width: 0.3;
+  stroke-dasharray: 0.6 1.1;
   filter: drop-shadow(0 0 0.7px rgba(255, 48, 69, 0.65));
 }
 .hero__name text {
   fill: #ff4656;
-  font-size: 3.5px;
+  font-size: 3.2px;
   letter-spacing: 0.65px;
   filter: drop-shadow(0 0 1.2px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 2px rgba(255, 54, 75, 0.85));
 }
@@ -1355,8 +1368,7 @@ h4,
     height: min(19rem, 77vw);
     margin: 2rem auto 0;
   }
-  .hero__portrait img { transform: translate3d(0, 0.6rem, 12px); }
-  .hero__name text { font-size: 4.2px; }
+  .hero__name text { font-size: 3.8px; }
   .hero__actions { max-width: 100%; }
   .hero__button { min-height: 3.3rem; font-size: 0.95rem; }
   .hero .facts { margin-top: 0; }
@@ -3215,11 +3227,11 @@ h4,
 
 body { line-height: 1.55; }
 
-.hero { --portrait-size: clamp(17rem, 36vw, 34rem); }
+.hero { --portrait-size: clamp(18.5rem, 39vw, 37rem); }
 .hero__title { font-size: clamp(2.8rem, 5.5vw, 5.4rem); }
 .hero__lead { margin-top: 1.6rem; font-size: clamp(1.08rem, 1.7vw, 1.55rem); }
 .hero__button { min-height: 3.15rem; font-size: clamp(.9rem, 1.2vw, 1.1rem); }
-.hero .facts { max-width: 72rem; margin-inline: auto; }
+.hero .facts { width: 100%; max-width: 72rem; margin-inline: auto; }
 
 #profil.profile-section,
 #skills,
@@ -3312,7 +3324,7 @@ body { line-height: 1.55; }
   .hero__stage { padding-block: 1.8rem 1.6rem; }
   .hero__title { font-size: clamp(2.1rem, 8vw, 3rem); }
   .hero__lead { margin: 1rem 0 1.2rem; font-size: 1rem; }
-  .hero__portrait { width: min(15.5rem, 63vw); height: min(15.5rem, 63vw); margin-top: 1.2rem; }
+  .hero__portrait { width: min(17rem, 70vw); height: min(17rem, 70vw); margin-top: 1.2rem; }
   .hero__button { min-height: 3rem; font-size: .9rem; }
   .hero .facts { max-width: 20rem; padding-top: 2.5rem; }
   .facts::before, .facts::after { letter-spacing: .1em; }
@@ -3360,3 +3372,707 @@ body { line-height: 1.55; }
 @media (min-width: 40.01em) and (max-width: 52em) {
   #projekte .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* System-Technologien: deutlich kleinere Kacheln (gilt für Light, Dark und alle Breiten). */
+.stack-strip { --stack-w: clamp(8.5rem, 13vw, 12rem); }
+:root:root .stack-item,
+:root:root .stack-item:hover {
+  width: var(--stack-w);
+  flex-basis: var(--stack-w);
+  height: calc(var(--stack-w) * .5);
+  padding: .45rem;
+}
+:root:root .stack-list {
+  gap: .85rem;
+  padding-right: .85rem;
+}
+:root[data-theme="light"] .stack-strip,
+:root:not([data-theme]) .stack-strip { padding-block: clamp(2.2rem, 4vw, 3.8rem); }
+.stack-marquee { padding-block: .7rem 1rem; }
+
+/* ==========================================================
+   Komet: Das Profilbild fliegt als Kometenkopf aus dem All
+   schräg nach unten Richtung Erde (Horizont am Hero-Rand).
+   Schweif zeigt nach rechts oben, Flugrichtung ist links unten.
+   ========================================================== */
+.hero__portrait { --comet-angle: 38deg; }
+
+/* Kopf: Rand glüht an der Vorderseite (Flugrichtung) heiß, hinten kühl. */
+.hero__portrait::before {
+  background:
+    radial-gradient(circle at 72% 73%, rgba(81, 41, 168, 0.32), transparent 44%),
+    radial-gradient(circle at 29% 44%, rgba(20, 114, 209, 0.35), transparent 52%),
+    linear-gradient(145deg, #07162f, #112750 74%, #110d39) padding-box,
+    conic-gradient(from 218deg, #ffe3bd 0%, #ff9a55 7%, #31e1fb 28%, #168cfa 55%, #8d55ed 80%, #ff9a55 93%, #ffe3bd 100%) border-box;
+  box-shadow:
+    inset 0 0 2.5rem rgba(4, 12, 36, 0.72),
+    0 0 2.2rem rgba(23, 124, 255, 0.45),
+    -0.9rem 1.3rem 2.6rem rgba(255, 140, 70, 0.35);
+}
+
+/* Schweif-Container: hinter dem Kreis, leicht weichgezeichnet. */
+.hero__comet {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(4px);
+}
+
+/* Koma: leuchtende Hülle um den Kopf, vorne mit Hitze. */
+.hero__comet::before {
+  content: "";
+  position: absolute;
+  inset: -9%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 24% 84%, rgba(255, 176, 90, 0.7), rgba(255, 104, 60, 0.25) 15%, transparent 30%),
+    radial-gradient(circle, transparent 52%, rgba(70, 175, 255, 0.5) 60%, rgba(120, 80, 255, 0.22) 72%, transparent 88%);
+  animation: comet-coma 3.2s ease-in-out infinite alternate;
+}
+
+.hero__comet-ion,
+.hero__comet-dust {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform-origin: 50% 100%;
+  transform: translateX(-50%) rotate(var(--comet-angle));
+}
+
+/* Ionenschweif: schmal, gerade, cyan-weiß. */
+.hero__comet-ion {
+  width: 74%;
+  height: 175%;
+  clip-path: polygon(0 100%, 100% 100%, 58% 0, 42% 0);
+  background:
+    repeating-linear-gradient(90deg, transparent 0 9%, rgba(220, 248, 255, 0.34) 9% 10.5%),
+    linear-gradient(to top, rgba(225, 248, 255, 0.8), rgba(49, 225, 251, 0.5) 16%, rgba(22, 140, 250, 0.22) 46%, transparent 100%);
+  animation: comet-tail-in 2.4s cubic-bezier(.16, .8, .24, 1) both, comet-flicker 2.8s ease-in-out 2.4s infinite alternate;
+}
+
+/* Staubschweif: breiter, violett-rosa, leicht abgewinkelt. */
+.hero__comet-dust {
+  width: 96%;
+  height: 128%;
+  transform: translateX(-50%) rotate(calc(var(--comet-angle) + 17deg));
+  clip-path: polygon(0 100%, 100% 100%, 66% 0, 34% 0);
+  background: linear-gradient(to top, rgba(176, 110, 255, 0.5), rgba(255, 120, 170, 0.22) 40%, transparent 100%);
+  animation: comet-flicker 3.6s ease-in-out infinite alternate-reverse;
+}
+
+/* Funken, die im Schweif vom Kopf wegdriften. */
+.hero__comet-sparks {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  z-index: -1;
+  width: 66%;
+  height: 165%;
+  pointer-events: none;
+  transform-origin: 50% 100%;
+  transform: translateX(-50%) rotate(var(--comet-angle));
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 1px, transparent 1.6px) 0 0 / 41px 57px,
+    radial-gradient(circle, rgba(130, 225, 255, 0.85) 0 1.2px, transparent 2px) 17px 23px / 63px 89px;
+  -webkit-mask-image: linear-gradient(to top, transparent 22%, #000 40%, transparent 100%);
+  mask-image: linear-gradient(to top, transparent 22%, #000 40%, transparent 100%);
+  animation: comet-sparks 2.2s linear infinite;
+}
+
+/* Erde: gekrümmter Horizont mit Atmosphärenglühen am unteren Hero-Rand. */
+.hero__earth {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: 0;
+  width: 150%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, calc(100% - clamp(2.4rem, 6vw, 5rem)));
+  background:
+    radial-gradient(ellipse 40% 10% at 50% 1%, rgba(90, 190, 255, 0.34), transparent),
+    radial-gradient(circle at 50% 30%, #06183a, #020a1c 62%);
+  box-shadow:
+    inset 0 0.15rem 0.5rem rgba(160, 228, 255, 0.9),
+    inset 0 0.5rem 2.6rem rgba(50, 140, 255, 0.5),
+    0 -0.5rem 3.5rem rgba(40, 130, 255, 0.34);
+}
+
+/* Anflug: der Komet kommt von rechts oben und bremst ab (einzelne Transform-Eigenschaften, damit die Schwebe-Animation bleibt). */
+.hero__portrait {
+  animation:
+    comet-arrive 2.4s cubic-bezier(.16, .8, .24, 1) both,
+    portrait-float 6s ease-in-out 2.4s infinite;
+}
+
+@media (max-width: 40em) {
+  .hero__portrait {
+    animation:
+      comet-arrive 2.4s cubic-bezier(.16, .8, .24, 1) both,
+      portrait-float-mobile 6s ease-in-out 2.4s infinite;
+  }
+  .hero__comet-ion { height: 120%; opacity: .7; }
+  .hero__comet-dust { height: 100%; opacity: .7; }
+  .hero__comet-sparks { height: 115%; opacity: .7; }
+}
+
+@keyframes comet-arrive {
+  0%   { translate: 38% -62%; scale: .55; opacity: 0; }
+  35%  { opacity: 1; }
+  100% { translate: 0 0; scale: 1; opacity: 1; }
+}
+
+@keyframes comet-tail-in {
+  from { height: 320%; opacity: .5; }
+  to   { height: 175%; opacity: 1; }
+}
+
+@keyframes comet-flicker {
+  from { opacity: .72; }
+  to   { opacity: 1; }
+}
+
+@keyframes comet-coma {
+  from { opacity: .75; transform: scale(.97); }
+  to   { opacity: 1; transform: scale(1.04); }
+}
+
+@keyframes comet-sparks {
+  to { background-position: 0 -57px, 17px -66px; }
+}
+
+/* Tablet: Einleitung schmaler, damit die äußere Bahn den Text nicht berührt. */
+@media (min-width: 40.01em) and (max-width: 64em) {
+  .hero__lead { max-width: 46%; }
+}
+
+/* Bahn-Größe je Bildschirm: Tablet etwas enger (Text steht links daneben), Handy mit mehr Luft um das Bild. */
+@media (min-width: 40.01em) and (max-width: 64em) {
+  .hero__portrait { --orbit: 112%; }
+}
+@media (max-width: 40em) {
+  .hero__portrait { --orbit: 112%; margin-block: 2.2rem 2rem; }
+}
+
+/* Code-Fragmente und Systemnamen, die von Zeit zu Zeit im Schweif vom Kometen wegfliegen. */
+.hero__comet-code {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  z-index: -1;
+  width: 70%;
+  height: 165%;
+  pointer-events: none;
+  transform-origin: 50% 100%;
+  transform: translateX(-50%) rotate(var(--comet-angle));
+}
+
+.hero__comet-code span {
+  position: absolute;
+  bottom: 22%;
+  left: var(--x, 50%);
+  opacity: 0;
+  rotate: calc(var(--comet-angle) * -1); /* Text bleibt waagerecht lesbar */
+  color: #a8f3ff;
+  font-family: var(--font-mono);
+  font-size: clamp(.58rem, .9vw, .78rem);
+  letter-spacing: .08em;
+  white-space: nowrap;
+  text-shadow: 0 0 .5rem rgba(49, 225, 251, .75);
+  animation: comet-code var(--t, 11s) linear var(--d, 0s) infinite;
+}
+
+.hero__comet-code span:nth-child(1)  { --x: 20%; --t: 19s; --d: 2s; }
+.hero__comet-code span:nth-child(2)  { --x: 62%; --t: 22s; --d: 8s; color: #ffd29a; text-shadow: 0 0 .5rem rgba(255, 150, 70, .7); }
+.hero__comet-code span:nth-child(3)  { --x: 42%; --t: 17s; --d: 14s; }
+.hero__comet-code span:nth-child(4)  { --x: 12%; --t: 23s; --d: 5s; color: #d9c2ff; text-shadow: 0 0 .5rem rgba(141, 85, 237, .8); }
+.hero__comet-code span:nth-child(5)  { --x: 70%; --t: 20s; --d: 11s; }
+.hero__comet-code span:nth-child(6)  { --x: 34%; --t: 25s; --d: 17s; color: #ffd29a; text-shadow: 0 0 .5rem rgba(255, 150, 70, .7); }
+.hero__comet-code span:nth-child(7)  { --x: 78%; --t: 16s; --d: 20s; }
+.hero__comet-code span:nth-child(8)  { --x: 8%;  --t: 21s; --d: 0.5s; color: #d9c2ff; text-shadow: 0 0 .5rem rgba(141, 85, 237, .8); }
+.hero__comet-code span:nth-child(9)  { --x: 52%; --t: 26s; --d: 13s; }
+.hero__comet-code span:nth-child(10) { --x: 26%; --t: 18s; --d: 23s; }
+
+/* Jedes Fragment erscheint nur kurz (ca. die ersten 18 % des Zyklus), den Rest der Zeit ist Pause. */
+@keyframes comet-code {
+  0%   { bottom: 22%; opacity: 0; }
+  3%   { opacity: .95; }
+  14%  { opacity: .8; }
+  18%  { bottom: 108%; opacity: 0; }
+  100% { bottom: 108%; opacity: 0; }
+}
+
+@media (max-width: 40em) {
+  .hero__comet-code { height: 120%; }
+  .hero__comet-code span { font-size: .56rem; }
+}
+
+/* System-Technologien: kein eigener Hintergrund, die Kacheln laufen frei über der Seite. */
+:root:root .stack-strip {
+  background: transparent;
+  border-color: transparent;
+}
+:root:root .stack-strip::before,
+:root:root .stack-strip::after {
+  display: none;
+}
+
+/* Dunkel: gleicher Hintergrund wie die Nachbarbereiche (Hero, Systemvisualisierung), damit keine Fläche herausfällt. */
+:root[data-theme="dark"] .stack-strip {
+  background: linear-gradient(135deg, #031126 0%, #071b40 52%, #031126 100%);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .stack-strip {
+    background: linear-gradient(135deg, #031126 0%, #071b40 52%, #031126 100%);
+  }
+}
+
+@media (min-width: 64.01em) {
+  .hero__portrait { --orbit: 112%; }
+}
+
+/* Das gestapelte CODESYS-Logo (Symbol über Schrift) braucht in den flacheren Kacheln etwas weniger Höhe, sonst wird es unten abgeschnitten. */
+.stack-strip .stack-item--codesys .brand-lockup { height: 82%; }
+
+/* Live Profil-Daten: kleiner, auf allen Bildschirmen vier Kacheln in einer Reihe. */
+.hero .facts {
+  width: 100%;
+  max-width: 46rem;
+  margin-inline: auto;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .8rem;
+  padding-top: 1.7rem;
+}
+.hero .fact { border-radius: .85rem; }
+.hero .fact--languages .fact__value { font-size: clamp(.55rem, 9.5cqw, 4.1rem); }
+
+@media (max-width: 40em) {
+  .hero .facts { max-width: 100%; gap: .4rem; padding-top: 2.4rem; }
+  .hero .fact { grid-template-rows: 50% 24% 26%; border-radius: .6rem; }
+  .hero .fact__value { font-size: clamp(.8rem, 15cqw, 2rem); }
+  .hero .fact__label { padding: 0 .12rem; font-size: clamp(.44rem, 6cqw, 1rem); line-height: 1.15; }
+}
+
+/* Systemvisualisierung: etwas kleiner und kompakter, die drei Karten stehen auf jedem Bildschirm in einer Reihe. */
+.system-visual { padding-block: clamp(1.8rem, 2.6vw, 2.6rem); }
+.system-visual__head .section__title { font-size: clamp(1.7rem, 3.2vw, 2.9rem); }
+.system-visual__lead { font-size: clamp(.92rem, 1.2vw, 1.12rem); }
+.system-map { padding: clamp(.8rem, 1.5vw, 1.35rem); }
+.system-map__topline { padding-bottom: .7rem; }
+.system-node { aspect-ratio: 1.2; padding: clamp(.75rem, 1.2vw, 1.1rem); }
+.system-node__art { width: min(70%, 12rem); height: clamp(6.4rem, 11vw, 10.5rem); }
+.system-node strong { font-size: clamp(1.05rem, 1.35vw, 1.3rem); }
+.system-node small { margin-top: .35rem; font-size: clamp(.8rem, .95vw, .92rem); }
+.system-map__telemetry { margin-top: 1rem; padding-top: .8rem; }
+
+@media (max-width: 52em) {
+  .system-map__track { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
+  .system-map__connector { display: none; }
+  .system-node { min-height: 0; aspect-ratio: .9; padding: .7rem; }
+  .system-node__art { width: min(100%, 9rem); height: auto; }
+  .system-node strong { max-width: none; font-size: 1rem; }
+  .system-node small { font-size: .78rem; }
+}
+
+@media (max-width: 40em) {
+  .system-map { padding: .6rem; }
+  .system-node { display: flex; flex-direction: column; justify-content: flex-end; min-height: 0; aspect-ratio: .78; padding: .5rem; border-radius: .7rem; }
+  .system-node__number { font-size: .55rem; }
+  .system-node__art { width: 100%; height: auto; }
+  .system-node strong { font-size: .76rem; line-height: 1.15; overflow-wrap: anywhere; hyphens: auto; }
+  .system-node small { margin-top: .2rem; font-size: .6rem; line-height: 1.2; }
+}
+
+/* Technologien & Methoden: kompakter, am Desktop vier Gruppen in einer Reihe. */
+#skills .section__title { font-size: clamp(1.7rem, 3.2vw, 2.9rem); }
+#skills .skill-group { padding: clamp(.8rem, 1.3vw, 1.1rem); }
+#skills .skill-group__heading { min-height: 3.6rem; margin-bottom: .4rem; }
+#skills .skill-group__art { width: clamp(3.2rem, 4.4vw, 4.2rem); }
+#skills .skill { min-height: 2.35rem; padding-block: .3rem; }
+
+@media (min-width: 64.01em) {
+  #skills .skills { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .9rem; align-items: start; }
+  #skills .skill-group__title { font-size: .86rem; line-height: 1.25; }
+  #skills .skill { gap: .5rem; }
+  #skills .skill__name { min-width: 0; font-size: .86rem; line-height: 1.2; }
+  #skills .skill__level { flex: none; padding: .2rem .45rem; font-size: .56rem; letter-spacing: .02em; }
+}
+
+/* Auf-/Zuklappen (Handy/Tablet): einfacher Pfeil nach unten, geöffnet zeigt er nach oben. */
+@media (max-width: 52em) {
+  #skills .skill-group__heading::after,
+  #skills .skill-group__details[open] .skill-group__heading::after {
+    content: "";
+    flex: none;
+    width: 1.35rem;
+    height: 1.35rem;
+    margin-left: auto;
+    border: 0;
+    border-radius: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dff3ff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14M5.5 12.5 12 19l6.5-6.5'/%3E%3C/svg%3E") center / contain no-repeat;
+    opacity: .85;
+    transition: transform .25s ease;
+  }
+  #skills .skill-group__details[open] .skill-group__heading::after { transform: rotate(180deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  #skills .skill-group__heading::after { transition: none; }
+}
+
+/* Privat: kleinere, flachere Kacheln; ab Tablet drei in einer Reihe, auf dem Handy kompakt untereinander. */
+#privat .life { max-width: 64rem; margin-inline: auto; gap: .9rem; }
+#privat .life__item { aspect-ratio: 478 / 500; border-radius: .9rem; }
+#privat .life__art { aspect-ratio: 478 / 255; }
+#privat .life__body { padding: .8rem 7% 5%; }
+#privat .life__title { margin-bottom: .45rem; }
+
+@media (min-width: 40.01em) and (max-width: 64em) {
+  #privat .life { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #privat .life__item { aspect-ratio: 478 / 560; }
+}
+
+@media (max-width: 40em) {
+  #privat .life { max-width: 100%; gap: .7rem; }
+  #privat .life__item { aspect-ratio: auto; max-width: 100%; }
+  #privat .life__art { aspect-ratio: 478 / 190; }
+  #privat .life__body { padding: .7rem 5% 5%; }
+  #privat .life__title { font-size: 1.1rem; margin-bottom: .35rem; }
+  #privat .life__item p { font-size: .84rem; line-height: 1.5; }
+}
+
+/* Kontakt: kleiner und kompakter (Titel, Text, Mail-Kacheln, Link-Buttons, Bild). */
+#kontakt { padding-block: clamp(2rem, 3vw, 3rem); }
+#kontakt .contact__status { font-size: clamp(.75rem, 1vw, .95rem); }
+#kontakt .section__head { margin-top: clamp(1rem, 2vw, 1.8rem); }
+#kontakt .section__head::after { margin-top: .8rem; }
+#kontakt .section__title { font-size: clamp(2.3rem, 4.4vw, 3.9rem); }
+#kontakt .contact__lead { margin-top: .9rem; font-size: clamp(.95rem, 1.3vw, 1.2rem); }
+#kontakt .contact__intro { min-height: min(21vw, 17rem); }
+#kontakt .contact__art { width: 78%; margin-top: 1.2vw; transform: translateX(2vw); }
+#kontakt .contact__mails { gap: .9rem; }
+#kontakt .contact__mailrow { aspect-ratio: 4.6 / 1; border-radius: .85rem; }
+#kontakt .contact__mailicon { width: min(7.2vw, 6rem); }
+#kontakt .contact__mailtext { gap: .35em; }
+#kontakt .contact__mailkind { font-size: clamp(.66rem, .9vw, .85rem); }
+#kontakt .contact__mail { font-size: clamp(.85rem, 1.5vw, 1.3rem); }
+#kontakt .contact__mailarrow { width: clamp(1.5rem, 2.3vw, 2.1rem); font-size: clamp(.9rem, 1.4vw, 1.3rem); }
+#kontakt .contact__links { gap: .7rem; margin-top: 1.1rem; }
+#kontakt .contact__links .contact-link { min-height: clamp(2.5rem, 3.3vw, 3rem); padding-inline: 1rem; font-size: clamp(.8rem, 1vw, .95rem); border-radius: .75rem; }
+#kontakt .contact__links svg { width: clamp(1.1rem, 1.6vw, 1.4rem); height: clamp(1.1rem, 1.6vw, 1.4rem); }
+
+@media (max-width: 52em) {
+  #kontakt .contact__intro { min-height: 0; padding-bottom: 1.2rem; }
+  #kontakt .contact__art { width: 34%; }
+}
+
+@media (max-width: 40em) {
+  #kontakt .section__title { font-size: clamp(2rem, 9vw, 2.7rem); }
+  #kontakt .contact__art { width: min(70%, 13rem); margin: .8rem auto 0; }
+  #kontakt .contact__mailrow { aspect-ratio: auto; min-height: 4.8rem; padding-block: .5rem; }
+  #kontakt .contact__mailicon { width: 3.6rem; }
+  #kontakt .contact__mail { font-size: clamp(.8rem, 3.5vw, 1.05rem); }
+  #kontakt .contact__links .contact-link { padding-inline: .8rem; }
+}
+
+/* Kontakt: noch kompakter. */
+#kontakt { padding-block: clamp(1.6rem, 2.4vw, 2.4rem); }
+#kontakt .section__head { margin-top: .8rem; }
+#kontakt .section__head::after { margin-top: .6rem; }
+#kontakt .section__title { font-size: clamp(2rem, 3.6vw, 3.2rem); }
+#kontakt .contact__lead { max-width: 62ch; margin-top: .6rem; font-size: clamp(.9rem, 1.15vw, 1.05rem); line-height: 1.5; }
+#kontakt .contact__intro { min-height: 0; padding-bottom: .8rem; }
+#kontakt .contact__art { width: 62%; margin-top: 0; transform: translateX(1vw); }
+#kontakt .contact__mails { gap: .7rem; }
+#kontakt .contact__mailrow { aspect-ratio: 6.4 / 1; min-height: 4.6rem; }
+#kontakt .contact__mailicon { width: min(5.2vw, 4.4rem); }
+#kontakt .contact__mail { font-size: clamp(.82rem, 1.25vw, 1.1rem); }
+#kontakt .contact__mailarrow { width: 1.6rem; font-size: 1rem; }
+#kontakt .contact__links { margin-top: .8rem; gap: .55rem; }
+#kontakt .contact__links .contact-link { min-height: 2.4rem; padding-inline: .85rem; font-size: .82rem; }
+#kontakt .contact__links svg { width: 1.1rem; height: 1.1rem; }
+
+@media (max-width: 52em) {
+  #kontakt .contact__intro { padding-bottom: .6rem; }
+  #kontakt .contact__art { width: 30%; }
+}
+
+@media (max-width: 40em) {
+  #kontakt .section__title { font-size: clamp(1.8rem, 8vw, 2.3rem); }
+  #kontakt .contact__art { width: min(48%, 9.5rem); margin: .5rem auto 0; }
+  #kontakt .contact__mailrow { min-height: 4.2rem; }
+  #kontakt .contact__mailicon { width: 3rem; }
+  #kontakt .contact__mail { font-size: clamp(.78rem, 3.3vw, 1rem); }
+  #kontakt .contact__mailarrow { width: 1.45rem; }
+}
+
+@media (max-width: 40em) {
+  /* 1fr allein lässt die Spalte mit dem Inhalt mitwachsen; minmax(0, 1fr) hält die Kacheln im Bild. */
+  #kontakt .contact__mails { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 40em) {
+  #kontakt .contact__mailrow { aspect-ratio: auto; }
+}
+
+@media (max-width: 40em) {
+  #kontakt .contact__links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .4rem; }
+  #kontakt .contact__links .contact-link { justify-content: center; gap: .35rem; padding-inline: .4rem; font-size: .76rem; }
+}
+
+
+/* Privat auf dem Handy: drei kleine Kacheln nebeneinander (Bild + Titel), der Text klappt per Tipp in einem Feld darunter auf. */
+.life__panel { display: none; }
+
+@media (max-width: 40em) {
+  #privat .life {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: .5rem;
+    max-width: 100%;
+    margin-inline: 0;
+    padding: 0;
+  }
+  #privat .life__item {
+    aspect-ratio: auto;
+    min-height: 0;
+    border-width: 1.5px;
+    border-radius: .7rem;
+    cursor: pointer;
+  }
+  #privat .life__art { aspect-ratio: 478 / 300; border-radius: .6rem .6rem .5rem .5rem; }
+  #privat .life__body { padding: .45rem .4rem .5rem; text-align: center; }
+  #privat .life__title { margin: 0; font-size: .74rem; line-height: 1.2; letter-spacing: -.01em; }
+  #privat .life__item p { display: none; }
+  /* kleiner Pfeil als Hinweis, dass sich die Kachel öffnen lässt */
+  #privat .life__body::after {
+    content: "";
+    display: block;
+    width: .95rem;
+    height: .95rem;
+    margin: .4rem auto 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dff3ff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14M5.5 12.5 12 19l6.5-6.5'/%3E%3C/svg%3E") center / contain no-repeat;
+    opacity: .8;
+    transition: transform .25s ease;
+  }
+  #privat .life__item.is-open .life__body::after { transform: rotate(180deg); }
+
+  .life__panel:not([hidden]) {
+    display: block;
+    margin-top: .7rem;
+    padding: .8rem .9rem;
+    border: 1.5px solid #ff8b53;
+    border-radius: .8rem;
+    background: linear-gradient(180deg, #2b1121, #24111e);
+    box-shadow: 0 0 .9rem rgba(255, 85, 48, .35);
+  }
+  .life__panel[data-tone="2"] { border-color: #00e9ca; background: linear-gradient(180deg, #063a43, #032e34); box-shadow: 0 0 .9rem rgba(0, 237, 199, .3); }
+  .life__panel[data-tone="3"] { border-color: #8b58ff; background: linear-gradient(180deg, #091c59, #081847); box-shadow: 0 0 .9rem rgba(36, 117, 255, .35); }
+  .life__panel p { margin: 0; color: #c0d9f4; font-size: .88rem; line-height: 1.5; }
+  .life__panel a { color: #b966ff; text-decoration: underline; text-underline-offset: .15em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #privat .life__body::after { transition: none; }
+}
+
+
+/* Quadratische Kacheln auf dem Handy: Privat und Eigene Projekte. */
+.projects__panel { display: none; }
+
+@media (max-width: 40em) {
+  /* Privat: Bild füllt den Rest der quadratischen Kachel */
+  #privat .life__item { aspect-ratio: 1; }
+  #privat .life__art { flex: 1 1 auto; min-height: 0; aspect-ratio: auto; }
+  #privat .life__body { flex: 0 0 auto; }
+
+  /* Projekte: Einleitung auf zwei Zeilen gekürzt, per Tipp aufklappbar */
+  #projekte .projects__intro:not(.is-open) {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  #projekte .projects__intro { font-size: .86rem; line-height: 1.5; cursor: pointer; }
+
+  /* Projekte: 3 quadratische Kacheln pro Reihe mit Logo und Name */
+  #projekte .projects { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; }
+  #projekte .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    min-height: 0;
+    padding: .4rem .3rem;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+  }
+  #projekte .card__kicker { display: none; }
+  #projekte .card > .card__body,
+  #projekte .card > .card__links { display: none; }
+  #projekte .card__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .35rem;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    font-size: .78rem;
+  }
+  #projekte .card__logo { position: static; width: 2.9rem; height: 2.9rem; margin: 0; }
+  #projekte .card__title a { pointer-events: none; font-size: .78rem; line-height: 1.15; }
+  #projekte .card__title a::after { display: none; }
+  #projekte .card__title::after {
+    content: "";
+    width: .85rem;
+    height: .85rem;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dff3ff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14M5.5 12.5 12 19l6.5-6.5'/%3E%3C/svg%3E") center / contain no-repeat;
+    opacity: .8;
+    transition: transform .25s ease;
+  }
+  #projekte .card.is-open .card__title::after { transform: rotate(180deg); }
+
+  /* Details-Feld unter dem Raster */
+  .projects__panel:not([hidden]) {
+    --tone: #18c5ff;
+    display: block;
+    margin-top: .6rem;
+    padding: .8rem .9rem .9rem;
+    border: 1.5px solid var(--tone);
+    border-radius: .8rem;
+    background: rgba(4, 20, 44, .85);
+    box-shadow: 0 0 .9rem color-mix(in srgb, var(--tone) 35%, transparent);
+  }
+  .projects__panel[data-tone="2"] { --tone: #ff9a3c; }
+  .projects__panel[data-tone="3"] { --tone: #a463ff; }
+  .projects__panel[data-tone="4"] { --tone: #ff4d6d; }
+  .projects__panel[data-tone="5"] { --tone: #28c8ff; }
+  .projects__panel[data-tone="6"] { --tone: #16e0c0; }
+  .projects__panel-title { display: inline-block; margin-bottom: .35rem; color: #f5f8ff; font-size: 1.15rem; font-weight: 700; text-decoration: none; }
+  #projekte .projects__panel .card__body { display: block; margin: 0; }
+  #projekte .projects__panel .card__text { font-size: .86rem; line-height: 1.5; }
+  #projekte .projects__panel .card__links { gap: .45rem; padding-top: .6rem; }
+  #projekte .projects__panel .card__links a { min-height: 1.9rem; padding: .2rem .6rem; gap: .3rem; font-size: .72rem; border-radius: .6rem; }
+  #projekte .projects__panel .card__links img { width: .9rem; height: .9rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #projekte .card__title::after { transition: none; }
+}
+
+/* Profil-Infos: auf dem Handy aufklappbar, zugeklappt bleibt nur der Standort. */
+.profile-facts__toggle,
+.profile-facts__heading { display: none; }
+
+@media (max-width: 40em) {
+  #profil .profile-facts { position: relative; }
+  #profil .profile-globe { height: 5.2rem; }
+  #profil .profile-globe img { width: 7.5rem; }
+
+  #profil .profile-facts__toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
+    display: block;
+    height: 5.2rem;
+    padding: 0;
+    border: 0;
+    border-radius: inherit;
+    background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dff3ff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14M5.5 12.5 12 19l6.5-6.5'/%3E%3C/svg%3E") left 1.2rem center / 1.5rem no-repeat;
+    cursor: pointer;
+    transition: none;
+  }
+  #profil .profile-facts.is-open .profile-facts__toggle { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dff3ff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 19V5M5.5 11.5 12 5l6.5 6.5'/%3E%3C/svg%3E"); }
+  #profil .profile-facts__toggle:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }
+
+  #profil .profile-facts:not(.is-open) .about__meta { display: none; }
+  #profil .profile-facts__heading {
+    position: absolute;
+    top: 0;
+    left: 3.3rem;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    height: 5.2rem;
+    max-width: calc(100% - 11rem);
+    color: #eaf6ff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    line-height: 1.15;
+    pointer-events: none;
+  }
+}
+
+/* System-Technologien: fest am unteren Bildrand, immer sichtbar. Nur die Kacheln, ohne sichtbare Überschrift; kleiner und schmaler. */
+.stack-strip {
+  --stack-w: clamp(6.4rem, 8.5vw, 8.4rem);
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 40;
+  padding-block: .3rem .35rem;
+  overflow: hidden;
+  pointer-events: none; /* Klicks gehen an den Inhalt dahinter durch */
+}
+:root:root .stack-strip {
+  background: linear-gradient(to top, rgba(3, 16, 33, .94), rgba(3, 16, 33, .72) 58%, rgba(3, 16, 33, 0));
+}
+:root[data-theme="light"] .stack-strip {
+  background: linear-gradient(to top, rgba(244, 248, 255, .95), rgba(244, 248, 255, .72) 58%, rgba(244, 248, 255, 0));
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) .stack-strip {
+    background: linear-gradient(to top, rgba(244, 248, 255, .95), rgba(244, 248, 255, .72) 58%, rgba(244, 248, 255, 0));
+  }
+}
+
+/* Überschrift nur für Screenreader */
+:root:root .stack-strip__head {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+:root:root .stack-strip .wrap { width: 100%; max-width: none; }
+:root:root .stack-marquee {
+  width: 100%;
+  margin-inline: 0;
+  padding: .15rem 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+:root:root .stack-list { gap: .6rem; padding-right: .6rem; }
+
+/* Seitenende nicht von der festen Leiste verdecken lassen */
+.site-footer { padding-bottom: 6.5rem; }
+
+/* Technologie-Leiste: ohne Rahmen, Glühen und Kachelhintergrund, nur die Logos laufen frei. */
+:root:root .stack-item,
+:root:root .stack-item:hover {
+  padding: .25rem .5rem;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  transform: none;
+}
+:root:root .stack-item::before,
+:root:root .stack-item::after { display: none; }
+:root:root .stack-item:hover .brand-lockup { transform: none; }
+
+:root:root .stack-strip { padding-block: .5rem .45rem; }

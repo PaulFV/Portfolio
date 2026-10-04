@@ -72,6 +72,7 @@
     "profile.path.developer": "Software developer",
     "profile.path.developerNote": "SMS-Soft GmbH — from graduation to today",
     "profile.outsideWork": "Outside work: fitness, running — and our own house, where there is always something to rebuild.",
+    "meta.heading": "At a glance",
     "meta.location": "Location",
     "meta.workModel": "Working model",
     "meta.workModelValue": "On-site, hybrid or remote",
@@ -190,6 +191,7 @@
     "profile.path.developer": "Dezvoltator software",
     "profile.path.developerNote": "SMS-Soft GmbH — de la absolvire până astăzi",
     "profile.outsideWork": "În afara muncii: fitness, alergare — și casa noastră, unde există mereu ceva de renovat.",
+    "meta.heading": "Pe scurt",
     "meta.location": "Locație",
     "meta.workModel": "Mod de lucru",
     "meta.workModelValue": "La sediu, hibrid sau la distanță",
@@ -307,6 +309,7 @@
     "profile.path.developer": "Szoftverfejlesztő",
     "profile.path.developerNote": "SMS-Soft GmbH — a végzés óta napjainkig",
     "profile.outsideWork": "Munkán kívül: fitnesz, futás — és a saját házunk, ahol mindig van mit átépíteni.",
+    "meta.heading": "Röviden",
     "meta.location": "Helyszín",
     "meta.workModel": "Munkavégzés",
     "meta.workModelValue": "Helyszínen, hibrid vagy távmunkában",
@@ -416,6 +419,7 @@
     "profile.path.developer": "Yazılım geliştirici",
     "profile.path.developerNote": "SMS-Soft GmbH — mezuniyetten bugüne",
     "profile.outsideWork": "İş dışında: fitness, koşu — ve her zaman bir yerinde tadilat süren kendi evimiz.",
+    "meta.heading": "Bir bakışta",
     "meta.location": "Konum",
     "meta.workModel": "Çalışma modeli",
     "meta.workModelValue": "Yerinde, hibrit veya uzaktan",
@@ -525,6 +529,7 @@
     "profile.path.developer": "Desarrollador de software",
     "profile.path.developerNote": "SMS-Soft GmbH — desde la graduación hasta hoy",
     "profile.outsideWork": "Fuera del trabajo: fitness, correr — y nuestra propia casa, donde siempre hay algo que reformar.",
+    "meta.heading": "De un vistazo",
     "meta.location": "Ubicación",
     "meta.workModel": "Modalidad de trabajo",
     "meta.workModelValue": "Presencial, híbrido o remoto",
@@ -933,6 +938,258 @@
     compactSkills.addEventListener("change", syncSkillDetails);
   } else if (compactSkills.addListener) {
     compactSkills.addListener(syncSkillDetails);
+  }
+
+
+  /* --- Privat: auf dem Handy drei kompakte Kacheln, Text klappt darunter auf ---
+     Der Absatz wandert beim Öffnen in ein gemeinsames Feld unter der Reihe
+     (derselbe Knoten, damit die Übersetzung weiter greift) und beim Schließen
+     oder auf größeren Bildschirmen zurück in seine Kachel. */
+
+  var lifeBox = document.querySelector("#privat .life");
+
+  if (lifeBox) {
+    var lifeItems = Array.prototype.slice.call(lifeBox.querySelectorAll(".life__item"));
+    var lifePanel = document.createElement("div");
+    var compactLife = window.matchMedia("(max-width: 40em)");
+    var activeLife = null;
+
+    lifePanel.className = "life__panel";
+    lifePanel.hidden = true;
+    lifePanel.setAttribute("role", "region");
+    lifeBox.parentNode.insertBefore(lifePanel, lifeBox.nextSibling);
+
+    lifeItems.forEach(function (item) {
+      item.lifeText = item.querySelector("p");
+    });
+
+    var closeLife = function () {
+      if (!activeLife) { return; }
+      activeLife.querySelector(".life__body").appendChild(activeLife.lifeText);
+      activeLife.setAttribute("aria-expanded", "false");
+      activeLife.classList.remove("is-open");
+      lifePanel.hidden = true;
+      activeLife = null;
+    };
+
+    var openLife = function (item) {
+      closeLife();
+      lifePanel.setAttribute("data-tone", String(lifeItems.indexOf(item) + 1));
+      lifePanel.setAttribute("aria-label", item.querySelector(".life__title").textContent.trim());
+      lifePanel.appendChild(item.lifeText);
+      lifePanel.hidden = false;
+      item.setAttribute("aria-expanded", "true");
+      item.classList.add("is-open");
+      activeLife = item;
+    };
+
+    var toggleLife = function (item) {
+      if (activeLife === item) { closeLife(); } else { openLife(item); }
+    };
+
+    var syncLife = function () {
+      closeLife();
+      lifeItems.forEach(function (item) {
+        if (compactLife.matches) {
+          item.setAttribute("role", "button");
+          item.setAttribute("tabindex", "0");
+          item.setAttribute("aria-expanded", "false");
+        } else {
+          item.removeAttribute("role");
+          item.removeAttribute("tabindex");
+          item.removeAttribute("aria-expanded");
+        }
+      });
+    };
+
+    lifeItems.forEach(function (item) {
+      item.addEventListener("click", function () {
+        if (compactLife.matches) { toggleLife(item); }
+      });
+      item.addEventListener("keydown", function (event) {
+        if (compactLife.matches && (event.key === "Enter" || event.key === " ")) {
+          event.preventDefault();
+          toggleLife(item);
+        }
+      });
+    });
+
+    syncLife();
+    if (compactLife.addEventListener) {
+      compactLife.addEventListener("change", syncLife);
+    } else if (compactLife.addListener) {
+      compactLife.addListener(syncLife);
+    }
+  }
+
+
+  /* --- Eigene Projekte: auf dem Handy quadratische Kacheln, Details darunter ---
+     Antippen einer Kachel zeigt Name, Beschreibung und Buttons in einem
+     gemeinsamen Feld unter dem Raster. Die Knoten selbst werden verschoben
+     (nicht kopiert), damit Übersetzung und Links unverändert funktionieren;
+     beim Schließen oder auf größeren Bildschirmen wandern sie zurück. */
+
+  var projectsBox = document.querySelector("#projekte .projects");
+  var projectIntro = document.querySelector("#projekte .projects__intro");
+  var compactProjects = window.matchMedia("(max-width: 40em)");
+
+  if (projectsBox) {
+    var projectCards = Array.prototype.slice.call(projectsBox.querySelectorAll(".card"));
+    var projectPanel = document.createElement("div");
+    var activeProject = null;
+
+    projectPanel.className = "projects__panel";
+    projectPanel.hidden = true;
+    projectPanel.setAttribute("role", "region");
+    projectsBox.parentNode.insertBefore(projectPanel, projectsBox.nextSibling);
+
+    projectCards.forEach(function (card) {
+      card.projBody = card.querySelector(".card__body");
+      card.projLinks = card.querySelector(".card__links");
+      card.projLink = card.querySelector(".card__title a");
+    });
+
+    var closeProject = function () {
+      if (!activeProject) { return; }
+      activeProject.appendChild(activeProject.projBody);
+      activeProject.appendChild(activeProject.projLinks);
+      activeProject.setAttribute("aria-expanded", "false");
+      activeProject.classList.remove("is-open");
+      projectPanel.textContent = "";
+      projectPanel.hidden = true;
+      activeProject = null;
+    };
+
+    var openProject = function (card) {
+      var title = document.createElement("a");
+      var name = card.projLink.textContent.trim();
+
+      closeProject();
+      title.className = "projects__panel-title";
+      title.href = card.projLink.href;
+      title.target = "_blank";
+      title.rel = "noopener noreferrer";
+      title.textContent = name + " ↗";
+      projectPanel.appendChild(title);
+      projectPanel.appendChild(card.projBody);
+      projectPanel.appendChild(card.projLinks);
+      projectPanel.setAttribute("data-tone", String(projectCards.indexOf(card) + 1));
+      projectPanel.setAttribute("aria-label", name);
+      projectPanel.hidden = false;
+      card.setAttribute("aria-expanded", "true");
+      card.classList.add("is-open");
+      activeProject = card;
+    };
+
+    var toggleProject = function (card) {
+      if (activeProject === card) { closeProject(); } else { openProject(card); }
+    };
+
+    var syncProjects = function () {
+      closeProject();
+      projectCards.forEach(function (card) {
+        if (compactProjects.matches) {
+          card.setAttribute("role", "button");
+          card.setAttribute("tabindex", "0");
+          card.setAttribute("aria-expanded", "false");
+          card.projLink.setAttribute("tabindex", "-1");
+        } else {
+          card.removeAttribute("role");
+          card.removeAttribute("tabindex");
+          card.removeAttribute("aria-expanded");
+          card.projLink.removeAttribute("tabindex");
+        }
+      });
+    };
+
+    projectCards.forEach(function (card) {
+      card.addEventListener("click", function (event) {
+        if (!compactProjects.matches) { return; }
+        event.preventDefault();
+        toggleProject(card);
+      });
+      card.addEventListener("keydown", function (event) {
+        if (compactProjects.matches && (event.key === "Enter" || event.key === " ")) {
+          event.preventDefault();
+          toggleProject(card);
+        }
+      });
+    });
+
+    syncProjects();
+    if (compactProjects.addEventListener) {
+      compactProjects.addEventListener("change", syncProjects);
+    } else if (compactProjects.addListener) {
+      compactProjects.addListener(syncProjects);
+    }
+  }
+
+  /* Einleitungstext der Projekte: auf dem Handy auf zwei Zeilen gekürzt, per Tipp aufklappbar. */
+  if (projectIntro) {
+    var syncProjectIntro = function () {
+      projectIntro.classList.remove("is-open");
+      if (compactProjects.matches) {
+        projectIntro.setAttribute("role", "button");
+        projectIntro.setAttribute("tabindex", "0");
+        projectIntro.setAttribute("aria-expanded", "false");
+      } else {
+        projectIntro.removeAttribute("role");
+        projectIntro.removeAttribute("tabindex");
+        projectIntro.removeAttribute("aria-expanded");
+      }
+    };
+    var toggleProjectIntro = function () {
+      var open = !projectIntro.classList.contains("is-open");
+      projectIntro.classList.toggle("is-open", open);
+      projectIntro.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+
+    projectIntro.addEventListener("click", function () {
+      if (compactProjects.matches) { toggleProjectIntro(); }
+    });
+    projectIntro.addEventListener("keydown", function (event) {
+      if (compactProjects.matches && (event.key === "Enter" || event.key === " ")) {
+        event.preventDefault();
+        toggleProjectIntro();
+      }
+    });
+    syncProjectIntro();
+    if (compactProjects.addEventListener) {
+      compactProjects.addEventListener("change", syncProjectIntro);
+    } else if (compactProjects.addListener) {
+      compactProjects.addListener(syncProjectIntro);
+    }
+  }
+
+
+  /* --- Profil-Infos (Standort, Sprachen …): auf dem Handy aufklappbar ---
+     Zugeklappt bleibt nur die erste Zeile (Standort) sichtbar. */
+
+  var profileFacts = document.querySelector("#profil .profile-facts");
+  var profileToggle = profileFacts && profileFacts.querySelector(".profile-facts__toggle");
+
+  if (profileToggle) {
+    var compactProfile = window.matchMedia("(max-width: 40em)");
+
+    var setProfileOpen = function (open) {
+      profileFacts.classList.toggle("is-open", open);
+      profileToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+
+    profileToggle.addEventListener("click", function () {
+      setProfileOpen(!profileFacts.classList.contains("is-open"));
+    });
+
+    var syncProfile = function () {
+      setProfileOpen(false);
+    };
+
+    syncProfile();
+    if (compactProfile.addEventListener) {
+      compactProfile.addEventListener("change", syncProfile);
+    } else if (compactProfile.addListener) {
+      compactProfile.addListener(syncProfile);
+    }
   }
 
 
