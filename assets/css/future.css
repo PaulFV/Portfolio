@@ -4682,3 +4682,6 @@ body { line-height: 1.55; }
   55%      { rotate: 1deg; }
   80%      { rotate: 8deg; }
 }
+
+/* Kontakt: ohne Status-Plakette beginnt der Bereich direkt mit der Überschrift. */
+#kontakt .section__head { margin-top: 0; }
