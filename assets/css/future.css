@@ -2083,7 +2083,7 @@ h4,
   line-height: 1;
 }
 
-#kontakt .contact__links {
+:is(#kontakt, .site-footer) .contact__links {
   display: flex;
   flex-wrap: wrap;
   gap: clamp(0.85rem, 2vw, 1.9rem);
@@ -2092,7 +2092,7 @@ h4,
   border: 0;
 }
 
-#kontakt .contact__links .contact-link {
+:is(#kontakt, .site-footer) .contact__links .contact-link {
   display: inline-flex;
   align-items: center;
   min-height: clamp(3rem, 5vw, 4.5rem);
@@ -2109,20 +2109,20 @@ h4,
   text-decoration: none;
 }
 
-#kontakt .contact__links .contact-link:hover {
+:is(#kontakt, .site-footer) .contact__links .contact-link:hover {
   border-color: #7bd8ff;
   text-decoration: none;
 }
 
-#kontakt .contact__links svg {
+:is(#kontakt, .site-footer) .contact__links svg {
   width: clamp(1.35rem, 2.4vw, 2.25rem);
   height: clamp(1.35rem, 2.4vw, 2.25rem);
   filter: none;
 }
 
-#kontakt .contact-link--sms-soft svg { stroke: #60c7ff; }
-#kontakt .contact-link--github svg { fill: #f5f8ff; }
-#kontakt .contact-link--x svg { fill: #36c8ff; }
+:is(#kontakt, .site-footer) .contact-link--sms-soft svg { stroke: #60c7ff; }
+:is(#kontakt, .site-footer) .contact-link--github svg { fill: #f5f8ff; }
+:is(#kontakt, .site-footer) .contact-link--x svg { fill: #36c8ff; }
 
 .site-footer {
   padding: 0 0 clamp(2.7rem, 5vw, 4.6rem);
@@ -2184,8 +2184,8 @@ h4,
 
 @media (max-width: 30em) {
   #kontakt .contact__mailrow { min-height: 7rem; aspect-ratio: auto; }
-  #kontakt .contact__links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  #kontakt .contact__links .contact-link { padding-inline: 0.8rem; }
+  :is(#kontakt, .site-footer) .contact__links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  :is(#kontakt, .site-footer) .contact__links .contact-link { padding-inline: 0.8rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3758,9 +3758,9 @@ body { line-height: 1.55; }
 #kontakt .contact__mailkind { font-size: clamp(.66rem, .9vw, .85rem); }
 #kontakt .contact__mail { font-size: clamp(.85rem, 1.5vw, 1.3rem); }
 #kontakt .contact__mailarrow { width: clamp(1.5rem, 2.3vw, 2.1rem); font-size: clamp(.9rem, 1.4vw, 1.3rem); }
-#kontakt .contact__links { gap: .7rem; margin-top: 1.1rem; }
-#kontakt .contact__links .contact-link { min-height: clamp(2.5rem, 3.3vw, 3rem); padding-inline: 1rem; font-size: clamp(.8rem, 1vw, .95rem); border-radius: .75rem; }
-#kontakt .contact__links svg { width: clamp(1.1rem, 1.6vw, 1.4rem); height: clamp(1.1rem, 1.6vw, 1.4rem); }
+:is(#kontakt, .site-footer) .contact__links { gap: .7rem; margin-top: 1.1rem; }
+:is(#kontakt, .site-footer) .contact__links .contact-link { min-height: clamp(2.5rem, 3.3vw, 3rem); padding-inline: 1rem; font-size: clamp(.8rem, 1vw, .95rem); border-radius: .75rem; }
+:is(#kontakt, .site-footer) .contact__links svg { width: clamp(1.1rem, 1.6vw, 1.4rem); height: clamp(1.1rem, 1.6vw, 1.4rem); }
 
 @media (max-width: 52em) {
   #kontakt .contact__intro { min-height: 0; padding-bottom: 1.2rem; }
@@ -3773,7 +3773,7 @@ body { line-height: 1.55; }
   #kontakt .contact__mailrow { aspect-ratio: auto; min-height: 4.8rem; padding-block: .5rem; }
   #kontakt .contact__mailicon { width: 3.6rem; }
   #kontakt .contact__mail { font-size: clamp(.8rem, 3.5vw, 1.05rem); }
-  #kontakt .contact__links .contact-link { padding-inline: .8rem; }
+  :is(#kontakt, .site-footer) .contact__links .contact-link { padding-inline: .8rem; }
 }
 
 /* Kontakt: noch kompakter. */
@@ -3789,9 +3789,9 @@ body { line-height: 1.55; }
 #kontakt .contact__mailicon { width: min(5.2vw, 4.4rem); }
 #kontakt .contact__mail { font-size: clamp(.82rem, 1.25vw, 1.1rem); }
 #kontakt .contact__mailarrow { width: 1.6rem; font-size: 1rem; }
-#kontakt .contact__links { margin-top: .8rem; gap: .55rem; }
-#kontakt .contact__links .contact-link { min-height: 2.4rem; padding-inline: .85rem; font-size: .82rem; }
-#kontakt .contact__links svg { width: 1.1rem; height: 1.1rem; }
+:is(#kontakt, .site-footer) .contact__links { margin-top: .8rem; gap: .55rem; }
+:is(#kontakt, .site-footer) .contact__links .contact-link { min-height: 2.4rem; padding-inline: .85rem; font-size: .82rem; }
+:is(#kontakt, .site-footer) .contact__links svg { width: 1.1rem; height: 1.1rem; }
 
 @media (max-width: 52em) {
   #kontakt .contact__intro { padding-bottom: .6rem; }
@@ -3817,8 +3817,8 @@ body { line-height: 1.55; }
 }
 
 @media (max-width: 40em) {
-  #kontakt .contact__links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .4rem; }
-  #kontakt .contact__links .contact-link { justify-content: center; gap: .35rem; padding-inline: .4rem; font-size: .76rem; }
+  :is(#kontakt, .site-footer) .contact__links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .4rem; }
+  :is(#kontakt, .site-footer) .contact__links .contact-link { justify-content: center; gap: .35rem; padding-inline: .4rem; font-size: .76rem; }
 }
 
 
@@ -4685,3 +4685,87 @@ body { line-height: 1.55; }
 
 /* Kontakt: ohne Status-Plakette beginnt der Bereich direkt mit der Überschrift. */
 #kontakt .section__head { margin-top: 0; }
+
+/* Kontaktformular: klappt unter den beiden Adressen auf. */
+#kontakt .contact__mailrow.is-open {
+  border-color: #a0ecff;
+  box-shadow: inset 0 1px 0 rgba(220, 247, 255, .4), 0 0 1.5rem rgba(42, 177, 255, .35);
+}
+#kontakt .contact__mailrow[data-tone],
+#kontakt .contact__mailrow { cursor: pointer; }
+
+.contact__form {
+  --tone: #3de2ff;
+  max-width: 46rem;
+  margin-top: .8rem;
+  padding: 1.1rem 1.2rem 1.2rem;
+  border: 1.5px solid var(--tone);
+  border-radius: .9rem;
+  background: rgba(4, 20, 44, .88);
+  box-shadow: 0 0 1.2rem color-mix(in srgb, var(--tone) 32%, transparent);
+}
+.contact__form[hidden] { display: none; }
+.contact__form[data-tone="2"] { --tone: #b98cff; }
+
+.contact__form-to { margin: 0 0 .9rem; color: #9baeca; font-size: .9rem; }
+.contact__form-to strong { color: #f5f8ff; font-weight: 700; }
+
+.contact__form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; }
+.contact__field { display: grid; gap: .35rem; min-width: 0; color: #cfe3f7; font-size: .85rem; font-weight: 600; }
+.contact__field--wide { grid-column: 1 / -1; }
+.contact__field input,
+.contact__field textarea {
+  width: 100%;
+  padding: .65rem .8rem;
+  border: 1px solid rgba(120, 170, 220, .4);
+  border-radius: .55rem;
+  background: rgba(2, 12, 28, .85);
+  color: #f5f8ff;
+  font: inherit;
+  font-weight: 400;
+}
+.contact__field textarea { min-height: 7rem; resize: vertical; }
+.contact__field input:focus,
+.contact__field textarea:focus { outline: none; border-color: var(--tone); box-shadow: 0 0 0 3px color-mix(in srgb, var(--tone) 28%, transparent); }
+
+.contact__send { width: 100%; margin-top: 1rem; justify-content: center; }
+.contact__form-hint { margin: .7rem 0 0; color: #8aa0bf; font-size: .78rem; line-height: 1.45; }
+
+@media (max-width: 40em) {
+  .contact__form { padding: .9rem; }
+  .contact__form-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Dienstlich: zweite Adresse und Anschrift in der Karte, Empfänger-Auswahl im Formular. */
+#kontakt .contact__mail--sub { font-size: clamp(.8rem, 1.05vw, .95rem); font-weight: 600; opacity: .9; }
+#kontakt .contact__addr { color: #9baeca; font-size: clamp(.7rem, .9vw, .82rem); line-height: 1.35; }
+.contact__field select {
+  width: 100%;
+  padding: .65rem .8rem;
+  border: 1px solid rgba(120, 170, 220, .4);
+  border-radius: .55rem;
+  background: rgba(2, 12, 28, .85);
+  color: #f5f8ff;
+  font: inherit;
+  font-weight: 600;
+}
+.contact__field select:focus { outline: none; border-color: var(--tone); box-shadow: 0 0 0 3px color-mix(in srgb, var(--tone) 28%, transparent); }
+.contact__field select:disabled { opacity: .85; cursor: default; }
+
+/* Link-Buttons (SMS-Soft, GitHub, X) stehen jetzt in der Fußzeile über der Copyright-Zeile. */
+.site-footer .footer__links-wrap { padding-top: 1.6rem; padding-bottom: 0; border-top: 0; }
+.site-footer .footer__links-wrap + .site-footer__inner { margin-top: 1.3rem; padding-top: 1.2rem; }
+
+/* SMS-Soft in der Firmenfarbe Rot */
+:is(#kontakt, .site-footer) .contact__links .contact-link--sms-soft {
+  border-color: #e4001b;
+  background: rgba(228, 0, 27, .16);
+  color: #fff;
+  box-shadow: 0 0 .9rem rgba(228, 0, 27, .35), inset 0 1px 0 rgba(255, 170, 178, .18);
+}
+:is(#kontakt, .site-footer) .contact__links .contact-link--sms-soft:hover {
+  border-color: #ff3b50;
+  background: rgba(228, 0, 27, .3);
+  box-shadow: 0 0 1.2rem rgba(255, 40, 60, .55), inset 0 1px 0 rgba(255, 170, 178, .25);
+}
+:is(#kontakt, .site-footer) .contact-link--sms-soft svg { stroke: #ff5a6b; }

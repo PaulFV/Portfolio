@@ -122,6 +122,13 @@
     "contact.lead": "Do you have a challenge where software meets real-world production? Then feel free to write to me — I usually reply within a few days.",
     "contact.emailTodo": "[[ CHECK EMAIL: An address such as firstname@lastname.de looks more professional in tech than a free-mail address. Replace it — or remove this note and keep the web.de address. ]]",
     "contact.mailWork": "Work",
+    "form.to": "To",
+    "form.name": "Name",
+    "form.email": "Email",
+    "form.message": "Message",
+    "form.send": "Send",
+    "form.hint": "Sending opens your email app with the prepared message.",
+    "contact.addressDe": "Address Germany",
     "contact.mailPrivate": "Personal",
     "contact.employer": "SMS-Soft",
     "contact.github": "GitHub",
@@ -240,6 +247,13 @@
     "contact.lead": "Ai o provocare în care software-ul întâlnește producția reală? Scrie-mi — de obicei răspund în câteva zile.",
     "contact.emailTodo": "[[ VERIFICĂ ADRESA DE E-MAIL: O adresă precum prenume@nume.ro pare mai profesională în domeniul tehnic decât una gratuită. Înlocuiește-o sau elimină această notă și păstrează adresa web.de. ]]",
     "contact.mailWork": "Serviciu",
+    "form.to": "Către",
+    "form.name": "Nume",
+    "form.email": "E-mail",
+    "form.message": "Mesaj",
+    "form.send": "Trimite",
+    "form.hint": "La trimitere se deschide aplicația de e-mail cu mesajul pregătit.",
+    "contact.addressDe": "Adresa Germania",
     "contact.mailPrivate": "Personal",
     "contact.employer": "SMS-Soft",
     "contact.github": "GitHub",
@@ -351,6 +365,13 @@
     "sections.contact": "Kapcsolat",
     "contact.lead": "Van egy feladata, ahol a szoftver valódi gyártással találkozik? Írjon nekem bátran — általában néhány napon belül válaszolok.",
     "contact.mailWork": "Munkahelyi",
+    "form.to": "Címzett",
+    "form.name": "Név",
+    "form.email": "E-mail",
+    "form.message": "Üzenet",
+    "form.send": "Küldés",
+    "form.hint": "Küldéskor megnyílik az e-mail program az előkészített üzenettel.",
+    "contact.addressDe": "Cím, Németország",
     "contact.mailPrivate": "Magán",
     "contact.employer": "SMS-Soft",
     "contact.github": "GitHub",
@@ -460,6 +481,13 @@
     "sections.contact": "İletişim",
     "contact.lead": "Yazılımın gerçek üretimle buluştuğu bir göreviniz mi var? O zaman bana yazmaktan çekinmeyin — genellikle birkaç gün içinde yanıt veririm.",
     "contact.mailWork": "İş",
+    "form.to": "Alıcı",
+    "form.name": "Ad",
+    "form.email": "E-posta",
+    "form.message": "Mesaj",
+    "form.send": "Gönder",
+    "form.hint": "Gönderdiğinizde e-posta uygulamanız hazırlanmış mesajla açılır.",
+    "contact.addressDe": "Adres Almanya",
     "contact.mailPrivate": "Kişisel",
     "contact.employer": "SMS-Soft",
     "contact.github": "GitHub",
@@ -569,6 +597,13 @@
     "sections.contact": "Contacto",
     "contact.lead": "¿Tiene un reto en el que el software se encuentra con la producción real? Escríbame sin compromiso — normalmente respondo en pocos días.",
     "contact.mailWork": "Trabajo",
+    "form.to": "Para",
+    "form.name": "Nombre",
+    "form.email": "Correo electrónico",
+    "form.message": "Mensaje",
+    "form.send": "Enviar",
+    "form.hint": "Al enviar se abre su aplicación de correo con el mensaje preparado.",
+    "contact.addressDe": "Dirección Alemania",
     "contact.mailPrivate": "Personal",
     "contact.employer": "SMS-Soft",
     "contact.github": "GitHub",
@@ -1204,6 +1239,84 @@
     } else if (compactProfile.addListener) {
       compactProfile.addListener(syncProfile);
     }
+  }
+
+
+  /* --- Kontakt: Klick auf eine der beiden Adressen klappt das Formular auf ---
+     Es gibt keinen Server. "Senden" öffnet das E-Mail-Programm mit der
+     ausgefüllten Nachricht (mailto:). Ohne JavaScript bleiben die Adressen
+     normale Mail-Links. */
+
+  var mailForm = document.getElementById("kontakt-form");
+  var mailRows = Array.prototype.slice.call(document.querySelectorAll("#kontakt .contact__mailrow"));
+
+  if (mailForm && mailRows.length) {
+    var mailTarget = mailForm.querySelector("[data-contact-to]");
+    var activeMailRow = null;
+
+    var mailAddress = function (row) {
+      return (row.getAttribute("href") || "").replace(/^mailto:/i, "");
+    };
+
+    var setMailArrow = function (row, open) {
+      var arrow = row.querySelector(".contact__mailarrow");
+      if (arrow) { arrow.textContent = open ? "↑" : "↓"; }
+    };
+
+    var closeMailForm = function () {
+      if (!activeMailRow) { return; }
+      activeMailRow.classList.remove("is-open");
+      activeMailRow.setAttribute("aria-expanded", "false");
+      setMailArrow(activeMailRow, false);
+      mailForm.hidden = true;
+      activeMailRow = null;
+    };
+
+    var openMailForm = function (row) {
+      closeMailForm();
+      activeMailRow = row;
+      row.classList.add("is-open");
+      row.setAttribute("aria-expanded", "true");
+      setMailArrow(row, true);
+      mailTarget.textContent = "";
+      [mailAddress(row), row.getAttribute("data-extra-mail")].forEach(function (address) {
+        if (!address) { return; }
+        var option = document.createElement("option");
+        option.value = address;
+        option.textContent = address;
+        mailTarget.appendChild(option);
+      });
+      mailTarget.disabled = mailTarget.options.length < 2;
+      mailForm.setAttribute("data-tone", String(mailRows.indexOf(row) + 1));
+      mailForm.hidden = false;
+    };
+
+    mailRows.forEach(function (row) {
+      row.setAttribute("role", "button");
+      row.setAttribute("aria-controls", "kontakt-form");
+      row.setAttribute("aria-expanded", "false");
+      setMailArrow(row, false);
+      row.addEventListener("click", function (event) {
+        event.preventDefault();
+        if (activeMailRow === row) { closeMailForm(); } else { openMailForm(row); }
+      });
+      row.addEventListener("keydown", function (event) {
+        if (event.key === " ") { event.preventDefault(); row.click(); }
+      });
+    });
+
+    mailForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (!mailForm.reportValidity() || !activeMailRow) { return; }
+      var name = mailForm.elements.name.value.trim();
+      var from = mailForm.elements.email.value.trim();
+      var message = mailForm.elements.message.value.trim();
+      var german = document.documentElement.lang === "de";
+      var subject = (german ? "Anfrage über die Website von " : "Inquiry via the website from ") + name;
+      var body = message + "\n\n— " + name + " (" + from + ")";
+      window.location.href = "mailto:" + (mailTarget.value || mailAddress(activeMailRow)) +
+        "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    });
   }
 
 
