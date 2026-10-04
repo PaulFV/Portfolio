@@ -4261,3 +4261,120 @@ body { line-height: 1.55; }
 @media (min-width: 40.01em) {
   #privat .life { max-width: none; margin-inline: 0; }
 }
+
+/* ==========================================================
+   Live Profil-Daten: Bewegung beim Überfahren mit der Maus.
+   Uhr: Zeiger läuft. Roboter: schwenkt um seine Basis. Globus: dreht sich.
+   Die Symbole sind Ausschnitte eines einzigen Bildes (live-profile-reference.png, 2172 x 724).
+   Die bewegten Ebenen sitzen mit denselben Maßen (in cqw, relativ zur Kartenbreite) exakt darüber.
+   ========================================================== */
+.fact__icon { position: relative; }
+
+/* Uhr: Zifferblatt-Ebene deckt den starren Zeiger ab und zeichnet Striche und einen laufenden Zeiger. */
+.fact__clock {
+  position: absolute;
+  left: 52.6cqw;
+  top: 33.9cqw;
+  width: 23.5cqw;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, #1c3448 0%, #0b1c2c 52%, #04101c 100%);
+  opacity: 0;
+  transition: opacity .25s ease;
+  pointer-events: none;
+}
+.fact__clock::before,
+.fact__clock::after {
+  content: "";
+  position: absolute;
+  inset: 1%;
+  border-radius: 50%;
+}
+/* kleine Striche alle 30° */
+.fact__clock::before {
+  background: repeating-conic-gradient(from -1.6deg, #bcd8ea 0 3.2deg, transparent 3.2deg 30deg);
+  -webkit-mask-image: radial-gradient(circle, transparent 79%, #000 80%, #000 96%, transparent 97%);
+  mask-image: radial-gradient(circle, transparent 79%, #000 80%, #000 96%, transparent 97%);
+  opacity: .8;
+}
+/* lange Striche bei 12, 3, 6 und 9 Uhr */
+.fact__clock::after {
+  background: repeating-conic-gradient(from -2deg, #e8f5ff 0 4deg, transparent 4deg 90deg);
+  -webkit-mask-image: radial-gradient(circle, transparent 66%, #000 67%, #000 96%, transparent 97%);
+  mask-image: radial-gradient(circle, transparent 66%, #000 67%, #000 96%, transparent 97%);
+}
+.fact__clock-hand {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  z-index: 1;
+  width: 4.6%;
+  height: 49%;
+  translate: -50% 0;
+  transform-origin: 50% 100%;
+  rotate: 46deg; /* Ausgangslage wie der Zeiger im Bild */
+  background: linear-gradient(to top, #12c9f5, #8ceaff);
+  clip-path: polygon(0 100%, 100% 100%, 62% 0, 38% 0);
+  filter: drop-shadow(0 0 .35cqw #1fd0ff);
+}
+.fact__clock-pivot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: 12%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border: .5cqw solid #1fd0ff;
+  border-radius: 50%;
+  background: #04101c;
+  box-shadow: 0 0 .8cqw rgba(31, 208, 255, .8);
+}
+.fact--experience:hover .fact__clock { opacity: 1; }
+.fact--experience:hover .fact__clock-hand { animation: fact-clock-sweep 2.4s linear infinite; }
+@keyframes fact-clock-sweep {
+  from { rotate: 46deg; }
+  to   { rotate: 406deg; }
+}
+
+/* Roboter: schwenkt um die Basis, als würde der Arm arbeiten. */
+.fact--systems:hover .fact__icon {
+  transform-origin: 47.1cqw 47.3cqw;
+  animation: fact-robot-sway 2.8s ease-in-out infinite;
+}
+@keyframes fact-robot-sway {
+  0%, 100% { rotate: -5deg; translate: -0.6cqw 0; }
+  25%      { rotate: 2deg;  translate: 0 -0.8cqw; }
+  50%      { rotate: 6deg;  translate: 0.6cqw 0; }
+  75%      { rotate: -1deg; translate: 0 -0.5cqw; }
+}
+
+/* Globus: kreisrunde Ebene mit demselben Bildausschnitt dreht sich über dem Original. */
+.fact--countries .fact__icon::after {
+  content: "";
+  position: absolute;
+  left: 28.6cqw;
+  top: 9.4cqw;
+  width: 42.2cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: url("../img/live-profile-reference.png") -251.35cqw -41.21cqw / 440.6cqw auto no-repeat;
+  opacity: 0;
+  transition: opacity .25s ease;
+  pointer-events: none;
+}
+.fact--countries:hover .fact__icon::after {
+  opacity: 1;
+  animation: fact-globe-spin 9s linear infinite;
+}
+@keyframes fact-globe-spin {
+  to { rotate: 360deg; }
+}
+
+/* Bewegung reduzieren: die Symbole bleiben beim Überfahren unverändert. */
+@media (prefers-reduced-motion: reduce) {
+  .fact--experience:hover .fact__clock,
+  .fact--countries:hover .fact__icon::after { opacity: 0; }
+  .fact--systems:hover .fact__icon { animation: none; rotate: none; translate: none; }
+}
