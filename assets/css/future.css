@@ -1280,7 +1280,7 @@ h4,
   max-width: none; /* globales svg { max-width: 100% } würde die Bahn sonst auf Bildgröße kappen */
   /* Mitte auf der Bildmitte halten (Prozentwerte beziehen sich auf die Bildbreite) */
   margin: calc((100% - var(--orbit)) / 2) 0 0 calc((100% - var(--orbit)) / 2);
-  animation-duration: 38s;
+  animation-duration: 55s;
 }
 .hero__name-track {
   fill: none;
@@ -4769,3 +4769,90 @@ body { line-height: 1.55; }
   box-shadow: 0 0 1.2rem rgba(255, 40, 60, .55), inset 0 1px 0 rgba(255, 170, 178, .25);
 }
 :is(#kontakt, .site-footer) .contact-link--sms-soft svg { stroke: #ff5a6b; }
+
+/* Gesteinsbrocken und Asteroiden: fliegen wie die Code-Fragmente aus dem Schweif nach hinten ins All,
+   drehen sich dabei, werden kleiner und blenden aus. Sie tauchen hinter dem Profilbild auf. */
+.hero__comet-rocks {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  z-index: -1;
+  width: 80%;
+  height: 170%;
+  pointer-events: none;
+  transform-origin: 50% 100%;
+  transform: translateX(-50%) rotate(var(--comet-angle));
+  filter: drop-shadow(0 0 .3rem rgba(170, 195, 255, .35));
+}
+.hero__comet-rocks span {
+  position: absolute;
+  bottom: 24%;
+  left: var(--x, 50%);
+  width: calc(var(--s, .6rem) * 1.9);
+  aspect-ratio: 1.1;
+  opacity: 0;
+  background: radial-gradient(circle at 32% 28%, #d3c7b6 0, #93857a 36%, #52483f 70%, #231e1b 100%);
+  clip-path: var(--shape, polygon(50% 0, 78% 12%, 100% 45%, 86% 82%, 52% 100%, 18% 88%, 0 50%, 20% 14%));
+  animation: comet-rock calc(var(--t, 14s) * 1.7) linear var(--d, 0s) infinite;
+}
+.hero__comet-rocks span:nth-child(1) { --x: 12%; --s: clamp(.45rem, .9vw, .8rem);  --t: 15s; --d: -2s;  --spin: 420deg; }
+.hero__comet-rocks span:nth-child(2) { --x: 34%; --s: clamp(.3rem, .6vw, .55rem);  --t: 12s; --d: -7s;  --spin: -540deg; --shape: polygon(30% 0, 70% 6%, 100% 38%, 92% 76%, 60% 100%, 22% 92%, 0 58%, 8% 20%); }
+.hero__comet-rocks span:nth-child(3) { --x: 58%; --s: clamp(.6rem, 1.2vw, 1.1rem); --t: 19s; --d: -11s; --spin: 300deg; --shape: polygon(44% 0, 88% 20%, 100% 60%, 70% 100%, 24% 90%, 0 46%, 14% 12%); }
+.hero__comet-rocks span:nth-child(4) { --x: 78%; --s: clamp(.3rem, .55vw, .5rem);  --t: 11s; --d: -4s;  --spin: -360deg; }
+.hero__comet-rocks span:nth-child(5) { --x: 22%; --s: clamp(.38rem, .75vw, .65rem); --t: 17s; --d: -13s; --spin: 600deg; --shape: polygon(44% 0, 88% 20%, 100% 60%, 70% 100%, 24% 90%, 0 46%, 14% 12%); }
+.hero__comet-rocks span:nth-child(6) { --x: 46%; --s: clamp(.5rem, 1vw, .9rem);   --t: 21s; --d: -16s; --spin: -420deg; --shape: polygon(30% 0, 70% 6%, 100% 38%, 92% 76%, 60% 100%, 22% 92%, 0 58%, 8% 20%); }
+.hero__comet-rocks span:nth-child(7) { --x: 68%; --s: clamp(.28rem, .5vw, .45rem); --t: 13s; --d: -9s;  --spin: 480deg; }
+.hero__comet-rocks span:nth-child(8) { --x: 88%; --s: clamp(.42rem, .85vw, .75rem); --t: 16s; --d: -1s;  --spin: -300deg; --shape: polygon(44% 0, 88% 20%, 100% 60%, 70% 100%, 24% 90%, 0 46%, 14% 12%); }
+
+@keyframes comet-rock {
+  0%   { bottom: 24%;  opacity: 0;   scale: 1;   rotate: 0deg; }
+  5%   { opacity: .95; }
+  30%  { opacity: .8; }
+  38%  { bottom: 112%; opacity: 0;   scale: .4;  rotate: var(--spin, 360deg); }
+  100% { bottom: 112%; opacity: 0;   scale: .4;  rotate: var(--spin, 360deg); }
+}
+@media (max-width: 40em) {
+  .hero__comet-rocks { height: 125%; }
+}
+
+/* Echte Asteroidenfotos statt gezeichneter Brocken (freigestellt aus gemeinfreien NASA-Aufnahmen):
+   Bennu (NASA/Goddard/University of Arizona, OSIRIS-REx) und 433 Eros (NASA/JPL/JHUAPL, NEAR Shoemaker). */
+.hero__comet-rocks span {
+  width: calc(var(--s, .6rem) * 3);
+  aspect-ratio: var(--ar, 1);
+  background: var(--img) center / contain no-repeat;
+  clip-path: none;
+  filter: brightness(.92) contrast(1.05);
+}
+.hero__comet-rocks span:nth-child(odd)  { --img: url("../img/asteroid-bennu.png"); --ar: 1.047; }
+.hero__comet-rocks span:nth-child(even) { --img: url("../img/asteroid-eros.png");  --ar: .829; }
+.hero__comet-rocks span:nth-child(2n+2) { transform: scaleX(-1); }
+
+/* Satelliten (echte Fotos des Hubble-Weltraumteleskops, NASA/STS-125-Crew) kreisen zusammen mit "PAUL FODOR"
+   auf der äußeren Bahn um das Profilbild. Die Ebene hat genau die Größe der Schriftbahn (--orbit), dreht sich
+   mit derselben Animation und Dauer, und die Satelliten sitzen auf dem Bahnradius (46,5 % der Breite). */
+.hero__orbit-sats {
+  position: absolute;
+  left: calc((100% - var(--orbit)) / 2);
+  top: calc((100% - var(--orbit)) / 2);
+  width: var(--orbit);
+  aspect-ratio: 1;
+  container-type: size;
+  pointer-events: none;
+  animation: name-orbit 70s linear infinite reverse; /* gegen die Schrift: andere Richtung, anderes Tempo */
+}
+.orbit-sat {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--w, clamp(2.6rem, 4.4vw, 4rem));
+  aspect-ratio: var(--ar, 1.6);
+  background: var(--img) center / contain no-repeat;
+  transform-origin: 0 0;
+  transform: rotate(var(--a, 0deg)) translateY(-46.5cqw) translate(-50%, -50%);
+  filter: drop-shadow(0 0 .35rem rgba(190, 215, 255, .45));
+}
+.orbit-sat:nth-child(1) { --img: url("../img/satellite-hubble-1.png"); --ar: 1.6; --a: 120deg; --w: clamp(2.6rem, 4.4vw, 4rem); }
+@media (max-width: 40em) {
+  .orbit-sat:nth-child(1) { --w: clamp(2.3rem, 9.5vw, 3.1rem); }
+}
