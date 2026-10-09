@@ -5039,6 +5039,6 @@ body { line-height: 1.55; }
 @media (min-width: 64.01em) {
   .hero {
     --portrait-size: clamp(17rem, 33vw, 31rem);
-    --portrait-right: calc(clamp(0px, (100vw - 80rem) * .3, 11rem) + 3vw);
+    --portrait-right: calc(clamp(0px, (100vw - 80rem) * .3, 11rem) + 1vw);
   }
 }
