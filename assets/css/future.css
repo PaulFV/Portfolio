@@ -5037,5 +5037,8 @@ body { line-height: 1.55; }
 
 /* Web (Desktop): Profilbild samt Kreis, Kometenschweif und Schriftbahnen kleiner. Alles hängt an --portrait-size, Bahn und Satellit skalieren mit. */
 @media (min-width: 64.01em) {
-  .hero { --portrait-size: clamp(13rem, 23vw, 22rem); }
+  .hero {
+    --portrait-size: clamp(17rem, 33vw, 31rem);
+    --portrait-right: calc(clamp(0px, (100vw - 80rem) * .3, 11rem) + 6vw);
+  }
 }
