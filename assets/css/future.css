@@ -4996,3 +4996,40 @@ body { line-height: 1.55; }
   .worktile { padding-inline: .25rem; }
   .worktile__title { font-size: .8rem; }
 }
+
+
+/* Dienstprojekte: Produkt-Kacheln stehen unter einer aufklappbaren Zeile "Produkte" (zu Beginn eingeklappt). */
+.workprod { margin-bottom: .8rem; }
+.workprod__sum {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .8rem;
+  min-height: 2.8rem;
+  padding: .55rem 1rem;
+  border: 1.5px solid rgba(61, 226, 255, .35);
+  border-radius: .9rem;
+  background: rgba(4, 20, 44, .72);
+  color: #f5f8ff;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 700;
+  list-style: none;
+  cursor: pointer;
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+.workprod__sum::-webkit-details-marker { display: none; }
+.workprod__sum::marker { content: ""; }
+.workprod__sum::after {
+  content: "";
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dff3ff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14M5.5 12.5 12 19l6.5-6.5'/%3E%3C/svg%3E") center / contain no-repeat;
+  opacity: .85;
+  transition: transform .25s ease;
+}
+.workprod[open] > .workprod__sum::after { transform: rotate(180deg); }
+.workprod__sum:hover,
+.workprod[open] > .workprod__sum { border-color: #3de2ff; box-shadow: 0 0 1.2rem rgba(61, 226, 255, .25); }
+.workprod__sum:focus-visible { outline: 2px solid #a0ecff; outline-offset: 3px; }
+.workprod[open] > .worklist { margin-top: .8rem; }
