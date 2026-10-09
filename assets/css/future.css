@@ -5033,3 +5033,9 @@ body { line-height: 1.55; }
 .workprod[open] > .workprod__sum { border-color: #3de2ff; box-shadow: 0 0 1.2rem rgba(61, 226, 255, .25); }
 .workprod__sum:focus-visible { outline: 2px solid #a0ecff; outline-offset: 3px; }
 .workprod[open] > .worklist { margin-top: .8rem; }
+
+
+/* Web (Desktop): Profilbild samt Kreis, Kometenschweif und Schriftbahnen kleiner. Alles hängt an --portrait-size, Bahn und Satellit skalieren mit. */
+@media (min-width: 64.01em) {
+  .hero { --portrait-size: clamp(15rem, 29vw, 27rem); }
+}
