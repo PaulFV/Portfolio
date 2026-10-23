@@ -2495,6 +2495,25 @@ button { font: inherit; color: inherit; }
   filter: drop-shadow(2px 3px 0 #00bfff) drop-shadow(0 0 0.8rem rgba(0, 191, 255, 0.7));
 }
 
+.contact-link--youtube {
+  color: #ff0033;
+}
+
+.contact-link--youtube:hover {
+  color: #ff4d6d;
+  text-shadow: 0 0 0.8rem rgba(255, 0, 51, 0.6);
+}
+
+.contact-link--youtube svg {
+  fill: #ff0033;
+  filter: drop-shadow(1px 2px 0 rgba(255, 0, 51, 0.4));
+}
+
+.contact-link--youtube:hover svg {
+  fill: #ff4d6d;
+  filter: drop-shadow(2px 3px 0 #ff0033) drop-shadow(0 0 0.8rem rgba(255, 0, 51, 0.7));
+}
+
 /* Dark Mode Anpassungen */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .contact-link--sms-soft {
