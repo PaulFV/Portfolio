@@ -670,6 +670,7 @@ h4,
 .card:nth-child(4) .card__logo { animation-delay: -4.05s; }
 .card:nth-child(5) .card__logo { animation-delay: -0.7s; }
 .card:nth-child(6) .card__logo { animation-delay: -2s; }
+.card:nth-child(7) .card__logo { animation-delay: -3.4s; }
 
 .card:hover .card__logo {
   animation-play-state: paused;
@@ -3040,6 +3041,16 @@ h4,
   --button-bg: linear-gradient(110deg, #00d7bc, #0b9eb7 57%, #ffc62a);
 }
 
+#projekte .card:nth-child(7) {
+  --edge-a: #ff5fd2;
+  --edge-b: #7a4dff;
+  --card-halo: rgba(200, 58, 220, .24);
+  --card-glow: rgba(190, 80, 255, .28);
+  --card-fill-start: #28123a;
+  --card-fill-end: #10143a;
+  --button-bg: linear-gradient(110deg, #ff5fd2, #8a4dff 58%, #3d7bff);
+}
+
 #projekte .card::before {
   left: .5rem;
   right: .5rem;
@@ -4518,11 +4529,11 @@ body { line-height: 1.55; }
 /* ==========================================================
    Eigene Projekte: Kacheln wie bei Privat, auf allen Bildschirmgrößen.
    Logo oben, Name links, Pfeil ganz rechts; Beschreibung und Buttons klappen in einem Feld unter der Reihe auf.
-   Handy: 3 pro Reihe, Tablet: 3, Desktop: 6 in einer Reihe.
+   Handy: 3 pro Reihe, Tablet: 3, Desktop: 7 in einer Reihe.
    ========================================================== */
 #projekte .projects { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; align-items: stretch; }
 @media (min-width: 40.01em) { #projekte .projects { gap: .8rem; } }
-@media (min-width: 64.01em) { #projekte .projects { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+@media (min-width: 64.01em) { #projekte .projects { grid-template-columns: repeat(7, minmax(0, 1fr)); } }
 
 #projekte .card {
   display: block;
@@ -5042,4 +5053,122 @@ body { line-height: 1.55; }
     --portrait-size: clamp(17rem, 33vw, 31rem);
     --portrait-right: calc(clamp(0px, (100vw - 80rem) * .3, 11rem) + 1vw);
   }
+}
+
+/* ==========================================================
+   Eigene Projekte, zwei Gruppen: Apps (GitHub) und Musik auf YouTube.
+   Die Videos sind einfache Karten mit Titelbild und führen direkt zum Video.
+   ========================================================== */
+#projekte .projects__group {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  margin: 2.4rem 0 1rem;
+  color: #f5f8ff;
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  font-weight: 700;
+}
+#projekte .projects__group::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(104, 159, 239, .6), transparent);
+}
+#projekte .projects__group--music::after { background: linear-gradient(90deg, rgba(255, 74, 94, .65), transparent); }
+:root[data-theme="light"] #projekte .projects__group { color: #102243; }
+
+#projekte .videos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .8rem;
+}
+@media (min-width: 40.01em) { #projekte .videos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 64.01em) { #projekte .videos { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+
+#projekte .video {
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  min-width: 0;
+  padding: .55rem .55rem .7rem;
+  border: 1.5px solid rgba(255, 74, 94, .38);
+  border-radius: 1rem;
+  background: linear-gradient(128deg, #301219, #1a1230);
+  box-shadow: 0 0 .9rem rgba(255, 60, 80, .16);
+  color: #f5f8ff;
+  text-decoration: none;
+  transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+}
+#projekte .video:hover,
+#projekte .video:focus-visible {
+  border-color: #ff4a5e;
+  box-shadow: 0 0 1.3rem rgba(255, 60, 80, .4);
+  color: #fff;
+  transform: translateY(-3px);
+}
+#projekte .video:focus-visible { outline: 2px solid #ffb3bd; outline-offset: 3px; }
+
+#projekte .video__thumb {
+  position: relative;
+  display: block;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: .7rem;
+  background: #000;
+}
+#projekte .video__thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#projekte .video__thumb::after {
+  content: "";
+  position: absolute;
+  right: .45rem;
+  bottom: .45rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: #ff0033 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M8 5.5v13l11-6.5z'/%3E%3C/svg%3E") 55% 50% / 62% no-repeat;
+  box-shadow: 0 0 .6rem rgba(0, 0, 0, .55);
+}
+#projekte .video__title {
+  padding-inline: .15rem;
+  font-size: clamp(.85rem, 1.1vw, 1rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+#projekte .videos__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+  margin-top: 1.1rem;
+}
+#projekte .videos__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  min-height: 2.6rem;
+  padding: .4rem 1.1rem;
+  border: 1px solid rgba(255, 74, 94, .65);
+  border-radius: .8rem;
+  background: rgba(255, 45, 77, .14);
+  color: #fff;
+  font-size: .9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+#projekte .videos__links a:hover {
+  background: rgba(255, 45, 77, .3);
+  box-shadow: 0 0 1rem rgba(255, 60, 80, .4);
+  color: #fff;
+}
+#projekte .videos__links img { width: 1.2rem; height: 1.2rem; }
+:root[data-theme="light"] #projekte .videos__links a { color: #7a0016; background: rgba(255, 45, 77, .1); }
+:root[data-theme="light"] #projekte .videos__links a:hover { color: #7a0016; }
+@media (prefers-reduced-motion: reduce) {
+  #projekte .video { transition: none; }
+  #projekte .video:hover, #projekte .video:focus-visible { transform: none; }
 }
